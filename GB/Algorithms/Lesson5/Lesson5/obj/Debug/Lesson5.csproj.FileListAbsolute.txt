@@ -1,0 +1,14 @@
+c:\users\paul\source\repos\Lesson5\Lesson5\bin\Debug\Lesson5.exe.config
+c:\users\paul\source\repos\Lesson5\Lesson5\bin\Debug\Lesson5.exe
+c:\users\paul\source\repos\Lesson5\Lesson5\bin\Debug\Lesson5.pdb
+c:\users\paul\source\repos\Lesson5\Lesson5\obj\Debug\Lesson5.csprojAssemblyReference.cache
+c:\users\paul\source\repos\Lesson5\Lesson5\obj\Debug\Lesson5.csproj.CoreCompileInputs.cache
+c:\users\paul\source\repos\Lesson5\Lesson5\obj\Debug\Lesson5.exe
+c:\users\paul\source\repos\Lesson5\Lesson5\obj\Debug\Lesson5.pdb
+C:\Users\Paul\source\repos\Algorithms\Lesson5\Lesson5\bin\Debug\Lesson5.exe.config
+C:\Users\Paul\source\repos\Algorithms\Lesson5\Lesson5\bin\Debug\Lesson5.exe
+C:\Users\Paul\source\repos\Algorithms\Lesson5\Lesson5\bin\Debug\Lesson5.pdb
+C:\Users\Paul\source\repos\Algorithms\Lesson5\Lesson5\obj\Debug\Lesson5.csprojAssemblyReference.cache
+C:\Users\Paul\source\repos\Algorithms\Lesson5\Lesson5\obj\Debug\Lesson5.csproj.CoreCompileInputs.cache
+C:\Users\Paul\source\repos\Algorithms\Lesson5\Lesson5\obj\Debug\Lesson5.exe
+C:\Users\Paul\source\repos\Algorithms\Lesson5\Lesson5\obj\Debug\Lesson5.pdb

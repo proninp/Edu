@@ -1,0 +1,10 @@
+C:\Users\Paul\source\repos\GB_C-Setka_1\Lesson6\Lesson6\Task3\bin\Debug\Task3.exe.config
+C:\Users\Paul\source\repos\GB_C-Setka_1\Lesson6\Lesson6\Task3\bin\Debug\Task3.exe
+C:\Users\Paul\source\repos\GB_C-Setka_1\Lesson6\Lesson6\Task3\bin\Debug\Task3.pdb
+C:\Users\Paul\source\repos\GB_C-Setka_1\Lesson6\Lesson6\Task3\bin\Debug\Support.exe
+C:\Users\Paul\source\repos\GB_C-Setka_1\Lesson6\Lesson6\Task3\bin\Debug\Support.pdb
+C:\Users\Paul\source\repos\GB_C-Setka_1\Lesson6\Lesson6\Task3\bin\Debug\Support.exe.config
+C:\Users\Paul\source\repos\GB_C-Setka_1\Lesson6\Lesson6\Task3\obj\Debug\Task3.csprojResolveAssemblyReference.cache
+C:\Users\Paul\source\repos\GB_C-Setka_1\Lesson6\Lesson6\Task3\obj\Debug\Task3.csproj.CoreCompileInputs.cache
+C:\Users\Paul\source\repos\GB_C-Setka_1\Lesson6\Lesson6\Task3\obj\Debug\Task3.exe
+C:\Users\Paul\source\repos\GB_C-Setka_1\Lesson6\Lesson6\Task3\obj\Debug\Task3.pdb

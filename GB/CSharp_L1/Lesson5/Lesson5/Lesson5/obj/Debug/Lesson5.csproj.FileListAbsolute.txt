@@ -1,0 +1,7 @@
+C:\Users\Paul\source\repos\GB_C-Setka_1\Lesson5\Lesson5\Lesson5\bin\Debug\Lesson5.exe.config
+C:\Users\Paul\source\repos\GB_C-Setka_1\Lesson5\Lesson5\Lesson5\bin\Debug\Lesson5.exe
+C:\Users\Paul\source\repos\GB_C-Setka_1\Lesson5\Lesson5\Lesson5\bin\Debug\Lesson5.pdb
+C:\Users\Paul\source\repos\GB_C-Setka_1\Lesson5\Lesson5\Lesson5\obj\Debug\Lesson5.csprojResolveAssemblyReference.cache
+C:\Users\Paul\source\repos\GB_C-Setka_1\Lesson5\Lesson5\Lesson5\obj\Debug\Lesson5.csproj.CoreCompileInputs.cache
+C:\Users\Paul\source\repos\GB_C-Setka_1\Lesson5\Lesson5\Lesson5\obj\Debug\Lesson5.exe
+C:\Users\Paul\source\repos\GB_C-Setka_1\Lesson5\Lesson5\Lesson5\obj\Debug\Lesson5.pdb

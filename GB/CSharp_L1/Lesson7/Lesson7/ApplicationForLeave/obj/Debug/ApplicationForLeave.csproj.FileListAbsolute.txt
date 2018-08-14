@@ -1,0 +1,11 @@
+C:\Users\Paul\source\repos\GB_C-Setka_1\Lesson7\Lesson7\ApplicationForLeave\bin\Debug\ApplicationForLeave.exe.config
+C:\Users\Paul\source\repos\GB_C-Setka_1\Lesson7\Lesson7\ApplicationForLeave\bin\Debug\ApplicationForLeave.exe
+C:\Users\Paul\source\repos\GB_C-Setka_1\Lesson7\Lesson7\ApplicationForLeave\bin\Debug\ApplicationForLeave.pdb
+C:\Users\Paul\source\repos\GB_C-Setka_1\Lesson7\Lesson7\ApplicationForLeave\obj\Debug\ApplicationForLeave.csprojResolveAssemblyReference.cache
+C:\Users\Paul\source\repos\GB_C-Setka_1\Lesson7\Lesson7\ApplicationForLeave\obj\Debug\ApplicationForLeave.csproj.ResolveComReference.cache
+C:\Users\Paul\source\repos\GB_C-Setka_1\Lesson7\Lesson7\ApplicationForLeave\obj\Debug\ApplicationForLeave.Form1.resources
+C:\Users\Paul\source\repos\GB_C-Setka_1\Lesson7\Lesson7\ApplicationForLeave\obj\Debug\ApplicationForLeave.Properties.Resources.resources
+C:\Users\Paul\source\repos\GB_C-Setka_1\Lesson7\Lesson7\ApplicationForLeave\obj\Debug\ApplicationForLeave.csproj.GenerateResource.Cache
+C:\Users\Paul\source\repos\GB_C-Setka_1\Lesson7\Lesson7\ApplicationForLeave\obj\Debug\ApplicationForLeave.csproj.CoreCompileInputs.cache
+C:\Users\Paul\source\repos\GB_C-Setka_1\Lesson7\Lesson7\ApplicationForLeave\obj\Debug\ApplicationForLeave.exe
+C:\Users\Paul\source\repos\GB_C-Setka_1\Lesson7\Lesson7\ApplicationForLeave\obj\Debug\ApplicationForLeave.pdb

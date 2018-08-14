@@ -1,0 +1,10 @@
+C:\Users\Paul\source\repos\GB_C-Setka_1\Lesson7\Lesson7\GuessNumber\bin\Debug\GuessNumber.exe.config
+C:\Users\Paul\source\repos\GB_C-Setka_1\Lesson7\Lesson7\GuessNumber\bin\Debug\GuessNumber.exe
+C:\Users\Paul\source\repos\GB_C-Setka_1\Lesson7\Lesson7\GuessNumber\bin\Debug\GuessNumber.pdb
+C:\Users\Paul\source\repos\GB_C-Setka_1\Lesson7\Lesson7\GuessNumber\obj\Debug\GuessNumber.Form1.resources
+C:\Users\Paul\source\repos\GB_C-Setka_1\Lesson7\Lesson7\GuessNumber\obj\Debug\GuessNumber.Properties.Resources.resources
+C:\Users\Paul\source\repos\GB_C-Setka_1\Lesson7\Lesson7\GuessNumber\obj\Debug\GuessNumber.csproj.GenerateResource.Cache
+C:\Users\Paul\source\repos\GB_C-Setka_1\Lesson7\Lesson7\GuessNumber\obj\Debug\GuessNumber.csproj.CoreCompileInputs.cache
+C:\Users\Paul\source\repos\GB_C-Setka_1\Lesson7\Lesson7\GuessNumber\obj\Debug\GuessNumber.exe
+C:\Users\Paul\source\repos\GB_C-Setka_1\Lesson7\Lesson7\GuessNumber\obj\Debug\GuessNumber.pdb
+C:\Users\Paul\source\repos\GB_C-Setka_1\Lesson7\Lesson7\GuessNumber\obj\Debug\GuessNumber.csprojResolveAssemblyReference.cache

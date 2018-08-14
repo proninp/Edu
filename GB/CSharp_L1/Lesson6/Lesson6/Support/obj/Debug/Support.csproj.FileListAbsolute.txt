@@ -1,0 +1,7 @@
+C:\Users\Paul\source\repos\GB_C-Setka_1\Lesson6\Lesson6\Support\obj\Debug\Support.csprojResolveAssemblyReference.cache
+C:\Users\Paul\source\repos\GB_C-Setka_1\Lesson6\Lesson6\Support\obj\Debug\Support.csproj.CoreCompileInputs.cache
+C:\Users\Paul\source\repos\GB_C-Setka_1\Lesson6\Lesson6\Support\bin\Debug\Support.exe.config
+C:\Users\Paul\source\repos\GB_C-Setka_1\Lesson6\Lesson6\Support\bin\Debug\Support.exe
+C:\Users\Paul\source\repos\GB_C-Setka_1\Lesson6\Lesson6\Support\bin\Debug\Support.pdb
+C:\Users\Paul\source\repos\GB_C-Setka_1\Lesson6\Lesson6\Support\obj\Debug\Support.exe
+C:\Users\Paul\source\repos\GB_C-Setka_1\Lesson6\Lesson6\Support\obj\Debug\Support.pdb

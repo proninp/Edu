@@ -1,0 +1,7 @@
+C:\Users\Paul\source\repos\GB_C-Setka_1\Lesson1\Task2\bin\Debug\Task2.exe.config
+C:\Users\Paul\source\repos\GB_C-Setka_1\Lesson1\Task2\bin\Debug\Task2.exe
+C:\Users\Paul\source\repos\GB_C-Setka_1\Lesson1\Task2\bin\Debug\Task2.pdb
+C:\Users\Paul\source\repos\GB_C-Setka_1\Lesson1\Task2\obj\Debug\Task2.csproj.CoreCompileInputs.cache
+C:\Users\Paul\source\repos\GB_C-Setka_1\Lesson1\Task2\obj\Debug\Task2.exe
+C:\Users\Paul\source\repos\GB_C-Setka_1\Lesson1\Task2\obj\Debug\Task2.pdb
+C:\Users\Paul\source\repos\GB_C-Setka_1\Lesson1\Task2\obj\Debug\Task2.csprojResolveAssemblyReference.cache
