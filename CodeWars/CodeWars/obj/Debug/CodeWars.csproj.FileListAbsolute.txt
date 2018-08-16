@@ -12,3 +12,10 @@ C:\Users\Paul\source\repos\CodeWars\CodeWars\obj\Debug\CodeWars.pdb
 C:\Users\Paul\source\repos\CodeWars\CodeWars\bin\Debug\CodeWars.exe.config
 C:\Users\Paul\source\repos\CodeWars\CodeWars\bin\Debug\CodeWars.exe
 C:\Users\Paul\source\repos\CodeWars\CodeWars\bin\Debug\CodeWars.pdb
+C:\Users\Paul\source\repos\Git\Edu\CodeWars\CodeWars\obj\Debug\CodeWars.csprojAssemblyReference.cache
+C:\Users\Paul\source\repos\Git\Edu\CodeWars\CodeWars\obj\Debug\CodeWars.csproj.CoreCompileInputs.cache
+C:\Users\Paul\source\repos\Git\Edu\CodeWars\CodeWars\obj\Debug\CodeWars.exe
+C:\Users\Paul\source\repos\Git\Edu\CodeWars\CodeWars\obj\Debug\CodeWars.pdb
+C:\Users\Paul\source\repos\Git\Edu\CodeWars\CodeWars\bin\Debug\CodeWars.exe.config
+C:\Users\Paul\source\repos\Git\Edu\CodeWars\CodeWars\bin\Debug\CodeWars.exe
+C:\Users\Paul\source\repos\Git\Edu\CodeWars\CodeWars\bin\Debug\CodeWars.pdb

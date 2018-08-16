@@ -12,7 +12,7 @@ namespace CodeWars
     {
         public static void Main()
         {
-            // Code me
+            Console.WriteLine(NextBiggerNumberWithTheSameDigits.NextBiggerNumber(1757100732));
             Console.ReadLine();   
         }   
     }
