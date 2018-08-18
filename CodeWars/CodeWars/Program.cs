@@ -12,8 +12,8 @@ namespace CodeWars
     {
         public static void Main()
         {
-            Console.WriteLine(NextBiggerNumberWithTheSameDigits.NextBiggerNumber(1757100732));
-            Console.ReadLine();   
+            // Code me
+            Console.ReadLine();
         }   
     }
 }
