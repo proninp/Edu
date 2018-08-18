@@ -1,10 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace CodeWars._4kyu
 {
     /*
-     * You have to create a function that takes a positive integer number and returns the next bigger number formed by the same digits:
+     * ou have to create a function that takes a positive integer number and returns the next bigger number formed by the same digits:
      * Kata.NextBiggerNumber(12)==21
      * Kata.NextBiggerNumber(513)==531
      * Kata.NextBiggerNumber(2017)==2071
@@ -20,6 +23,9 @@ namespace CodeWars._4kyu
         {
             int[] a = n.ToString().ToList().Select(c => c - 48).ToArray();
             int[] b = new int[a.Length];
+            for (int i = 0; i < a.Length; i++)
+                Console.Write(a[i] + " ");
+
             bool exit = true;
             for (int i = 0; i < a.Length - 1; i++)
                 if (a[i] < a[i + 1]) { exit = false; break; }
@@ -33,7 +39,7 @@ namespace CodeWars._4kyu
                 for (; i >= 0; i--)
                 {
                     if (!b.Contains(sn[i] - 48)) break;
-                    b[Array.IndexOf(b, sn[i] - 48)] = -1;
+                    b[Array.IndexOf(a, sn[i] - 48)] = -1;
                 }
                 if (i < 0) break;
             }
