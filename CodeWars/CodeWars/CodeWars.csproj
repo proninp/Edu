@@ -44,7 +44,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="4kyu\HumanReadableDurationFormat.cs" />
     <Compile Include="4kyu\NextBiggerNumberWithTheSameDigits.cs" />
+    <Compile Include="4kyu\StringsMix.cs" />
     <Compile Include="5kyu\BuddyPairs.cs" />
     <Compile Include="5kyu\CanYouGetTheLoop.cs" />
     <Compile Include="5kyu\DidYouMean.cs" />
@@ -79,6 +81,7 @@
     <Compile Include="7kyu\SquareEveryDigit.cs" />
     <Compile Include="7kyu\SumOfTheFirstNthTermOfSeries.cs" />
     <Compile Include="7kyu\SumOfAllTheMultiplesOf3Or5.cs" />
+    <Compile Include="8kyu\CenturyFromYear.cs" />
     <Compile Include="8kyu\CorrectTheMistakesOfTheCharacterRecognitionSoftware.cs" />
     <Compile Include="8kyu\SumOfPositive.cs" />
     <Compile Include="5kyu\CreatePhoneNumberClass.cs" />

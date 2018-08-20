@@ -5,6 +5,7 @@ using CodeWars._4kyu;
 using CodeWars._5kyu;
 using CodeWars._6kyu;
 using CodeWars._7kyu;
+using CodeWars._8kyu;
 
 namespace CodeWars
 {
@@ -12,7 +13,7 @@ namespace CodeWars
     {
         public static void Main()
         {
-            Console.WriteLine(NextBiggerNumberWithTheSameDigits.NextBiggerNumber(1757100732));
+            Console.WriteLine(CenturyFromYear.СenturyFromYear());
             Console.ReadLine();   
         }   
     }

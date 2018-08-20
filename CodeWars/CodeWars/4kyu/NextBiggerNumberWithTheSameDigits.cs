@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CodeWars._4kyu
 {
     /*
-     * ou have to create a function that takes a positive integer number and returns the next bigger number formed by the same digits:
+     * You have to create a function that takes a positive integer number and returns the next bigger number formed by the same digits:
      * Kata.NextBiggerNumber(12)==21
      * Kata.NextBiggerNumber(513)==531
      * Kata.NextBiggerNumber(2017)==2071
