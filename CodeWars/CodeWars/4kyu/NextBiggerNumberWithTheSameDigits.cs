@@ -4,6 +4,7 @@ using System.Linq;
 namespace CodeWars._4kyu
 {
     /*
+     * Next bigger number with the same digits
      * You have to create a function that takes a positive integer number and returns the next bigger number formed by the same digits:
      * Kata.NextBiggerNumber(12)==21
      * Kata.NextBiggerNumber(513)==531
@@ -20,9 +21,6 @@ namespace CodeWars._4kyu
         {
             int[] a = n.ToString().ToList().Select(c => c - 48).ToArray();
             int[] b = new int[a.Length];
-            for (int i = 0; i < a.Length; i++)
-                Console.Write(a[i] + " ");
-
             bool exit = true;
             for (int i = 0; i < a.Length - 1; i++)
                 if (a[i] < a[i + 1]) { exit = false; break; }
