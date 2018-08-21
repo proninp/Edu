@@ -67,6 +67,7 @@
     <Compile Include="6kyu\PossibilitiesOfThrowingACoinNTimes.cs" />
     <Compile Include="6kyu\SplitStrings.cs" />
     <Compile Include="6kyu\SumOfDigitsDigitalRoot.cs" />
+    <Compile Include="6kyu\TortoiseRacing.cs" />
     <Compile Include="6kyu\TransformToPrime.cs" />
     <Compile Include="6kyu\TribonacciSequence.cs" />
     <Compile Include="6kyu\TripleTrouble.cs" />
