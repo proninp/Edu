@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="4kyu\HumanReadableDurationFormat.cs" />
     <Compile Include="4kyu\NextBiggerNumberWithTheSameDigits.cs" />
+    <Compile Include="4kyu\NextSmallerNumberWithTheSameDigits.cs" />
     <Compile Include="4kyu\StringsMix.cs" />
     <Compile Include="5kyu\BuddyPairs.cs" />
     <Compile Include="5kyu\CanYouGetTheLoop.cs" />

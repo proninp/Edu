@@ -13,7 +13,8 @@ namespace CodeWars
     {
         public static void Main()
         {
-            Console.WriteLine(CenturyFromYear.СenturyFromYear());
+            Console.WriteLine(NextSmallerNumberWithTheSameDigits.NextSmaller(123456798));
+            //Console.WriteLine(NextBiggerNumberWithTheSameDigits.NextBiggerNumber(22644898221522L));
             Console.ReadLine();   
         }   
     }
