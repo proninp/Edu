@@ -23,6 +23,9 @@ namespace CodeWars._5kyu
         public static string ListSquared(long m, long n)
         {
             StringBuilder sb = new StringBuilder("[");
+            int v = 2;
+            double nv = ++v + v++;
+            
             for (long i = m; i <= n; i++)
             {
                 long len = (long) Math.Sqrt(i) + 1;
