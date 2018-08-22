@@ -25,5 +25,4 @@ namespace CodeWars._6kyu
             (int)((double) g / (v2 - v1) * 60) % 60,
             (int)((double)g / (v2 - v1) * 3600) % 60};
     }
-    }
 }

@@ -51,6 +51,7 @@
     <Compile Include="5kyu\BuddyPairs.cs" />
     <Compile Include="5kyu\CanYouGetTheLoop.cs" />
     <Compile Include="5kyu\DidYouMean.cs" />
+    <Compile Include="5kyu\IntegersRecreationOne.cs" />
     <Compile Include="5kyu\RGBToHexConversion.cs" />
     <Compile Include="5kyu\SimplePigLatin.cs" />
     <Compile Include="5kyu\StringNIterationsString.cs" />
