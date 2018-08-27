@@ -13,7 +13,7 @@ namespace CodeWars
     {
         public static void Main()
         {
-            Console.WriteLine(PerimeterOfSquaresInARectangle.Perimeter(7));
+            // code
             Console.ReadLine();   
         }   
     }
