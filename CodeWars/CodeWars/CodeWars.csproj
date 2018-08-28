@@ -57,6 +57,7 @@
     <Compile Include="5kyu\RGBToHexConversion.cs" />
     <Compile Include="5kyu\SimplePigLatin.cs" />
     <Compile Include="5kyu\StringNIterationsString.cs" />
+    <Compile Include="5kyu\WhereMyAnagramsAt.cs" />
     <Compile Include="6kyu\BitCounting.cs" />
     <Compile Include="6kyu\CharacterWithLongestRepetition.cs" />
     <Compile Include="6kyu\ConvertStringToCamelCase.cs" />
