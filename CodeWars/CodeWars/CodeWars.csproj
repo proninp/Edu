@@ -51,8 +51,10 @@
     <Compile Include="4kyu\StringsMix.cs" />
     <Compile Include="5kyu\BuddyPairs.cs" />
     <Compile Include="5kyu\CanYouGetTheLoop.cs" />
+    <Compile Include="5kyu\CommonDenominators.cs" />
     <Compile Include="5kyu\DidYouMean.cs" />
     <Compile Include="5kyu\IntegersRecreationOne.cs" />
+    <Compile Include="5kyu\IsMyFriendCheating.cs" />
     <Compile Include="5kyu\PerimeterOfSquaresInARectangle.cs" />
     <Compile Include="5kyu\RGBToHexConversion.cs" />
     <Compile Include="5kyu\SimplePigLatin.cs" />
