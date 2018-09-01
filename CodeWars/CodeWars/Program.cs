@@ -13,7 +13,7 @@ namespace CodeWars
     {
         public static void Main()
         {
-            // code
+            // Code
             Console.ReadLine();   
         }   
     }

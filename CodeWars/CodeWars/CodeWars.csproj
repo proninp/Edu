@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="4kyu\AddingBigNumbers.cs" />
     <Compile Include="4kyu\HumanReadableDurationFormat.cs" />
     <Compile Include="4kyu\NextBiggerNumberWithTheSameDigits.cs" />
     <Compile Include="4kyu\NextSmallerNumberWithTheSameDigits.cs" />
