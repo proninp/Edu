@@ -68,11 +68,13 @@
     <Compile Include="6kyu\FindAnArea.cs" />
     <Compile Include="6kyu\FindTheParityOutlier.cs" />
     <Compile Include="6kyu\HelpTheBookseller.cs" />
+    <Compile Include="6kyu\HiddenCubicNumbers.cs" />
     <Compile Include="6kyu\HighestScoringWord.cs" />
     <Compile Include="6kyu\MexicanWave.cs" />
     <Compile Include="6kyu\MultiplesOf3Or5.cs" />
     <Compile Include="6kyu\PatternWave.cs" />
     <Compile Include="6kyu\PersistentBugger.cs" />
+    <Compile Include="6kyu\PositionsAverage.cs" />
     <Compile Include="6kyu\PossibilitiesOfThrowingACoinNTimes.cs" />
     <Compile Include="6kyu\SplitStrings.cs" />
     <Compile Include="6kyu\SumOfDigitsDigitalRoot.cs" />
