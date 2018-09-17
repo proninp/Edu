@@ -97,6 +97,7 @@
     <Compile Include="7kyu\Mumbling.cs" />
     <Compile Include="7kyu\OddEvenStringSort.cs" />
     <Compile Include="7kyu\ProductOfArrayItems.cs" />
+    <Compile Include="7kyu\SimpleFun2CircleOfNumbers.cs" />
     <Compile Include="7kyu\SimpleFun37HouseNumbersSum.cs" />
     <Compile Include="7kyu\SquareEveryDigit.cs" />
     <Compile Include="7kyu\SumOfOddNumbers.cs" />
