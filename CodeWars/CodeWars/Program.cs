@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using CodeWars._3kyu;
 using CodeWars._4kyu;
 using CodeWars._5kyu;
 using CodeWars._6kyu;
@@ -13,8 +14,9 @@ namespace CodeWars
     {
         public static void Main()
         {
-            // code me
-            Console.ReadLine();   
+            //Console.WriteLine(Calculator.Evaluate("-1-1"));
+            Console.WriteLine(BallUpwards.MaxBall(85));
+            Console.ReadLine();
         }   
     }
 }
