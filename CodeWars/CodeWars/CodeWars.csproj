@@ -68,6 +68,7 @@
     <Compile Include="6kyu\BitCounting.cs" />
     <Compile Include="6kyu\CharacterWithLongestRepetition.cs" />
     <Compile Include="6kyu\ConvertStringToCamelCase.cs" />
+    <Compile Include="6kyu\CountCharactersInYourString.cs" />
     <Compile Include="6kyu\FindAnArea.cs" />
     <Compile Include="6kyu\FindTheParityOutlier.cs" />
     <Compile Include="6kyu\HelpTheBookseller.cs" />
