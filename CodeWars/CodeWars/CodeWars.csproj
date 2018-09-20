@@ -70,6 +70,7 @@
     <Compile Include="6kyu\CharacterWithLongestRepetition.cs" />
     <Compile Include="6kyu\ConvertStringToCamelCase.cs" />
     <Compile Include="6kyu\CountCharactersInYourString.cs" />
+    <Compile Include="6kyu\IsaNumberPrime.cs" />
     <Compile Include="6kyu\FindAnArea.cs" />
     <Compile Include="6kyu\FindTheParityOutlier.cs" />
     <Compile Include="6kyu\HelpTheBookseller.cs" />
@@ -82,6 +83,7 @@
     <Compile Include="6kyu\PositionsAverage.cs" />
     <Compile Include="6kyu\PossibilitiesOfThrowingACoinNTimes.cs" />
     <Compile Include="6kyu\SplitStrings.cs" />
+    <Compile Include="6kyu\StringLetterCounting.cs" />
     <Compile Include="6kyu\SumOfDigitsDigitalRoot.cs" />
     <Compile Include="6kyu\TortoiseRacing.cs" />
     <Compile Include="6kyu\TransformToPrime.cs" />
