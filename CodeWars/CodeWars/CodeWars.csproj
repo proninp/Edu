@@ -57,6 +57,7 @@
     <Compile Include="5kyu\CanYouGetTheLoop.cs" />
     <Compile Include="5kyu\CommonDenominators.cs" />
     <Compile Include="5kyu\DidYouMean.cs" />
+    <Compile Include="5kyu\FindTheSmallest.cs" />
     <Compile Include="5kyu\IntegersRecreationOne.cs" />
     <Compile Include="5kyu\IsMyFriendCheating.cs" />
     <Compile Include="5kyu\Mixbonacci.cs" />
