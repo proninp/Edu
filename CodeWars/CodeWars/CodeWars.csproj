@@ -68,6 +68,7 @@
     <Compile Include="5kyu\WhereMyAnagramsAt.cs" />
     <Compile Include="6kyu\BallUpwards.cs" />
     <Compile Include="6kyu\BitCounting.cs" />
+    <Compile Include="6kyu\BouncingBalls.cs" />
     <Compile Include="6kyu\CharacterWithLongestRepetition.cs" />
     <Compile Include="6kyu\ConvertStringToCamelCase.cs" />
     <Compile Include="6kyu\CountCharactersInYourString.cs" />
@@ -83,6 +84,7 @@
     <Compile Include="6kyu\PersistentBugger.cs" />
     <Compile Include="6kyu\PositionsAverage.cs" />
     <Compile Include="6kyu\PossibilitiesOfThrowingACoinNTimes.cs" />
+    <Compile Include="6kyu\RectangleIntoSquares.cs" />
     <Compile Include="6kyu\SplitStrings.cs" />
     <Compile Include="6kyu\StringLetterCounting.cs" />
     <Compile Include="6kyu\SumOfDigitsDigitalRoot.cs" />
