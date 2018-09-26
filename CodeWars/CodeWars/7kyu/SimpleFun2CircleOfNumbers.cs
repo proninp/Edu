@@ -14,9 +14,6 @@
      */
     public class SimpleFun2CircleOfNumbers
     {
-        public static int CircleOfNumbers(int n, int FirstNumber)
-        {
-            return (n / 2 + FirstNumber) % n;
-        }
+        public static int CircleOfNumbers(int n, int FirstNumber) => (n / 2 + FirstNumber) % n;
     }
 }

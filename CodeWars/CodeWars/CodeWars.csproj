@@ -62,6 +62,7 @@
     <Compile Include="5kyu\IsMyFriendCheating.cs" />
     <Compile Include="5kyu\Mixbonacci.cs" />
     <Compile Include="5kyu\PerimeterOfSquaresInARectangle.cs" />
+    <Compile Include="5kyu\ProductOfConsecutiveFibNumbers.cs" />
     <Compile Include="5kyu\RGBToHexConversion.cs" />
     <Compile Include="5kyu\SimplePigLatin.cs" />
     <Compile Include="5kyu\StringNIterationsString.cs" />
