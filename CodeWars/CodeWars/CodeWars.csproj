@@ -72,6 +72,7 @@
     <Compile Include="6kyu\BallUpwards.cs" />
     <Compile Include="6kyu\BitCounting.cs" />
     <Compile Include="6kyu\BouncingBalls.cs" />
+    <Compile Include="6kyu\BuyingACar.cs" />
     <Compile Include="6kyu\CharacterWithLongestRepetition.cs" />
     <Compile Include="6kyu\ConvertStringToCamelCase.cs" />
     <Compile Include="6kyu\CountCharactersInYourString.cs" />
@@ -90,6 +91,7 @@
     <Compile Include="6kyu\PossibilitiesOfThrowingACoinNTimes.cs" />
     <Compile Include="6kyu\RectangleIntoSquares.cs" />
     <Compile Include="6kyu\SplitStrings.cs" />
+    <Compile Include="6kyu\Stop_gninnipS_My_sdroW.cs" />
     <Compile Include="6kyu\StringLetterCounting.cs" />
     <Compile Include="6kyu\SumOfDigitsDigitalRoot.cs" />
     <Compile Include="6kyu\TortoiseRacing.cs" />
