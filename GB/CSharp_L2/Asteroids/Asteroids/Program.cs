@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace MyGame
+namespace Asteroids
 {
     class Program
     {
@@ -10,6 +10,13 @@ namespace MyGame
             Form form = new Form();
             form.Width = 800;
             form.Height = 600;
+            form.MaximizeBox = false;
+            form.MaximumSize = form.Size;
+            Game.Init(form);
+            form.Show();
+            Game.Draw();
+            Application.Run(form);
+
 
         }
     }
