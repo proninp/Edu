@@ -58,10 +58,13 @@ namespace Asteroids
         public virtual void Update()
         {
             Pos.X += Dir.X;
-            Pos.Y += Dir.Y;
+            Pos.Y -= Dir.Y;
             //if (Pos.X < 0 || Pos.X > Game.Width) Dir.X = -Dir.X;
             //if (Pos.Y < 0 || Pos.Y > Game.Height) Dir.Y = -Dir.Y;
-            if (Pos.X > Game.Width) Pos.X = Size.Width;
+            if (Pos.X < 0) Pos.X = Game.Width;
+            if (Pos.Y > Game.Height) Pos.Y = 0;
+            if (Pos.X > Game.Width) Pos.X = 0;
+            if (Pos.Y < 0) Pos.Y = Game.Height;
         }
     }
 }
