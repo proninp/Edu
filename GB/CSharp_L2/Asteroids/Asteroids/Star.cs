@@ -5,8 +5,12 @@ namespace Asteroids
 {
     class Star: BaseObject
     {
-        Pen p;
-        public Star(Point pos, Point dir, Size size):base(pos, dir, size) => p = new Pen(new Color[] {Color.White, Color.Wheat, Color.LightGray }[rand.Next(0, 3)], 1);
+        private Pen p;
+        public Star(Point pos, Point dir, Size size):base(pos, dir, size) => p = new Pen(new Color[] {
+            Color.White,
+            Color.Wheat,
+            Color.LightGray
+        }[rand.Next(0, 3)], 1);
         public override void Draw()
         {
             Game.Buffer.Graphics.DrawLine(p, Pos.X, Pos.Y, Pos.X + Size.Width, Pos.Y + Size.Height);

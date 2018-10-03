@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using System.Windows.Forms;
 using System.Drawing;
 
@@ -32,6 +31,7 @@ namespace Asteroids
             Buffer.Graphics.Clear(Color.Black);
             foreach (var obj in BaseObj)
                 obj.Draw();
+            //Buffer.Graphics.DrawImage(Image.FromFile("..\\..\\pics\\ss.ico"), new Point(300, 200));
             Buffer.Render();
         }
         public static void Load()
