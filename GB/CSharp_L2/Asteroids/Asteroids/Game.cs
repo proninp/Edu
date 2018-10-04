@@ -8,6 +8,7 @@ namespace Asteroids
     {
         static BufferedGraphicsContext context;
         public static BufferedGraphics Buffer { get; set; }
+        public static Ship SpaceShip { get; set; }
         public static BaseObject[] BaseObj { get; set; }
         public static Random Rand { get; set; }
         public static int Width { get; set; }
@@ -31,25 +32,27 @@ namespace Asteroids
             Buffer.Graphics.Clear(Color.Black);
             foreach (var obj in BaseObj)
                 obj.Draw();
-            //Buffer.Graphics.DrawImage(Image.FromFile("..\\..\\pics\\ss.ico"), new Point(300, 200));
+            SpaceShip.Draw();
             Buffer.Render();
         }
         public static void Load()
         {
-            BaseObj = new BaseObject[50];
+            BaseObj = new BaseObject[Settings.ElementsCount];
             for (int i = 0; i < BaseObj.Length; i++)
             {
-                int r = Rand.Next(5, 30);
+                int r = Rand.Next(Settings.MinElementSize, Settings.MaxElementSize);
                 if (i < 3) BaseObj[i] = new BaseObject(new Point(600, i * i * i ), new Point(- i, -i / 2 - 1), new Size(r, r));
                 else if (i > 2 && i < 6) BaseObj[i] = new BaseObject(new Point(600, i * i * i), new Point(-i, i / 2), new Size(r, r));
                 else BaseObj[i] = new Star(new Point(600, i * 20), new Point(-i % 20 - 1, 0), new Size(r/4, r/4));
             }
-                
+            SpaceShip = new Ship();
+
         }
         public static void Update()
         {
             foreach (var obj in BaseObj)
                 obj.Update();
+            SpaceShip.Update();
         }
         private static void Timer_Tick(object sender, EventArgs e)
         {
