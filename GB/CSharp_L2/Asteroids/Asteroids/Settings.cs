@@ -58,7 +58,5 @@ namespace Asteroids
         /// Максимальная позиция передвижения корабля горизонтали
         /// </summary>
         public static int ShipMinYPos = 200;
-
-
     }
 }

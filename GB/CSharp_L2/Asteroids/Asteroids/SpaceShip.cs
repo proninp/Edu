@@ -26,7 +26,6 @@ namespace Asteroids
         {
             Pos.Y += Dir.Y;
             if (Pos.Y > Settings.ShipMaxYPos || Pos.Y < Settings.ShipMinYPos) Dir.Y = -Dir.Y;
-        }
-        
+        }   
     }
 }
