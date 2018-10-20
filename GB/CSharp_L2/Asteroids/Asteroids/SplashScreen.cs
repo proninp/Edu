@@ -1,28 +1,50 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.Drawing;
+using System.Collections.Generic;
 
 namespace Asteroids
 {
     class SplashScreen
     {
+        static List<Button> btnList = new List<Button>(); // Список кнопок формы
         public static void Greeting(Form form)
         {
-            Button grBtn = new Button()
+            // Кнопка "Начать игру"
+            Button startGameBtn = new Button()
             {
                 Width = 200,
-                Height = 100,
-                Text = Settings.GreetingsBtnText,
+                Height = 50,
+                Text = Settings.GameStart,
                 Font = new Font(Settings.GreetingsBtnFont, 18F, FontStyle.Italic),
-                ForeColor = Color.DarkGoldenrod
+                ForeColor = Color.White,
+                BackColor = Color.Transparent,
+                FlatStyle = FlatStyle.Popup,
+                Location = new Point(20, 10)
             };
-
-            grBtn.Location = new Point(form.Width / 2 - grBtn.Width / 2, form.Height / 2 - grBtn.Height / 2);
-            form.Controls.Add(grBtn);
-            grBtn.Click += (object sender, EventArgs e) =>
+            btnList.Add(startGameBtn);
+            // Кнопка "Выйти"
+            Button exitBtn = new Button()
             {
-                grBtn.Visible = false;
-                MessageBox.Show($"Привет, {Settings.UserName}!", "Приветствие", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                Width = 200,
+                Height = 50,
+                Text = Settings.GameEnd,
+                Font = new Font(Settings.GreetingsBtnFont, 18F, FontStyle.Italic),
+                ForeColor = Color.White,
+                BackColor = Color.Transparent,
+                FlatStyle = FlatStyle.Popup,
+                Location = new Point(40 + startGameBtn.Width, 10)
+            };
+            btnList.Add(exitBtn);
+            foreach (var b in btnList) form.Controls.Add(b);
+            startGameBtn.Click += (object sender, EventArgs e) =>
+            {
+                foreach (var b in btnList) b.Visible = false;
+                MessageBox.Show("Игра началась!", $"Привет, {Settings.UserName}!", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+            };
+            exitBtn.Click += (object sender, EventArgs e) =>
+            {
+                if (MessageBox.Show("Вы уверены, что хотите выйти?", "Выход", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes) Application.Exit();
             };
         }
         

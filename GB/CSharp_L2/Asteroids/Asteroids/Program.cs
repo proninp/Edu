@@ -4,6 +4,9 @@ using System.Windows.Forms;
 
 namespace Asteroids
 {
+    /*
+     * Dev. by Pronin P.S.
+     */
     class Program
     {
         #region Скрыть консоль
@@ -19,12 +22,14 @@ namespace Asteroids
         {
             var handle = GetConsoleWindow();
             ShowWindow(handle, SW_HIDE);
-
-            Form form = new Form();
-            form.Width = 800;
-            form.Height = 600;
-            form.MaximizeBox = false;
+            Form form = new Form
+            {
+                Width = Settings.FieldWidth,
+                Height = Settings.FieldHeight,
+                MaximizeBox = false
+            };
             form.MaximumSize = form.Size;
+            form.BackgroundImage = Game.SpaceImg;
             Game.Init(form);
             SplashScreen.Greeting(form);
             form.Show();
