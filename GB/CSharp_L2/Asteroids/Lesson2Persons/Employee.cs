@@ -11,7 +11,7 @@ namespace Lesson2Persons
         public double Salary { get; set; }
         public Employee(string name, string surname, double salary) : base(name, surname) => Salary = salary;
         protected override double GetAvgSalary() => Salary;
-        protected override void DisplayInfo()
+        public override void DisplayInfo()
         {
             Console.WriteLine($"{Name} {Surname} with averege salary: {GetAvgSalary()}");
         }
