@@ -93,6 +93,16 @@ namespace Asteroids.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ray {
+            get {
+                object obj = ResourceManager.GetObject("ray", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap space {
             get {
                 object obj = ResourceManager.GetObject("space", resourceCulture);
@@ -106,6 +116,16 @@ namespace Asteroids.Properties {
         internal static System.Drawing.Bitmap spaceship_min {
             get {
                 object obj = ResourceManager.GetObject("spaceship_min", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap The_Death_Star {
+            get {
+                object obj = ResourceManager.GetObject("The_Death_Star", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

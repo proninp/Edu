@@ -48,6 +48,7 @@
     <Compile Include="BaseObject.cs" />
     <Compile Include="Bullet.cs" />
     <Compile Include="Game.cs" />
+    <Compile Include="GameObjectException.cs" />
     <Compile Include="ICollision.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -76,6 +77,12 @@
     <None Include="Resources\ast_1.png" />
     <None Include="Resources\ast_0.png" />
     <None Include="Resources\spaceship_min.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\The_Death_Star.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ray.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

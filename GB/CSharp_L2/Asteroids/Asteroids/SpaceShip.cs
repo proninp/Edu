@@ -7,13 +7,13 @@ namespace Asteroids
         /// <summary>
         /// Изображение корабля
         /// </summary>
-        public static Image Img { get; set; } = Properties.Resources.spaceship_min;
+        public static Image Img { get; set; } = Properties.Resources.The_Death_Star;
         /// <summary>
         /// Конструктор
         /// </summary>
         /// <param name="pos">Позиция</param>
         /// <param name="dir">Шаг изменения позиции</param>
-        /// <param name="power">Урое, который может нанести корабль</param>
+        /// <param name="power">Урон, который может нанести корабль</param>
         public SpaceShip(Point pos, Point dir, int power): base(pos, dir, power) { }
         /// <summary>
         /// Метод отрисовки объекта
