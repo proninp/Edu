@@ -4,8 +4,8 @@ namespace Lesson2Persons
 {
     abstract class Person: IComparable
     {
-        protected string Name { get; set; }
-        protected string Surname { get; set; }
+        public string Name { get; set; }
+        public string Surname { get; set; }
         public Person(string name, string surname)
         {
             Name = name;
