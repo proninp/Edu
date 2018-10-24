@@ -10,6 +10,14 @@ namespace Asteroids
         /// <summary>
         /// Высота игрового поля
         /// </summary>
+        public static int FieldMaxHeight { get; set; } = 1000;
+        /// <summary>
+        /// Максимальная ширина игрового поля
+        /// </summary>
+        public static int FieldMaxWidth { get; set; } = 1000;
+        /// <summary>
+        /// Максимальная высота игрового поля
+        /// </summary>
         public static int FieldHeight { get; set; } = 600;
         /// <summary>
         /// Общее количество элементов игрового поля
@@ -40,6 +48,10 @@ namespace Asteroids
         /// </summary>
         public static string GameStart { get; set; } = "Начать игру";
         /// <summary>
+        /// Текст сообщения при старте
+        /// </summary>
+        public static string GameRules { get; set; } = "Выстрел - пробел;\nУправление кораблём - стрелки.";
+        /// <summary>
         /// Текст кнопки выход
         /// </summary>
         public static string GameEnd { get; set; } = "Выход";
@@ -58,5 +70,9 @@ namespace Asteroids
         /// Максимальная позиция передвижения корабля горизонтали
         /// </summary>
         public static int ShipMinYPos = 200;
+        /// <summary>
+        /// Текст ошибки установки некорректных значений размера экрана
+        /// </summary>
+        public static string WindowSizeException { get; } = "Некорректно задан размер экрана!";
     }
 }

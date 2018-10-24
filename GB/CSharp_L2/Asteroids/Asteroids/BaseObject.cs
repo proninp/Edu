@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Drawing;
 
-using System.Linq;
-
 namespace Asteroids
 {
-    abstract class BaseObject
+    abstract class BaseObject: ICollision
     {
         protected static Random rand = new Random();
         /// <summary>
@@ -15,7 +13,7 @@ namespace Asteroids
         /// <summary>
         /// Позиция
         /// </summary>
-        protected Point Pos;
+        public Point Pos;
         /// <summary>
         /// Шаг изменения позиции
         /// </summary>
@@ -28,13 +26,16 @@ namespace Asteroids
         /// Урон
         /// </summary>
         protected int Power { get; set; }
-        public Rectangle Rect => new Rectangle(Pos, Size);
+        /// <summary>
+        /// Размер прямоугольной области объекта
+        /// </summary>
+        public Rectangle Rect { get; set; }
         /// <summary>
         /// Стандартный конструктор
         /// </summary>
         /// <param name="pos">Позиция объекта</param>
         /// <param name="dir">Шаг изенения позиции</param>
-        public BaseObject(Point pos, Point dir)
+        protected BaseObject(Point pos, Point dir)
         {
             Pos = pos;
             Dir = dir;
@@ -45,14 +46,14 @@ namespace Asteroids
         /// <param name="pos">Позиция объекта</param>
         /// <param name="dir">Шаг изменения позиции</param>
         /// <param name="size">Размер объекта</param>
-        public BaseObject(Point pos, Point dir, Size size): this(pos, dir) => Size = size;
+        protected BaseObject(Point pos, Point dir, Size size): this(pos, dir) => Size = size;
         /// <summary>
         /// Создание объекта
         /// </summary>
         /// <param name="pos">Позиция объекта</param>
         /// <param name="dir">Шаг изменения позиции</param>
         /// <param name="power">Урон, который может нанести объект</param>
-        public BaseObject(Point pos, Point dir, int power) : this(pos, dir) => Power = power;
+        protected BaseObject(Point pos, Point dir, int power) : this(pos, dir) => Power = power;
         /// <summary>
         /// Метод для отрисовки
         /// </summary>
@@ -69,5 +70,6 @@ namespace Asteroids
             if (Pos.X > (Game.Width + beyoundLim)) Pos.X = 0;
             if (Pos.Y < -beyoundLim) Pos.Y = Game.Height;
         }
+        public bool Collision(ICollision obj) => ((BaseObject)obj).Rect.IntersectsWith(Rect);
     }
 }
