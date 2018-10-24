@@ -93,6 +93,16 @@ namespace Asteroids.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap explode_1 {
+            get {
+                object obj = ResourceManager.GetObject("explode_1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap ray {
             get {
                 object obj = ResourceManager.GetObject("ray", resourceCulture);

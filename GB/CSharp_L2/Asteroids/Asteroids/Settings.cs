@@ -48,6 +48,10 @@ namespace Asteroids
         /// </summary>
         public static string GameStart { get; set; } = "Начать игру";
         /// <summary>
+        /// Текст сообщения при старте
+        /// </summary>
+        public static string GameRules { get; set; } = "Выстрел - пробел;\nУправление кораблём - стрелки.";
+        /// <summary>
         /// Текст кнопки выход
         /// </summary>
         public static string GameEnd { get; set; } = "Выход";

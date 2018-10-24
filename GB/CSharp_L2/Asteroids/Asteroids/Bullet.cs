@@ -19,10 +19,6 @@ namespace Asteroids
             Rect = new Rectangle(Pos.X, Pos.Y, Img.Size.Width, Img.Size.Height);
         }
         /// <summary>
-        /// Если экземпляр вышел за пределы экрана и его нужно удалять, то IsNeedToDel = true
-        /// </summary>
-        public bool IsNeedToDel { get; set; }
-        /// <summary>
         /// Метод отрисовки объекта
         /// </summary>
         public override void Draw()
@@ -33,10 +29,6 @@ namespace Asteroids
         /// <summary>
         /// Обновление позиции объекта
         /// </summary>
-        public override void Update()
-        {
-            Pos.X += Dir.X;
-            IsNeedToDel = Pos.X > Settings.FieldWidth + Properties.Resources.ray.Size.Width;
-        }
+        public override void Update() => Pos.X += Dir.X;
     }
 }

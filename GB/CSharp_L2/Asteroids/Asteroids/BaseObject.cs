@@ -31,10 +31,6 @@ namespace Asteroids
         /// </summary>
         public Rectangle Rect { get; set; }
         /// <summary>
-        /// Нужно ли цничтожить объект
-        /// </summary>
-        public bool IsDestroy { get; set; }
-        /// <summary>
         /// Стандартный конструктор
         /// </summary>
         /// <param name="pos">Позиция объекта</param>

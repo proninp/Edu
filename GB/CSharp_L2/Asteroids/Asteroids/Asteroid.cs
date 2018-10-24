@@ -14,7 +14,7 @@ namespace Asteroids
             Properties.Resources.ast_1,
             Properties.Resources.ast_2
         };
-        int ImgIndex { get; set; }
+        int ImgIndex { get; set; } = 0;
 
         /// <summary>
         /// Конструктор объекта Астероид
@@ -24,11 +24,12 @@ namespace Asteroids
         /// <param name="power">Урок астероида</param>
         public Asteroid(Point pos, Point dir, int power) : base(pos, dir, power) { }
         /// <summary>
-        /// Стандартный метод отрисовки астероида
+        /// Метод отрисовки астероида, в который попал снаряд
         /// </summary>
         public override void Draw()
         {
-            Game.Buffer.Graphics.DrawImage(Images[0], Pos);
+            Pos = new Point(Settings.FieldWidth + Size.Width, rand.Next(0, Settings.FieldHeight - Size.Height));
+            Game.Buffer.Graphics.DrawImage(Images[ImgIndex], Pos);
             Rect = new Rectangle(Pos.X, Pos.Y, Images[0].Size.Width, Images[0].Size.Height);
         }
         /// <summary>
