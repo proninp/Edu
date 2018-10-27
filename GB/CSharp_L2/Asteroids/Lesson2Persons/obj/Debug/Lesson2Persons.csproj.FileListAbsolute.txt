@@ -1,0 +1,7 @@
+C:\Users\Paul\source\repos\Git\Edu\GB\CSharp_L2\Asteroids\Lesson2Persons\obj\Debug\Lesson2Persons.csprojAssemblyReference.cache
+C:\Users\Paul\source\repos\Git\Edu\GB\CSharp_L2\Asteroids\Lesson2Persons\obj\Debug\Lesson2Persons.csproj.CoreCompileInputs.cache
+C:\Users\Paul\source\repos\Git\Edu\GB\CSharp_L2\Asteroids\Lesson2Persons\bin\Debug\Lesson2Persons.exe.config
+C:\Users\Paul\source\repos\Git\Edu\GB\CSharp_L2\Asteroids\Lesson2Persons\bin\Debug\Lesson2Persons.exe
+C:\Users\Paul\source\repos\Git\Edu\GB\CSharp_L2\Asteroids\Lesson2Persons\bin\Debug\Lesson2Persons.pdb
+C:\Users\Paul\source\repos\Git\Edu\GB\CSharp_L2\Asteroids\Lesson2Persons\obj\Debug\Lesson2Persons.exe
+C:\Users\Paul\source\repos\Git\Edu\GB\CSharp_L2\Asteroids\Lesson2Persons\obj\Debug\Lesson2Persons.pdb
