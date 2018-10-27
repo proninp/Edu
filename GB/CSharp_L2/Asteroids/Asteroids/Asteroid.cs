@@ -15,7 +15,6 @@ namespace Asteroids
             Properties.Resources.ast_2
         };
         int ImgIndex { get; set; } = 0;
-
         /// <summary>
         /// Конструктор объекта Астероид
         /// </summary>
@@ -31,6 +30,7 @@ namespace Asteroids
             Pos = new Point(Settings.FieldWidth + Size.Width, rand.Next(0, Settings.FieldHeight - Size.Height));
             Game.Buffer.Graphics.DrawImage(Images[ImgIndex], Pos);
             Rect = new Rectangle(Pos.X, Pos.Y, Images[0].Size.Width, Images[0].Size.Height);
+            Health = Game.Rand.Next(Settings.AsteroidsMinDamage, Settings.AsteroidsMaxDamage);
         }
         /// <summary>
         /// Метод отрисовки для Астероида

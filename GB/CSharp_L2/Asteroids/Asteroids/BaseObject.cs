@@ -5,6 +5,10 @@ namespace Asteroids
 {
     abstract class BaseObject: ICollision
     {
+        /// <summary>
+        /// Делегат для оброботчика событий гибели корабля
+        /// </summary>
+        public delegate void Message();
         protected static Random rand = new Random();
         /// <summary>
         /// Лимит выхода объекта за пределы экрана
@@ -23,9 +27,9 @@ namespace Asteroids
         /// </summary>
         protected Size Size;
         /// <summary>
-        /// Урон
+        /// Уровень здоровья
         /// </summary>
-        protected int Power { get; set; }
+        public int Health { get; set; }
         /// <summary>
         /// Размер прямоугольной области объекта
         /// </summary>
@@ -52,8 +56,16 @@ namespace Asteroids
         /// </summary>
         /// <param name="pos">Позиция объекта</param>
         /// <param name="dir">Шаг изменения позиции</param>
-        /// <param name="power">Урон, который может нанести объект</param>
-        protected BaseObject(Point pos, Point dir, int power) : this(pos, dir) => Power = power;
+        /// <param name="power">Уровень здоровья</param>
+        protected BaseObject(Point pos, Point dir, int health): this(pos, dir) => Health = health;
+        /// <summary>
+        /// Конструктор, принимающий позицию, смещение, размер и уровень здоровья
+        /// </summary>
+        /// <param name="pos">Позиция</param>
+        /// <param name="dir">Смещение</param>
+        /// <param name="health">Уровень здоровья</param>
+        /// <param name="size">Размер</param>
+        protected BaseObject(Point pos, Point dir, int health, Size size) : this(pos, dir, health) => Size = size;
         /// <summary>
         /// Метод для отрисовки
         /// </summary>
