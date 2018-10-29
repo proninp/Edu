@@ -50,7 +50,6 @@ namespace Asteroids
         {
             Buffer.Graphics.DrawImage(SpaceImg, new Point(0, 0)); // Отрисовка фона
             foreach (var e in BaseObj) e.Draw();
-            bool isHit = false;
             for (int i = 0; i < Asteroids.Count; i++)
             {
                 for (int j = Bullets.Count - 1; j >= 0; j--)
@@ -60,16 +59,16 @@ namespace Asteroids
                         Bullets[j] = null;
                         Bullets.RemoveAt(j);
                         Explodes.Add(new Explode(Asteroids[i].Pos)); // Создание взрыва
-                        Asteroids[i].Draw(); // Отрисовка астероида в новом случайном месте на поле
+                        Asteroids[i].Hide();
                         break;
                     }
                 if ((SpaceShip != null) && Asteroids[i].Collision(SpaceShip))
                 {
                     Explodes.Add(new Explode(Asteroids[i].Pos));
-                    Asteroids[i].Draw();
+                    Asteroids[i].Hide();
                     SpaceShip.GetDamage(Asteroids[i].Health);
                 }
-                if (!isHit) Asteroids[i].Draw(i / Asteroid.Images.Length);
+                Asteroids[i].Draw();
             }
             foreach (var e in Bullets) e.Draw();
             foreach (var e in Explodes) e.Draw();
@@ -136,6 +135,9 @@ namespace Asteroids
             Draw();
             Update();
         }
+        /// <summary>
+        /// Инициалиация списков объектов
+        /// </summary>
         private static void InitLists()
         {
             BaseObj = new List<BaseObject>();

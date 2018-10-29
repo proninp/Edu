@@ -50,14 +50,14 @@ namespace Asteroids
         /// </summary>
         public void Left()
         {
-            if (Pos.X > 0) Pos.X -= 5;
+            if (Pos.X > 0) Pos.X -= Settings.SpaceShipStep;
         }
         /// <summary>
         /// Движение корабля вправо
         /// </summary>
         public void Right()
         {
-            if (Pos.X < (Settings.FieldMaxWidth - Img.Size.Width)) Pos.X += 5;
+            if (Pos.X < (Settings.FieldMaxWidth - Img.Size.Width)) Pos.X += Settings.SpaceShipStep;
         }
         /// <summary>
         /// Метод получения кораблём урона
@@ -66,7 +66,9 @@ namespace Asteroids
         public void GetDamage(int damage)
         {
             Health -= damage;
-            if (Health <= Settings.SpaceShipMaxHealth / 3) Img = Properties.Resources.The_Death_Star_Distroyed;
+            if (Health > Settings.SpaceShipMaxHealth) Health = Settings.SpaceShipMaxHealth;
+            if (Health <= Settings.SpaceShipMaxHealth / 3) Img = Properties.Resources.The_Death_Star_Damaged; // Если меньше 30% hp, меняем изображение
+            else if (Img.Equals(Properties.Resources.The_Death_Star_Damaged)) Img = Properties.Resources.The_Death_Star; // Меняем обратно
             if (Game.HPBar != null) Game.HPBar.Health = Health;
         }
         public void Die()

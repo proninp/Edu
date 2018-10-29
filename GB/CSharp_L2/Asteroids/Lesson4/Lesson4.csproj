@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{15DAE9DF-E2D7-4E3E-BE58-BEE3E0D63DD7}</ProjectGuid>
+    <ProjectGuid>{64EB2794-131F-4184-A353-91CD52FA9E4D}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Asteroids</RootNamespace>
-    <AssemblyName>Asteroids</AssemblyName>
+    <RootNamespace>Lesson4</RootNamespace>
+    <AssemblyName>Lesson4</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -34,8 +34,6 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -44,68 +42,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Asteroid.cs" />
-    <Compile Include="BaseObject.cs" />
-    <Compile Include="Bullet.cs" />
-    <Compile Include="Explode.cs" />
-    <Compile Include="Game.cs" />
-    <Compile Include="GameObjectException.cs" />
-    <Compile Include="HealthBar.cs" />
-    <Compile Include="ICollision.cs" />
-    <Compile Include="Kit.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Settings.cs" />
-    <Compile Include="SpaceShip.cs" />
-    <Compile Include="SplashScreen.cs" />
-    <Compile Include="Star.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\space.jpg" />
-    <None Include="Resources\ast_2.png" />
-    <None Include="Resources\ast_1.png" />
-    <None Include="Resources\ast_0.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\The_Death_Star.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\ray.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\explode_1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\The_Death_Star_Distroyed.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Ship_Explode.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Vader.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\explode_3.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\explode_4.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\ast_3.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

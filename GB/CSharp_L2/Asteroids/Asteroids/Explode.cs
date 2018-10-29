@@ -9,12 +9,14 @@ namespace Asteroids
         /// <summary>
         /// Массив изображений взрывов
         /// </summary>
-        public static Image[] Images { get; set; } = new Image[2]
+        public static Image[] Images { get; set; } = new Image[4]
         {
             Properties.Resources.explode_1,
-            Properties.Resources.Ship_Explode
+            Properties.Resources.explode_2,
+            Properties.Resources.explode_3,
+            Properties.Resources.explode_4
         };
-        int ImgIndex { get; set; }
+        int ImgIndex { get; set; } = Rand.Next(0, Images.Length);
         /// <summary>
         /// Количество Тиков для показа взрыва
         /// </summary>
@@ -23,10 +25,7 @@ namespace Asteroids
         /// Конструктор объекта
         /// </summary>
         /// <param name="pos">Позиция</param>
-        public Explode(Point pos): base(pos, new Point(0, 0))
-        {
-            ImgIndex = Rand.Next(0, Images.Length);
-        }
+        public Explode(Point pos) : base(pos, new Point(0, 0)) { }
         /// <summary>
         /// Стандартная отрисовка взрыва
         /// </summary>

@@ -34,7 +34,7 @@ namespace Asteroids
         /// <summary>
         /// Количество астероидов на игровом поле
         /// </summary>
-        public static int AsteroidsCount { get; set; } = 9;
+        public static int AsteroidsCount { get; set; } = 12;
         /// <summary>
         /// Максимальный уровень урона астероида
         /// </summary>
