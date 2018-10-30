@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using System.Collections.Generic;
 using System.Drawing;
+using St = Asteroids.Settings;
 
 namespace Asteroids
 {
@@ -13,18 +14,19 @@ namespace Asteroids
         static BufferedGraphicsContext context;
         static Form MainForm { get; set; }
         public static BufferedGraphics Buffer { get; set; }
-        public static SpaceShip SpaceShip { get; set; }
-        public static HealthBar HPBar { get; set; }
+        public static SpaceShip Ship { get; set; }
         public static List<BaseObject> BaseObj { get; set; }
         public static List<Asteroid> Asteroids { get; set; } // Список астероидов
         public static List<Bullet> Bullets { get; set; } // Список снарядов
         public static List<Explode> Explodes { get; set; } // Список взрывов
+        public static List<Kit> Kits { get; set; } // Список аптечек
         public static Random Rand { get; set; }
         public static Image SpaceImg { get; set; } = Properties.Resources.space;
         private static Timer Timer = new Timer { Interval = 80 };
         public static int DiffLvl { get; set; } = 0; // Уровень сложности (0, 1, 2)
         public static int Width { get; set; }
         public static int Height { get; set; }
+        public static bool GameStart { get; set; }
         /// <summary>
         /// инициализация формы
         /// </summary>
@@ -35,8 +37,8 @@ namespace Asteroids
             Graphics g = form.CreateGraphics();
             Rand = new Random();
             context = BufferedGraphicsManager.Current;
-            if (Width > Settings.FieldMaxWidth || Height > Settings.FieldMaxHeight || Width < 0 || Height < 0)
-                throw new GameObjectException(Settings.WindowSizeException);
+            if (Width > St.FieldMaxWidth || Height > St.FieldMaxHeight || Width < 0 || Height < 0)
+                throw new GameObjectException(St.WindowSizeException);
             Width = form.Width;
             Height = form.Height;
             Buffer = context.Allocate(g, new Rectangle(0, 0, Width, Height));
@@ -51,33 +53,39 @@ namespace Asteroids
         {
             Buffer.Graphics.DrawImage(SpaceImg, new Point(0, 0)); // Отрисовка фона
             foreach (var e in BaseObj) e.Draw();
-            for (int i = 0; i < Asteroids.Count; i++)
-            {
+            for (int i = Asteroids.Count - 1; i >= 0 ; i--) // Проверка столкновения астероидов с пулями
                 for (int j = Bullets.Count - 1; j >= 0; j--)
                     if (Asteroids[i].Collision(Bullets[j]))
                     {
-                        Bullets[j].Pos.X = Settings.FieldMaxWidth; // Чтобы сразу скрыть
-                        Bullets[j] = null;
-                        Bullets.RemoveAt(j);
+                        Bullets[j].Pos.X = St.FieldMaxWidth; // Чтобы сразу скрыть
+                        Bullets[j].Del(Bullets, j);
                         Explodes.Add(new Explode(Asteroids[i].Pos)); // Создание взрыва
-                        Asteroids[i].Hide();
+                        Asteroids[i].Del(Asteroids, i);
                         break;
                     }
-                if ((SpaceShip != null) && Asteroids[i].Collision(SpaceShip))
-                {
-                    Explodes.Add(new Explode(Asteroids[i].Pos));
-                    Asteroids[i].Hide();
-                    SpaceShip.GetDamage(Asteroids[i].Health);
-                }
-                Asteroids[i].Draw();
+            if (Ship != null)
+            {
+                for (int i = Asteroids.Count - 1; i >= 0; i--) // Проверка столкновения астероидов с кораблём
+                    if (Asteroids[i].Collision(Ship))
+                    {
+                        Explodes.Add(new Explode(Asteroids[i].Pos));
+                        Ship.GetDamage(Asteroids[i].Health);
+                        Asteroids[i].Del(Asteroids, i);
+                    }
+                for (int i = Kits.Count - 1; i >= 0; i--) // Проверка столкновения аптечки с кораблём
+                    if (Ship != null && Kits[i].Collision(Ship))
+                    {
+                        Kit.KitsCount--;
+                        Ship.GetDamage(Kits[i].Health);
+                        Kits[i].Pos.X = St.FieldMaxWidth;
+                        Kits[i].Del(Kits, i);
+                    }
             }
             foreach (var e in Bullets) e.Draw();
             foreach (var e in Explodes) e.Draw();
-            if (SpaceShip != null)
-            {
-                SpaceShip.Draw();
-                HPBar.Draw();
-            }
+            foreach (var e in Kits) e.Draw();
+            foreach (var e in Asteroids) e.Draw();
+            Ship?.Draw();
             Buffer.Render();
         }
         /// <summary>
@@ -87,24 +95,24 @@ namespace Asteroids
         public static void InitialLoad()
         {
             InitLists();
-            int r = Rand.Next(Settings.MinElementSize, Settings.MaxElementSize);
-            for (int i = 0; i < Settings.StarsCount; i++)
-                BaseObj.Add(new Star(new Point(Rand.Next(0, Settings.FieldWidth), Rand.Next(10, Settings.FieldHeight)),
+            int r = Rand.Next(St.MinElementSize, St.MaxElementSize);
+            for (int i = 0; i < St.StarsCount; i++)
+                BaseObj.Add(new Star(new Point(Rand.Next(0, St.FieldWidth), Rand.Next(10, St.FieldHeight)),
                     new Point(-i % 20 - 1, 0), new Size(r / 4, r / 4)));
         }
         /// <summary>
         /// Загрузка объектов после нажатия кнопки "Начать игру"
-        /// Добавляет объект SpaceShip, Asteroid и Kit
+        /// Добавляет объект Ship, Asteroid и Kit
         /// </summary>
         public static void BasicLoad()
         {
-            for (int i = 0; i < Settings.AsteroidsCount; i++)
-                Asteroids.Add(new Asteroid(new Point(Rand.Next(Settings.SpaceShipStartPos.X + 300, Settings.FieldWidth),
-                    Rand.Next(0, Settings.FieldHeight)), 
-                    new Point(Rand.Next(Settings.AsteroidsDir[DiffLvl][0], Settings.AsteroidsDir[DiffLvl][1]), i / 2 - 1), 
-                    Rand.Next(Settings.AsteroidsMinDamage, Settings.AsteroidsMaxDamage)));
-            SpaceShip = new SpaceShip(Settings.SpaceShipStartPos, new Point(0, 0), Settings.SpaceShipMaxHealth);
-            HPBar = new HealthBar(Settings.HPBarPos, SpaceShip.Health, Settings.HPBarSize, Buffer.Graphics);
+            GameStart = true;
+            for (int i = 0; i < St.AsteroidsCount[DiffLvl]; i++)
+                Asteroids.Add(new Asteroid(
+                    new Point(Rand.Next(St.SpaceShipStartPos.X + 300, St.FieldWidth), Rand.Next(St.AsteroidAvgHeight, St.FieldHeight- St.AsteroidAvgHeight)), 
+                    new Point(Rand.Next(St.AsteroidsDir[DiffLvl][0], St.AsteroidsDir[DiffLvl][1]), i / 2 - 1), 
+                    Rand.Next(St.AsteroidsMinDamage, St.AsteroidsMaxDamage)));
+            Ship = new SpaceShip(St.SpaceShipStartPos, new Point(0, 0), St.SpaceShipMaxHealth);
             SpaceShip.MessageDie += Finish;
         }
         /// <summary>
@@ -115,17 +123,17 @@ namespace Asteroids
             foreach (var o in BaseObj) o.Update();
             foreach (var o in Asteroids) o.Update();
             foreach (var o in Bullets) o.Update();
-            SpaceShip?.Update();
-            // Проверка на необходимость удаления взрыва
-            for (int i = 0; i < Explodes.Count; i++)
+            foreach (var o in Kits) o.Update();
+            UpdateKits();
+            Ship?.Update();
+            for (int i = Explodes.Count - 1; i >= 0; i--) // Проверка на необходимость удаления взрыва
             {
                 Explodes[i].Update();
-                if (Explodes[i].VisabilityTicksCount > 0 && Explodes[i].VisabilityTicksCount < 4) { if (SpaceShip.Health <= 0) SpaceShip.Die(); }
+                if (Explodes[i].VisabilityTicksCount > 0 && Explodes[i].VisabilityTicksCount < 4) { if (Ship.Health <= 0) Ship.Die(); }
                 else if (Explodes[i].VisabilityTicksCount <= 0)
                 {
-                    Explodes[i].Pos.X = Settings.FieldMaxWidth;
-                    Explodes[i] = null;
-                    Explodes.RemoveAt(i--);
+                    Explodes[i].Pos.X = St.FieldMaxWidth;
+                    Explodes[i].Del(Explodes, i);
                 }
             }
         }
@@ -145,9 +153,10 @@ namespace Asteroids
         private static void InitLists()
         {
             BaseObj = new List<BaseObject>();
-            Asteroids = new List<Asteroid>(Settings.AsteroidsCount);
+            Asteroids = new List<Asteroid>(St.AsteroidsCount[DiffLvl]);
             Bullets = new List<Bullet>();
-            Explodes = new List<Explode>(Settings.AsteroidsCount);
+            Explodes = new List<Explode>(St.AsteroidsCount[DiffLvl]);
+            Kits = new List<Kit>();
         }
         /// <summary>
         /// Конец игры
@@ -155,7 +164,7 @@ namespace Asteroids
         public static void Finish()
         {
             Timer.Stop();
-            if (MessageBox.Show(Settings.LooseMessage, Settings.LooseMessageHeader, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes) Application.Exit();
+            if (MessageBox.Show(St.LooseMessage, St.LooseMessageHeader, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes) Application.Exit();
             else Restart();
         }
         /// <summary>
@@ -164,12 +173,34 @@ namespace Asteroids
         private static void Restart()
         {
             InitLists();
-            SpaceShip = null;
-            HPBar = null;
+            Ship = null;
             SpaceShip.MessageDie -= Finish; // Убираем, чтобы списке вызовов не было дублирования
             Timer.Tick -= Timer_Tick; // Так же, убираем
             Init(MainForm);
             foreach (var e in SplashScreen.BtnList) e.Visible = true;
         }
+        /// <summary>
+        /// Создание и удаление аптечек
+        /// </summary>
+        private static void UpdateKits()
+        {
+            if (Kit.KitsCount > 0 && Rand.Next(0, St.KitAppearence) == Rand.Next(0, St.KitAppearence) && Ship?.Health < St.SpaceShipMaxHealth * 0.5) // Создание новых аптечек
+                Kits.Add(new Kit(new Point(St.FieldMaxWidth - Kit.Img.Size.Width, Rand.Next(Kit.Img.Size.Height, St.FieldMaxHeight - Kit.Img.Size.Height)),
+                    new Point(-St.KitDir[DiffLvl], Rand.Next(-St.KitDir[DiffLvl], St.KitDir[DiffLvl]))));
+            for (int i = Kits.Count - 1; i >= 0; i--) // Обновление и удаление пропущенных аптечек
+            {
+                Kits[i].Update();
+                if (Kits[i].Pos.X + Kit.Img.Size.Width < 0)
+                    Kits[i].Del(Kits, i);
+            }
+        }
+        private static void DifficultLevelUp()
+        {
+            DiffLvl++;
+            Kit.KitsCount = St.KitsCount[DiffLvl];
+            St.AsteroidsMinDamage += 5;
+            St.AsteroidsMaxDamage += 5;
+        }
+        
     }
 }

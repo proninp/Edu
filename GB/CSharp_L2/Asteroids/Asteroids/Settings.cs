@@ -31,11 +31,15 @@ namespace Asteroids
         /// <summary>
         /// Максимальный размер элемента
         /// </summary>
-        public static int MaxElementSize { get; set; } = 30;
+        public static int MaxElementSize { get; set; } = 10;
         /// <summary>
         /// Количество астероидов на игровом поле
         /// </summary>
-        public static int AsteroidsCount { get; set; } = 12;
+        public static int[] AsteroidsCount { get; set; } = new int[] { 12, 15, 20 };
+        /// <summary>
+        /// Усредненное значение высоты астероида
+        /// </summary>
+        public static int AsteroidAvgHeight { get; set; } = 60;
         /// <summary>
         /// Максимальный уровень урона астероида
         /// </summary>
@@ -53,7 +57,7 @@ namespace Asteroids
         /// </summary>
         public static Point SpaceShipStartPos { get; set; } = new Point(50, 300);
         /// <summary>
-        /// Уровень жизни для SpaceShip
+        /// Уровень жизни для Ship
         /// </summary>
         public static int SpaceShipMaxHealth { get; set; } = 100;
         /// <summary>
@@ -80,7 +84,15 @@ namespace Asteroids
             [1] = new int[] { -10, 10 },
             [2] = new int[] { 5, 15 }
         };
-        
+        /// <summary>
+        /// Скорость перемещения аптечек в зависимости от сложности
+        /// </summary>
+        public static int[] KitDir { get; } = new int[] { 4, 6, 8};
+        /// <summary>
+        /// Кол-во аптечек на уровень, в зависимости от сложности
+        /// </summary>
+        public static int[] KitsCount { get; } = new int[] { 3, 2, 1 };
+        public static int KitAppearence { get; } = 150;
         #endregion
 
         #region Описания Элементов формы и исключительных ситуаций

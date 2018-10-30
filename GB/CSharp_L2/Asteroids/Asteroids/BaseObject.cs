@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 
 namespace Asteroids
@@ -82,6 +83,21 @@ namespace Asteroids
             if (Pos.X > (Game.Width + beyoundLim)) Pos.X = 0;
             if (Pos.Y < -beyoundLim) Pos.Y = Game.Height;
         }
+        /// <summary>
+        /// Пересечение объектов
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
         public bool Collision(ICollision obj) => ((BaseObject)obj).Rect.IntersectsWith(Rect);
+        /// <summary>
+        /// Убираем экземпляр из списка и обнуляем ссылку
+        /// </summary>
+        /// <param name="list"></param>
+        /// <param name="i"></param>
+        public virtual void Del<T>(List<T> list, int i)
+        {
+            list[i] = default(T);
+            if (i >= 0 && i < list.Count) list.RemoveAt(i);
+        }
     }
 }

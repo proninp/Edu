@@ -12,6 +12,11 @@ namespace Asteroids
         /// Изображение корабля
         /// </summary>
         public static Image Img { get; set; }
+        public HealthBar HPBar { get; set; }
+        /// <summary>
+        /// Корабль ведёт огонь
+        /// </summary>
+        private bool fire;
         /// <summary>
         /// Конструктор
         /// </summary>
@@ -22,6 +27,8 @@ namespace Asteroids
         {
             Img = Properties.Resources.The_Death_Star;
             Rect = new Rectangle(Pos.X, Pos.Y, Img.Size.Width, Img.Size.Height);
+            HPBar = new HealthBar(Settings.HPBarPos, Health, Settings.HPBarSize, Game.Buffer?.Graphics);
+            fire = false;
         }
         /// <summary>
         /// Метод отрисовки объекта
@@ -30,35 +37,43 @@ namespace Asteroids
         {
             Game.Buffer.Graphics.DrawImage(Img, Pos);
             Rect = new Rectangle(Pos.X, Pos.Y, Img.Size.Width - (int)(Img.Size.Width*0.2), Img.Size.Height - (int)(Img.Size.Height * 0.2));
+            HPBar.Draw();
         }
+        /// <summary>
+        /// Обновление состояния корабля
+        /// </summary>
+        public override void Update()
+        {
+            Pos.X += Dir.X;
+            Pos.Y += Dir.Y;
+            if (fire && (Game.DiffLvl == 0 || Health > 1)) // На первой сложности не отнимаем жизни при стрельбе
+            {
+                Game.Bullets?.Add(new Bullet(new Point(Game.Ship.Pos.X + Bullet.Img.Size.Width / 2,
+                    Game.Ship.Pos.Y + Img.Size.Height / 4), new Point(15, 0), 10));
+                GetDamage(Game.DiffLvl); // Такой вот хардкор
+            }
+        }
+        /// <summary>
+        /// Метод начала/конца огня. Записал в виде метода, чтобы использовать ?. для экземпляра корабля
+        /// </summary>
+        /// <param name="f"></param>
+        public void Fire(bool f) => fire = f;
         /// <summary>
         /// Движение корабля вверх
         /// </summary>
-        public void Up(bool move)
-        {
-            Dir.Y = (move && Pos.Y > 0) ? -Settings.SpaceShipStep : 0;
-        }
+        public void Up(bool move) => Dir.Y = (move && Pos.Y > 0) ? -Settings.SpaceShipStep : 0;
         /// <summary>
         /// Движение корабля вниз
         /// </summary>
-        public void Down(bool move)
-        {
-            Dir.Y = (move && Pos.Y < (Settings.FieldHeight - Img.Size.Height)) ? Settings.SpaceShipStep : 0;
-        }
+        public void Down(bool move) => Dir.Y = (move && Pos.Y < (Settings.FieldHeight - Img.Size.Height)) ? Settings.SpaceShipStep : 0;
         /// <summary>
         /// Движение корабля влево
         /// </summary>
-        public void Left(bool move)
-        {
-            Dir.X = (move && Pos.X > 0) ? -Settings.SpaceShipStep : 0;
-        }
+        public void Left(bool move) => Dir.X = (move && Pos.X > 0) ? -Settings.SpaceShipStep : 0;
         /// <summary>
         /// Движение корабля вправо
         /// </summary>
-        public void Right(bool move)
-        {
-            Dir.X = (move && Pos.X < (Settings.FieldMaxWidth - Img.Size.Width)) ? Settings.SpaceShipStep : 0;
-        }
+        public void Right(bool move) => Dir.X = (move && Pos.X < (Settings.FieldMaxWidth - Img.Size.Width)) ? Settings.SpaceShipStep : 0;
         /// <summary>
         /// Метод получения кораблём урона
         /// </summary>
@@ -68,8 +83,8 @@ namespace Asteroids
             Health -= damage;
             if (Health > Settings.SpaceShipMaxHealth) Health = Settings.SpaceShipMaxHealth;
             if (Health <= Settings.SpaceShipMaxHealth / 3) Img = Properties.Resources.The_Death_Star_Damaged; // Если меньше 30% hp, меняем изображение
-            else if (Img.Equals(Properties.Resources.The_Death_Star_Damaged)) Img = Properties.Resources.The_Death_Star; // Меняем обратно
-            if (Game.HPBar != null) Game.HPBar.Health = Health;
+            else if (Img.Size == Properties.Resources.The_Death_Star_Damaged.Size) Img = Properties.Resources.The_Death_Star; // Меняем обратно
+            HPBar.Health = Health;
         }
         public void Die()
         {
