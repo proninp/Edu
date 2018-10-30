@@ -58,10 +58,17 @@ namespace Asteroids
                 if (e.KeyCode == Keys.Space)
                     Game.Bullets?.Add(new Bullet(new Point(Game.SpaceShip.Pos.X + Bullet.Img.Size.Width/2, Game.SpaceShip.Pos.Y + SpaceShip.Img.Size.Height / 4),
                         new Point(15, 0), 10));
-                if (e.KeyCode == Keys.Up) Game.SpaceShip?.Up();
-                if (e.KeyCode == Keys.Down) Game.SpaceShip?.Down();
-                if (e.KeyCode == Keys.Left) Game.SpaceShip?.Left();
-                if (e.KeyCode == Keys.Right) Game.SpaceShip?.Right();
+                if (e.KeyCode == Keys.Up) Game.SpaceShip?.Up(true);
+                if (e.KeyCode == Keys.Down) Game.SpaceShip?.Down(true);
+                if (e.KeyCode == Keys.Left) Game.SpaceShip?.Left(true);
+                if (e.KeyCode == Keys.Right) Game.SpaceShip?.Right(true);
+            };
+            form.KeyUp += (object sender, KeyEventArgs e) =>
+            {
+                if (e.KeyCode == Keys.Up) Game.SpaceShip?.Up(false);
+                if (e.KeyCode == Keys.Down) Game.SpaceShip?.Down(false);
+                if (e.KeyCode == Keys.Left) Game.SpaceShip?.Left(false);
+                if (e.KeyCode == Keys.Right) Game.SpaceShip?.Right(false);
             };
             #endregion
         }

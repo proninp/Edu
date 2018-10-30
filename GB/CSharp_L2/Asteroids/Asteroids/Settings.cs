@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System.Collections.Generic;
+using System.Drawing;
 namespace Asteroids
 {
     class Settings
@@ -58,7 +59,7 @@ namespace Asteroids
         /// <summary>
         /// Сдвиг корабля при нажатии на клавишу управления движением
         /// </summary>
-        public static int SpaceShipStep { get; set; } = 5;
+        public static int SpaceShipStep { get; set; } = 7;
         /// <summary>
         /// Интервал таймера класса Game
         /// </summary>
@@ -71,6 +72,15 @@ namespace Asteroids
         /// Размер хелс бара
         /// </summary>
         public static Size HPBarSize { get; set; } = new Size(200, 12);
+        /// <summary>
+        /// Шаг изменения позиции астероидов по уровням сложности
+        /// </summary>
+        public static Dictionary<int, int[]> AsteroidsDir { get; } = new Dictionary<int, int[]> {
+            [0] = new int[] { -10, -5 },
+            [1] = new int[] { -10, 10 },
+            [2] = new int[] { 5, 15 }
+        };
+        
         #endregion
 
         #region Описания Элементов формы и исключительных ситуаций

@@ -34,30 +34,30 @@ namespace Asteroids
         /// <summary>
         /// Движение корабля вверх
         /// </summary>
-        public void Up()
+        public void Up(bool move)
         {
-            if (Pos.Y > 0) Pos.Y -= Settings.SpaceShipStep;
+            Dir.Y = (move && Pos.Y > 0) ? -Settings.SpaceShipStep : 0;
         }
         /// <summary>
         /// Движение корабля вниз
         /// </summary>
-        public void Down()
+        public void Down(bool move)
         {
-            if (Pos.Y < (Settings.FieldHeight - Img.Size.Height)) Pos.Y += Settings.SpaceShipStep;
+            Dir.Y = (move && Pos.Y < (Settings.FieldHeight - Img.Size.Height)) ? Settings.SpaceShipStep : 0;
         }
         /// <summary>
         /// Движение корабля влево
         /// </summary>
-        public void Left()
+        public void Left(bool move)
         {
-            if (Pos.X > 0) Pos.X -= Settings.SpaceShipStep;
+            Dir.X = (move && Pos.X > 0) ? -Settings.SpaceShipStep : 0;
         }
         /// <summary>
         /// Движение корабля вправо
         /// </summary>
-        public void Right()
+        public void Right(bool move)
         {
-            if (Pos.X < (Settings.FieldMaxWidth - Img.Size.Width)) Pos.X += Settings.SpaceShipStep;
+            Dir.X = (move && Pos.X < (Settings.FieldMaxWidth - Img.Size.Width)) ? Settings.SpaceShipStep : 0;
         }
         /// <summary>
         /// Метод получения кораблём урона

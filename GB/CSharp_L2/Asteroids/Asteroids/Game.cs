@@ -22,6 +22,7 @@ namespace Asteroids
         public static Random Rand { get; set; }
         public static Image SpaceImg { get; set; } = Properties.Resources.space;
         private static Timer Timer = new Timer { Interval = 80 };
+        public static int DiffLvl { get; set; } = 0; // Уровень сложности (0, 1, 2)
         public static int Width { get; set; }
         public static int Height { get; set; }
         /// <summary>
@@ -99,8 +100,10 @@ namespace Asteroids
         {
             for (int i = 0; i < Settings.AsteroidsCount; i++)
                 Asteroids.Add(new Asteroid(new Point(Rand.Next(Settings.SpaceShipStartPos.X + 300, Settings.FieldWidth),
-                    Rand.Next(0, Settings.FieldHeight)), new Point(-Rand.Next(5, 10), -i / 2 - 1), Rand.Next(Settings.AsteroidsMinDamage, Settings.AsteroidsMaxDamage)));
-            SpaceShip = new SpaceShip(Settings.SpaceShipStartPos, new Point(0, 2), Settings.SpaceShipMaxHealth);
+                    Rand.Next(0, Settings.FieldHeight)), 
+                    new Point(Rand.Next(Settings.AsteroidsDir[DiffLvl][0], Settings.AsteroidsDir[DiffLvl][1]), i / 2 - 1), 
+                    Rand.Next(Settings.AsteroidsMinDamage, Settings.AsteroidsMaxDamage)));
+            SpaceShip = new SpaceShip(Settings.SpaceShipStartPos, new Point(0, 0), Settings.SpaceShipMaxHealth);
             HPBar = new HealthBar(Settings.HPBarPos, SpaceShip.Health, Settings.HPBarSize, Buffer.Graphics);
             SpaceShip.MessageDie += Finish;
         }
@@ -112,6 +115,7 @@ namespace Asteroids
             foreach (var o in BaseObj) o.Update();
             foreach (var o in Asteroids) o.Update();
             foreach (var o in Bullets) o.Update();
+            SpaceShip?.Update();
             // Проверка на необходимость удаления взрыва
             for (int i = 0; i < Explodes.Count; i++)
             {

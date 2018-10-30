@@ -76,7 +76,7 @@ namespace Asteroids
         public virtual void Update()
         {
             Pos.X += Dir.X;
-            Pos.Y -= Dir.Y;
+            Pos.Y += Dir.Y;
             if (Pos.X < -beyoundLim) Pos.X = Game.Width;
             if (Pos.Y > Game.Height + beyoundLim) Pos.Y = 0;
             if (Pos.X > (Game.Width + beyoundLim)) Pos.X = 0;
