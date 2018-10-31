@@ -79,7 +79,6 @@
     <None Include="Resources\ast_2.png" />
     <None Include="Resources\ast_1.png" />
     <None Include="Resources\ast_0.png" />
-    <None Include="Resources\spaceship_min.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\The_Death_Star.png" />
@@ -95,6 +94,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Ship_Explode.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Vader.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\explode_3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\explode_4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ast_3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\stormtrooper.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

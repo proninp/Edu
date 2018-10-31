@@ -8,38 +8,70 @@ namespace Asteroids
     class SplashScreen
     {
         public static List<Button> BtnList { get; set; } = new List<Button>(); // Список кнопок формы
+        // Кнопка "Начать игру"
+        public static Button StartGameBtn = new Button()
+        {
+            Size = Settings.ButtonSize,
+            Text = Settings.GameStart,
+            Font = new Font(Settings.GreetingsBtnFont, 18F, FontStyle.Italic),
+            ForeColor = Color.White,
+            BackColor = Color.Transparent,
+            FlatStyle = FlatStyle.Popup,
+            Location = new Point(Settings.FieldWidth / 2 - Settings.ButtonSize.Width / 2, 10)
+        };
+        // Кнопка "Выйти"
+        public static Button ExitBtn = new Button()
+        {
+            Size = Settings.ButtonSize,
+            Text = Settings.GameEnd,
+            Font = new Font(Settings.GreetingsBtnFont, 18F, FontStyle.Italic),
+            ForeColor = Color.White,
+            BackColor = Color.Transparent,
+            FlatStyle = FlatStyle.Popup,
+            Location = new Point(Settings.FieldWidth / 2 - Settings.ButtonSize.Width / 2, 10)
+        };
+        // Кнопка "Перейти на новый уровень"
+        public static Button NewLevelBtn = new Button()
+        {
+            Size = Settings.ButtonSize,
+            Text = Settings.GameNextLvl,
+            Visible = false,
+            Font = new Font(Settings.GreetingsBtnFont, 18F, FontStyle.Italic),
+            ForeColor = Color.White,
+            BackColor = Color.Transparent,
+            FlatStyle = FlatStyle.Popup,
+            Location = new Point(Settings.FieldWidth / 2 - Settings.ButtonSize.Width / 2, 10)
+        }; 
+        // Кнопка "Сыграть еще раз"
+        public static Button OneMoreGameBtn = new Button()
+        {
+            Size = Settings.ButtonSize,
+            Text = Settings.GamePlayOneMore,
+            Visible = false,
+            Font = new Font(Settings.GreetingsBtnFont, 18F, FontStyle.Italic),
+            ForeColor = Color.White,
+            BackColor = Color.Transparent,
+            FlatStyle = FlatStyle.Popup,
+            Location = new Point(Settings.FieldWidth / 2 - Settings.ButtonSize.Width / 2, 10)
+        };
         public static void Greeting(Form form)
         {
-            // Кнопка "Начать игру"
-            Button startGameBtn = new Button()
+
+            BtnList.Clear();
+            BtnList.Add(StartGameBtn);
+            BtnList.Add(ExitBtn);
+            form.Controls.Add(OneMoreGameBtn);
+            form.Controls.Add(NewLevelBtn);
+
+            for (int i = 0; i < BtnList.Count; i++)
             {
-                Width = 200,
-                Height = 50,
-                Text = Settings.GameStart,
-                Font = new Font(Settings.GreetingsBtnFont, 18F, FontStyle.Italic),
-                ForeColor = Color.White,
-                BackColor = Color.Transparent,
-                FlatStyle = FlatStyle.Popup,
-                Location = new Point(20, 10)
-            };
-            BtnList.Add(startGameBtn);
-            // Кнопка "Выйти"
-            Button exitBtn = new Button()
-            {
-                Width = 200,
-                Height = 50,
-                Text = Settings.GameEnd,
-                Font = new Font(Settings.GreetingsBtnFont, 18F, FontStyle.Italic),
-                ForeColor = Color.White,
-                BackColor = Color.Transparent,
-                FlatStyle = FlatStyle.Popup,
-                Location = new Point(40 + startGameBtn.Width, 10)
-            };
-            BtnList.Add(exitBtn);
-            foreach (var b in BtnList) form.Controls.Add(b);
+                int startPos = GetStartPos();
+                BtnList[i].Location = new Point(BtnList[i].Location.X, startPos + (i * Settings.ButtonSize.Height) + (i * Settings.HeightBetweenButtons));
+                form.Controls.Add(BtnList[i]);
+            }
             #region Описание событий
             // Событие нажатия "Начать игру"
-            startGameBtn.Click += (object sender, EventArgs e) =>
+            StartGameBtn.Click += (object sender, EventArgs e) =>
             {
                 foreach (var b in BtnList) b.Visible = false;
                 if (MessageBox.Show("Игра началась!\n" + Settings.GameRules, $"Привет, {Settings.UserName}!", 
@@ -47,24 +79,32 @@ namespace Asteroids
                     Game.BasicLoad();
             };
             // Событие нажатия "Выход"
-            exitBtn.Click += (object sender, EventArgs e) =>
+            ExitBtn.Click += (object sender, EventArgs e) =>
             {
                 if (MessageBox.Show("Вы уверены, что хотите выйти?", "Выход", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes) Application.Exit();
             };
             // Событие нажатия клавиш
             form.KeyDown += (object sender, KeyEventArgs e) =>
             {
-                // TODO перенести проверки в свойство поля SpaceShip
-                if (e.KeyCode == Keys.Space)
-                    Game.Bullets?.Add(new Bullet(new Point(Game.SpaceShip.Pos.X + Bullet.Img.Size.Width/2, Game.SpaceShip.Pos.Y + SpaceShip.Img.Size.Height / 4),
-                        new Point(15, 0), 10));
-                if (e.KeyCode == Keys.Up) Game.SpaceShip?.Up();
-                if (e.KeyCode == Keys.Down) Game.SpaceShip?.Down();
-                if (e.KeyCode == Keys.Left) Game.SpaceShip?.Left();
-                if (e.KeyCode == Keys.Right) Game.SpaceShip?.Right();
+                if (e.KeyCode == Keys.Space) Game.Ship?.Fire(true);
+                if (e.KeyCode == Keys.Up) Game.Ship?.Up(true);
+                if (e.KeyCode == Keys.Down) Game.Ship?.Down(true);
+                if (e.KeyCode == Keys.Left) Game.Ship?.Left(true);
+                if (e.KeyCode == Keys.Right) Game.Ship?.Right(true);
             };
+            form.KeyUp += (object sender, KeyEventArgs e) =>
+            {
+                if (e.KeyCode == Keys.Space) Game.Ship?.Fire(false);
+                if (e.KeyCode == Keys.Up) Game.Ship?.Up(false);
+                if (e.KeyCode == Keys.Down) Game.Ship?.Down(false);
+                if (e.KeyCode == Keys.Left) Game.Ship?.Left(false);
+                if (e.KeyCode == Keys.Right) Game.Ship?.Right(false);
+            };
+            OneMoreGameBtn.Click += (object sender, EventArgs e) => Game.Restart();
+            NewLevelBtn.Click += (object sender, EventArgs e) => Game.ChangeDifficultLevel(Game.DiffLvl++);
+
             #endregion
         }
-
+        public static int GetStartPos() => Settings.FieldHeight / 2 - (BtnList.Count * Settings.ButtonSize.Height + (BtnList.Count - 1) * Settings.HeightBetweenButtons);
     }
 }

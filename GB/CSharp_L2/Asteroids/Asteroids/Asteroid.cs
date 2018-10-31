@@ -1,5 +1,4 @@
-﻿using System;
-using System.Drawing;
+﻿using System.Drawing;
 
 namespace Asteroids
 {
@@ -8,13 +7,14 @@ namespace Asteroids
         /// <summary>
         /// Массив возможных изображений астероидов
         /// </summary>
-        public static Image[] Images { get; set; } = new Image[3]
+        public static Image[] Images { get; set; } = new Image[4]
         {
             Properties.Resources.ast_0,
             Properties.Resources.ast_1,
-            Properties.Resources.ast_2
+            Properties.Resources.ast_2,
+            Properties.Resources.ast_3
         };
-        int ImgIndex { get; set; } = 0;
+        int ImgIndex { get; set; } = rand.Next(0, Images.Length);
         /// <summary>
         /// Конструктор объекта Астероид
         /// </summary>
@@ -27,21 +27,13 @@ namespace Asteroids
         /// </summary>
         public override void Draw()
         {
-            Pos = new Point(Settings.FieldWidth + Size.Width, rand.Next(0, Settings.FieldHeight - Size.Height));
             Game.Buffer.Graphics.DrawImage(Images[ImgIndex], Pos);
-            Rect = new Rectangle(Pos.X, Pos.Y, Images[0].Size.Width, Images[0].Size.Height);
-            Health = Game.Rand.Next(Settings.AsteroidsMinDamage, Settings.AsteroidsMaxDamage);
+            Rect = new Rectangle(Pos.X, Pos.Y, Images[ImgIndex].Size.Width, Images[ImgIndex].Size.Height);
+            Health = Game.Rand.Next(Settings.AsteroidsMinDamage[Game.DiffLvl], Settings.AsteroidsMaxDamage[Game.DiffLvl]);
         }
         /// <summary>
-        /// Метод отрисовки для Астероида
+        /// Смена позиции астероида за пределы экрана
         /// </summary>
-        /// <param name="i">Индекс изображения из массива возможных изображений астероида</param>
-        public void Draw(int i)
-        {
-            i %= Images.Length; // Чтобы не получить IndexOutOBoundException
-            ImgIndex = i;
-            Game.Buffer.Graphics.DrawImage(Images[i], Pos);
-            Rect = new Rectangle(Pos.X, Pos.Y, Images[i].Size.Width, Images[i].Size.Height);
-        }
+        public void Hide() => Pos = new Point(Settings.FieldWidth + Size.Width, rand.Next(0, Settings.FieldHeight - Size.Height));
     }
 }
