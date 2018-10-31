@@ -143,18 +143,12 @@ namespace Asteroids
             Bullets = new List<Bullet>();
             Explodes = new List<Explode>(Settings.AsteroidsCount);
         }
-        /// <summary>
-        /// Конец игры
-        /// </summary>
         public static void Finish()
         {
             Timer.Stop();
             if (MessageBox.Show(Settings.LooseMessage, Settings.LooseMessageHeader, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes) Application.Exit();
             else Restart();
         }
-        /// <summary>
-        /// Перезагрузка основных объектов для рестарта игры
-        /// </summary>
         private static void Restart()
         {
             InitLists();
