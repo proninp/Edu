@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Drawing;
+using System.Windows.Forms;
+
 namespace Asteroids
 {
     class Settings
@@ -21,9 +23,21 @@ namespace Asteroids
         /// Максимальная высота игрового поля
         /// </summary>
         public static int FieldHeight { get; set; } = 600;
+        /// <summary>
+        /// Размер кнопок
+        /// </summary>
+        public static Size ButtonSize { get; set; } = new Size(200, 50);
+        /// <summary>
+        /// Высота между кнопками
+        /// </summary>
+        public static int HeightBetweenButtons { get; } = 40;
         #endregion
 
         #region Настройки элементов игры
+        /// <summary>
+        /// Уровни сложности
+        /// </summary>
+        public static int MaxDiffLevels { get; } = 2;
         /// <summary>
         /// Минимальный размер элемента
         /// </summary>
@@ -43,11 +57,11 @@ namespace Asteroids
         /// <summary>
         /// Максимальный уровень урона астероида
         /// </summary>
-        public static int AsteroidsMaxDamage { get; set; } = 40;
+        public static int[] AsteroidsMaxDamage { get; set; } = new int[] { 40, 50, 60 };
         /// <summary>
         /// Минимальный уровень урона у астероида
         /// </summary>
-        public static int AsteroidsMinDamage { get; set; } = 5;
+        public static int[] AsteroidsMinDamage { get; set; } = new int[] { 10, 20, 30 };
         /// <summary>
         /// Количество звезд на поле
         /// </summary>
@@ -87,7 +101,7 @@ namespace Asteroids
         /// <summary>
         /// Скорость перемещения аптечек в зависимости от сложности
         /// </summary>
-        public static int[] KitDir { get; } = new int[] { 4, 6, 8};
+        public static int[] KitDir { get; } = new int[] { 3, 5, 7};
         /// <summary>
         /// Кол-во аптечек на уровень, в зависимости от сложности
         /// </summary>
@@ -104,6 +118,14 @@ namespace Asteroids
         /// Текст кнопки старта игры
         /// </summary>
         public static string GameStart { get; set; } = "Начать игру";
+        /// <summary>
+        /// Перейти на новый уровень
+        /// </summary>
+        public static string GameNextLvl { get; set; } = "Новый уровень";
+        /// <summary>
+        /// Сыграть еще раз
+        /// </summary>
+        public static string GamePlayOneMore { get; set; } = "Сыграть еще раз";
         /// <summary>
         /// Текст сообщения при старте
         /// </summary>
@@ -134,6 +156,25 @@ namespace Asteroids
         /// Проиграли!
         /// </summary>
         public static string LooseMessageHeader { get; } = "Проиграли!";
+        /// <summary>
+        /// Переход на новый уровень
+        /// Вы сбили все астероиды! Перейти на новый уровень?
+        /// </summary>
+        public static string NewLevel { get; } = "Вы сбили все астероиды!\nПерейти на новый уровень?";
+        /// <summary>
+        /// Поздравительное сообщение
+        /// </summary>
+        public static string Greetings { get; } = "Поздравляем!";
+        /// <summary>
+        /// Конец игры
+        /// Вы успешно завершили игру! Сыграть еще раз?
+        /// </summary>
+        public static string GameComplete { get; } = "Вы успешно завершили игру!\nСыграть еще раз?";
+        /// <summary>
+        /// Конец игры
+        /// Вы успешно завершили игру! Сыграть еще раз?
+        /// </summary>
+        public static string RestartOrQuit { get; } = "Сыграть еще раз или выйти?\nСыграть еще раз?";
         #endregion
     }
 }

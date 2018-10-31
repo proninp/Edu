@@ -29,7 +29,7 @@ namespace Asteroids
         {
             Game.Buffer.Graphics.DrawImage(Images[ImgIndex], Pos);
             Rect = new Rectangle(Pos.X, Pos.Y, Images[ImgIndex].Size.Width, Images[ImgIndex].Size.Height);
-            Health = Game.Rand.Next(Settings.AsteroidsMinDamage, Settings.AsteroidsMaxDamage);
+            Health = Game.Rand.Next(Settings.AsteroidsMinDamage[Game.DiffLvl], Settings.AsteroidsMaxDamage[Game.DiffLvl]);
         }
         /// <summary>
         /// Смена позиции астероида за пределы экрана

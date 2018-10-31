@@ -111,7 +111,7 @@ namespace Asteroids
                 Asteroids.Add(new Asteroid(
                     new Point(Rand.Next(St.SpaceShipStartPos.X + 300, St.FieldWidth), Rand.Next(St.AsteroidAvgHeight, St.FieldHeight- St.AsteroidAvgHeight)), 
                     new Point(Rand.Next(St.AsteroidsDir[DiffLvl][0], St.AsteroidsDir[DiffLvl][1]), i / 2 - 1), 
-                    Rand.Next(St.AsteroidsMinDamage, St.AsteroidsMaxDamage)));
+                    Rand.Next(St.AsteroidsMinDamage[DiffLvl], St.AsteroidsMaxDamage[DiffLvl])));
             Ship = new SpaceShip(St.SpaceShipStartPos, new Point(0, 0), St.SpaceShipMaxHealth);
             SpaceShip.MessageDie += Finish;
         }
@@ -136,6 +136,7 @@ namespace Asteroids
                     Explodes[i].Del(Explodes, i);
                 }
             }
+            LevelCompleteCheck();
         }
         /// <summary>
         /// Тик таймера
@@ -170,11 +171,11 @@ namespace Asteroids
         /// <summary>
         /// Перезагрузка основных объектов для рестарта игры
         /// </summary>
-        private static void Restart()
+        public static void Restart()
         {
             InitLists();
             Ship = null;
-            SpaceShip.MessageDie -= Finish; // Убираем, чтобы списке вызовов не было дублирования
+            SpaceShip.MessageDie -= Finish; // Убираем, чтобы в списке вызовов не было дублирования
             Timer.Tick -= Timer_Tick; // Так же, убираем
             Init(MainForm);
             foreach (var e in SplashScreen.BtnList) e.Visible = true;
@@ -194,13 +195,42 @@ namespace Asteroids
                     Kits[i].Del(Kits, i);
             }
         }
-        private static void DifficultLevelUp()
+        /// <summary>
+        /// Смена уровня сложности
+        /// </summary>
+        /// <param name="lvl">Уровень сложности</param>
+        public static void ChangeDifficultLevel(int lvl)
         {
-            DiffLvl++;
+            DiffLvl = lvl;
             Kit.KitsCount = St.KitsCount[DiffLvl];
-            St.AsteroidsMinDamage += 5;
-            St.AsteroidsMaxDamage += 5;
+            Restart();
         }
-        
+        /// <summary>
+        /// Определяем прохождение текущего уровня
+        /// </summary>
+        private static void LevelCompleteCheck()
+        {
+            if (Asteroids?.Count == 0 && Ship?.Health > 0)
+            {
+                Timer.Stop();
+                if (DiffLvl < St.MaxDiffLevels)
+                    if (MessageBox.Show(St.NewLevel, St.Greetings, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        ChangeDifficultLevel(++DiffLvl);
+                        Restart();
+                    }
+                    else Application.Exit();
+                else if (MessageBox.Show(St.GameComplete, St.Greetings, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    ChangeDifficultLevel(0);
+                    Restart();
+                } else Application.Exit();
+            }
+        }
+        private static void UpdateButtons()
+        {
+            foreach (var b in SplashScreen.BtnList) b.Visible = true;
+        }
+
     }
 }
