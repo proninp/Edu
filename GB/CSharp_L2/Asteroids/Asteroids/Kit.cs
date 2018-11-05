@@ -15,7 +15,7 @@ namespace Asteroids
         /// <summary>
         /// Изображение аптечки
         /// </summary>
-        public static Image Img { get; set; } = Properties.Resources.stormtrooper;
+        public static Image Img { get; set; } = Properties.Resources.R2_D2;
         public static int KitsCount { get; set; } = Settings.KitsCount[Game.DiffLvl];
         public Kit(Point pos, Point dir): base(pos, dir) { }
         public override void Draw()

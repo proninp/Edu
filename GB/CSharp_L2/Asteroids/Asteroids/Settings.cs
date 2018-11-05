@@ -10,19 +10,19 @@ namespace Asteroids
         /// <summary>
         /// Ширина игрового поля
         /// </summary>
-        public static int FieldWidth { get; set; } = 800;
-        /// <summary>
-        /// Высота игрового поля
-        /// </summary>
-        public static int FieldMaxHeight { get; set; } = 1000;
+        public static int FieldWidth { get; set; } = 1000;
         /// <summary>
         /// Максимальная ширина игрового поля
         /// </summary>
         public static int FieldMaxWidth { get; set; } = 1000;
         /// <summary>
+        /// Высота игрового поля
+        /// </summary>
+        public static int FieldMaxHeight { get; set; } = 667;
+        /// <summary>
         /// Максимальная высота игрового поля
         /// </summary>
-        public static int FieldHeight { get; set; } = 600;
+        public static int FieldHeight { get; set; } = 667;
         /// <summary>
         /// Размер кнопок
         /// </summary>

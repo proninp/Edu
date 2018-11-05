@@ -14,14 +14,14 @@ namespace Asteroids
         static BufferedGraphicsContext context;
         static Form MainForm { get; set; }
         public static BufferedGraphics Buffer { get; set; }
-        public static SpaceShip Ship { get; set; }
+        public static RepublicsShip Ship { get; set; }
         public static List<BaseObject> BaseObj { get; set; }
-        public static List<Asteroid> Asteroids { get; set; } // Список астероидов
+        public static List<Empires> Asteroids { get; set; } // Список астероидов
         public static List<Bullet> Bullets { get; set; } // Список снарядов
         public static List<Explode> Explodes { get; set; } // Список взрывов
         public static List<Kit> Kits { get; set; } // Список аптечек
         public static Random Rand { get; set; }
-        public static Image SpaceImg { get; set; } = Properties.Resources.space;
+        public static Image SpaceImg { get; set; } = Properties.Resources.background;
         private static Timer Timer = new Timer { Interval = 80 };
         public static int DiffLvl { get; set; } = 0; // Уровень сложности (0, 1, 2)
         public static int Width { get; set; }
@@ -108,12 +108,12 @@ namespace Asteroids
         {
             GameStart = true;
             for (int i = 0; i < St.AsteroidsCount[DiffLvl]; i++)
-                Asteroids.Add(new Asteroid(
+                Asteroids.Add(new Empires(
                     new Point(Rand.Next(St.SpaceShipStartPos.X + 300, St.FieldWidth), Rand.Next(St.AsteroidAvgHeight, St.FieldHeight- St.AsteroidAvgHeight)), 
                     new Point(Rand.Next(St.AsteroidsDir[DiffLvl][0], St.AsteroidsDir[DiffLvl][1]), i / 2 - 1), 
                     Rand.Next(St.AsteroidsMinDamage[DiffLvl], St.AsteroidsMaxDamage[DiffLvl])));
-            Ship = new SpaceShip(St.SpaceShipStartPos, new Point(0, 0), St.SpaceShipMaxHealth);
-            SpaceShip.MessageDie += Finish;
+            Ship = new RepublicsShip(St.SpaceShipStartPos, new Point(0, 0), St.SpaceShipMaxHealth);
+            RepublicsShip.MessageDie += Finish;
         }
         /// <summary>
         /// Обновление каждого объекта
@@ -136,7 +136,7 @@ namespace Asteroids
                     Explodes[i].Del(Explodes, i);
                 }
             }
-            LevelCompleteCheck();
+            IsEndLevel();
         }
         /// <summary>
         /// Тик таймера
@@ -154,7 +154,7 @@ namespace Asteroids
         private static void InitLists()
         {
             BaseObj = new List<BaseObject>();
-            Asteroids = new List<Asteroid>(St.AsteroidsCount[DiffLvl]);
+            Asteroids = new List<Empires>(St.AsteroidsCount[DiffLvl]);
             Bullets = new List<Bullet>();
             Explodes = new List<Explode>(St.AsteroidsCount[DiffLvl]);
             Kits = new List<Kit>();
@@ -175,7 +175,7 @@ namespace Asteroids
         {
             InitLists();
             Ship = null;
-            SpaceShip.MessageDie -= Finish; // Убираем, чтобы в списке вызовов не было дублирования
+            RepublicsShip.MessageDie -= Finish; // Убираем, чтобы в списке вызовов не было дублирования
             Timer.Tick -= Timer_Tick; // Так же, убираем
             Init(MainForm);
             foreach (var e in SplashScreen.BtnList) e.Visible = true;
@@ -208,23 +208,11 @@ namespace Asteroids
         /// <summary>
         /// Определяем прохождение текущего уровня
         /// </summary>
-        private static void LevelCompleteCheck()
+        private static void IsEndLevel()
         {
             if (Asteroids?.Count == 0 && Ship?.Health > 0)
             {
-                Timer.Stop();
-                if (DiffLvl < St.MaxDiffLevels)
-                    if (MessageBox.Show(St.NewLevel, St.Greetings, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                    {
-                        ChangeDifficultLevel(++DiffLvl);
-                        Restart();
-                    }
-                    else Application.Exit();
-                else if (MessageBox.Show(St.GameComplete, St.Greetings, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                {
-                    ChangeDifficultLevel(0);
-                    Restart();
-                } else Application.Exit();
+                Finish();
             }
         }
         private static void UpdateButtons()

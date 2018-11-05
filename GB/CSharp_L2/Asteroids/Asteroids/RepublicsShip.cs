@@ -2,7 +2,7 @@
 
 namespace Asteroids
 {
-    class SpaceShip: BaseObject
+    class RepublicsShip: BaseObject
     {
         /// <summary>
         /// Событие гибели корабля
@@ -23,9 +23,9 @@ namespace Asteroids
         /// <param name="pos">Позиция</param>
         /// <param name="dir">Шаг изменения позиции</param>
         /// <param name="power">Урон, который может нанести корабль</param>
-        public SpaceShip(Point pos, Point dir, int health): base(pos, dir, health)
+        public RepublicsShip(Point pos, Point dir, int health): base(pos, dir, health)
         {
-            Img = Properties.Resources.The_Death_Star;
+            Img = Properties.Resources.x_wing;
             Rect = new Rectangle(Pos.X, Pos.Y, Img.Size.Width, Img.Size.Height);
             HPBar = new HealthBar(Settings.HPBarPos, Health, Settings.HPBarSize, Game.Buffer?.Graphics);
             fire = false;
@@ -81,10 +81,7 @@ namespace Asteroids
         public void GetDamage(int damage)
         {
             Health -= damage;
-            if (Health > Settings.SpaceShipMaxHealth) Health = Settings.SpaceShipMaxHealth;
-            if (Health <= Settings.SpaceShipMaxHealth / 3) Img = Properties.Resources.The_Death_Star_Damaged; // Если меньше 30% hp, меняем изображение
-            else if (Img.Size == Properties.Resources.The_Death_Star_Damaged.Size) Img = Properties.Resources.The_Death_Star; // Меняем обратно
-            HPBar.Health = Health;
+            HPBar.Health = Health > Settings.SpaceShipMaxHealth ? Settings.SpaceShipMaxHealth : Health;
         }
         public void Die()
         {

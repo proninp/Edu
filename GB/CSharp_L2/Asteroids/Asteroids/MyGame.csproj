@@ -44,7 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Asteroid.cs" />
+    <Compile Include="Empires.cs" />
     <Compile Include="BaseObject.cs" />
     <Compile Include="Bullet.cs" />
     <Compile Include="Explode.cs" />
@@ -61,7 +61,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Settings.cs" />
-    <Compile Include="SpaceShip.cs" />
+    <Compile Include="RepublicsShip.cs" />
     <Compile Include="SplashScreen.cs" />
     <Compile Include="Star.cs" />
   </ItemGroup>
@@ -75,7 +75,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\space.jpg" />
     <None Include="Resources\ast_2.png" />
     <None Include="Resources\ast_1.png" />
     <None Include="Resources\ast_0.png" />
@@ -109,6 +108,27 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\stormtrooper.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\background.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\x_wing.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Advanced_x1_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Advanced_x1_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TIE_Interceptor_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TIE_Interceptor_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\R2-D2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
