@@ -14,7 +14,7 @@ namespace Asteroids
         static BufferedGraphicsContext context;
         static Form MainForm { get; set; }
         public static BufferedGraphics Buffer { get; set; }
-        public static RepublicsShip Ship { get; set; }
+        public static Ship Ship { get; set; }
         public static List<BaseObject> BaseObj { get; set; }
         public static List<Empires> Asteroids { get; set; } // Список астероидов
         public static List<Bullet> Bullets { get; set; } // Список снарядов
@@ -112,8 +112,7 @@ namespace Asteroids
                     new Point(Rand.Next(St.SpaceShipStartPos.X + 300, St.FieldWidth), Rand.Next(St.AsteroidAvgHeight, St.FieldHeight- St.AsteroidAvgHeight)), 
                     new Point(Rand.Next(St.AsteroidsDir[DiffLvl][0], St.AsteroidsDir[DiffLvl][1]), i / 2 - 1), 
                     Rand.Next(St.AsteroidsMinDamage[DiffLvl], St.AsteroidsMaxDamage[DiffLvl])));
-            Ship = new RepublicsShip(St.SpaceShipStartPos, new Point(0, 0), St.SpaceShipMaxHealth);
-            RepublicsShip.MessageDie += Finish;
+            Ship = new Ship(St.SpaceShipStartPos, new Point(0, 0), St.SpaceShipMaxHealth, St.SpaceShipMaxEnergy);
         }
         /// <summary>
         /// Обновление каждого объекта
@@ -129,7 +128,7 @@ namespace Asteroids
             for (int i = Explodes.Count - 1; i >= 0; i--) // Проверка на необходимость удаления взрыва
             {
                 Explodes[i].Update();
-                if (Explodes[i].VisabilityTicksCount > 0 && Explodes[i].VisabilityTicksCount < 4) { if (Ship.Health <= 0) Ship.Die(); }
+                if (Explodes[i].VisabilityTicksCount > 0 && Explodes[i].VisabilityTicksCount < 4) { if (Ship.Health <= 0) Finish(St.LooseMessage, St.LooseMessageHeader); }
                 else if (Explodes[i].VisabilityTicksCount <= 0)
                 {
                     Explodes[i].Pos.X = St.FieldMaxWidth;
@@ -162,10 +161,10 @@ namespace Asteroids
         /// <summary>
         /// Конец игры
         /// </summary>
-        public static void Finish()
+        public static void Finish(string message, string messageHeader)
         {
             Timer.Stop();
-            if (MessageBox.Show(St.LooseMessage, St.LooseMessageHeader, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes) Application.Exit();
+            if (MessageBox.Show(message, messageHeader, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes) Application.Exit();
             else Restart();
         }
         /// <summary>
@@ -175,8 +174,7 @@ namespace Asteroids
         {
             InitLists();
             Ship = null;
-            RepublicsShip.MessageDie -= Finish; // Убираем, чтобы в списке вызовов не было дублирования
-            Timer.Tick -= Timer_Tick; // Так же, убираем
+            Timer.Tick -= Timer_Tick;
             Init(MainForm);
             foreach (var e in SplashScreen.BtnList) e.Visible = true;
         }
@@ -191,8 +189,7 @@ namespace Asteroids
             for (int i = Kits.Count - 1; i >= 0; i--) // Обновление и удаление пропущенных аптечек
             {
                 Kits[i].Update();
-                if (Kits[i].Pos.X + Kit.Img.Size.Width < 0)
-                    Kits[i].Del(Kits, i);
+                if (Kits[i].Pos.X + Kit.Img.Size.Width < 0) Kits[i].Del(Kits, i);
             }
         }
         /// <summary>
@@ -210,10 +207,7 @@ namespace Asteroids
         /// </summary>
         private static void IsEndLevel()
         {
-            if (Asteroids?.Count == 0 && Ship?.Health > 0)
-            {
-                Finish();
-            }
+            if (Asteroids?.Count == 0 && Ship?.Health > 0) Finish(St.GameComplete, St.Greetings);
         }
         private static void UpdateButtons()
         {

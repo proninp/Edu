@@ -50,7 +50,7 @@
     <Compile Include="Explode.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="GameObjectException.cs" />
-    <Compile Include="HealthBar.cs" />
+    <Compile Include="Bar.cs" />
     <Compile Include="ICollision.cs" />
     <Compile Include="Kit.cs" />
     <Compile Include="Program.cs" />
@@ -61,7 +61,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Settings.cs" />
-    <Compile Include="RepublicsShip.cs" />
+    <Compile Include="Ship.cs" />
     <Compile Include="SplashScreen.cs" />
     <Compile Include="Star.cs" />
   </ItemGroup>

@@ -75,6 +75,10 @@ namespace Asteroids
         /// </summary>
         public static int SpaceShipMaxHealth { get; set; } = 100;
         /// <summary>
+        /// Энергия корабля для выстрела
+        /// </summary>
+        public static int SpaceShipMaxEnergy { get; set; } = 100;
+        /// <summary>
         /// Сдвиг корабля при нажатии на клавишу управления движением
         /// </summary>
         public static int SpaceShipStep { get; set; } = 7;
@@ -90,6 +94,19 @@ namespace Asteroids
         /// Размер хелс бара
         /// </summary>
         public static Size HPBarSize { get; set; } = new Size(200, 12);
+        /// <summary>
+        /// Позиция энерджи бара
+        /// </summary>
+        public static Point EnergyBarPos { get; set; } = new Point(10, HPBarPos.Y + HPBarSize.Height + 20);
+        /// <summary>
+        /// Размер Energy бара
+        /// </summary>
+        public static Size EnergyBarSize { get; set; } = new Size(200, 12);
+        /// <summary>
+        /// Количество энергии, затраченной на выстрел
+        /// </summary>
+        public static int[] EnergyCostShoot { get; set; } = new int[] { 2, 4, 6 };
+
         /// <summary>
         /// Шаг изменения позиции астероидов по уровням сложности
         /// </summary>

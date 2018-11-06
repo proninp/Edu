@@ -2,32 +2,41 @@
 
 namespace Asteroids
 {
-    class RepublicsShip: BaseObject
+    class Ship: BaseObject
     {
-        /// <summary>
-        /// Событие гибели корабля
-        /// </summary>
-        public static event Message MessageDie;
         /// <summary>
         /// Изображение корабля
         /// </summary>
         public static Image Img { get; set; }
-        public HealthBar HPBar { get; set; }
+        /// <summary>
+        /// Полоска жизни корабля
+        /// </summary>
+        public Bar HealthBar { get; set; }
+        /// <summary>
+        /// Полоска энергии корабля
+        /// </summary>
+        public Bar EnergyhBar { get; set; }
         /// <summary>
         /// Корабль ведёт огонь
         /// </summary>
         private bool fire;
+        /// <summary>
+        /// Доступная энергия корабля для выстрела
+        /// </summary>
+        public int Energy { get; set; }
         /// <summary>
         /// Конструктор
         /// </summary>
         /// <param name="pos">Позиция</param>
         /// <param name="dir">Шаг изменения позиции</param>
         /// <param name="power">Урон, который может нанести корабль</param>
-        public RepublicsShip(Point pos, Point dir, int health): base(pos, dir, health)
+        public Ship(Point pos, Point dir, int health, int energy): base(pos, dir, health)
         {
             Img = Properties.Resources.x_wing;
+            Energy = energy;
             Rect = new Rectangle(Pos.X, Pos.Y, Img.Size.Width, Img.Size.Height);
-            HPBar = new HealthBar(Settings.HPBarPos, Health, Settings.HPBarSize, Game.Buffer?.Graphics);
+            HealthBar = new Bar(Settings.HPBarPos, Health, Settings.HPBarSize, Game.Buffer?.Graphics, Color.Green, Health, true);
+            EnergyhBar = new Bar(Settings.EnergyBarPos, Energy, Settings.EnergyBarSize, Game.Buffer?.Graphics, Color.Blue, Energy, false);
             fire = false;
         }
         /// <summary>
@@ -37,7 +46,8 @@ namespace Asteroids
         {
             Game.Buffer.Graphics.DrawImage(Img, Pos);
             Rect = new Rectangle(Pos.X, Pos.Y, Img.Size.Width - (int)(Img.Size.Width*0.2), Img.Size.Height - (int)(Img.Size.Height * 0.2));
-            HPBar.Draw();
+            HealthBar.Draw();
+            EnergyhBar.Draw();
         }
         /// <summary>
         /// Обновление состояния корабля
@@ -48,9 +58,10 @@ namespace Asteroids
             Pos.Y += Dir.Y;
             if (fire && (Game.DiffLvl == 0 || Health > 1)) // На первой сложности не отнимаем жизни при стрельбе
             {
-                Game.Bullets?.Add(new Bullet(new Point(Game.Ship.Pos.X + Bullet.Img.Size.Width / 2,
-                    Game.Ship.Pos.Y + Img.Size.Height / 4), new Point(15, 0), 10));
-                GetDamage(Game.DiffLvl); // Такой вот хардкор
+                EnergyhBar.Health -= Settings.EnergyCostShoot[Game.DiffLvl];
+                if (EnergyhBar.Health > 0)
+                    Game.Bullets?.Add(new Bullet(new Point(Game.Ship.Pos.X + Bullet.Img.Size.Width / 2, Game.Ship.Pos.Y + Img.Size.Height / 4), new Point(15, 0), 10));
+                GetDamage(Game.DiffLvl); // Если уровень выше первого, наносить урон самому себе при выстреле (такой вот хардкор)
             }
         }
         /// <summary>
@@ -81,11 +92,10 @@ namespace Asteroids
         public void GetDamage(int damage)
         {
             Health -= damage;
-            HPBar.Health = Health > Settings.SpaceShipMaxHealth ? Settings.SpaceShipMaxHealth : Health;
-        }
-        public void Die()
-        {
-            if (Health <= 0) MessageDie.Invoke();
+            Energy -= rand.Next(0, damage);
+            if (Energy < 0) Energy = 0;
+            HealthBar.Health = Health > Settings.SpaceShipMaxHealth ? Settings.SpaceShipMaxHealth : Health;
+            EnergyhBar.Health = Energy;
         }
     }
 }
