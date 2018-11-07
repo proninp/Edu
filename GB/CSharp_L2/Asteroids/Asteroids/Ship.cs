@@ -76,12 +76,14 @@ namespace Asteroids
         {
             Pos.X += Dir.X;
             Pos.Y += Dir.Y;
-            if (fire && (Game.DiffLvl == 0 || Health > 1)) // На первой сложности не отнимаем жизни при стрельбе
+            if (fire)
             {
-                Energy -= Settings.EnergyCostShoot[Game.DiffLvl];
                 if (Energy > 0)
+                {
+                    Energy -= Settings.EnergyCostShoot[Game.DiffLvl];
                     Game.Bullets?.Add(new Bullet(new Point(Game.Ship.Pos.X + Bullet.Img.Size.Width / 2, Game.Ship.Pos.Y + Img.Size.Height / 4), new Point(15, 0), 10));
-                GetDamage(Game.DiffLvl); // Если уровень выше первого, наносить урон самому себе при выстреле (такой вот хардкор)
+                }
+                //GetDamage(Game.DiffLvl); // Если уровень выше первого, наносить урон самому себе при выстреле (такой вот хардкор)
             }
             if (!fire && rand.Next(0, Settings.EnergyRecoveryChance[Game.DiffLvl]) == Game.DiffLvl) Energy++;
         }

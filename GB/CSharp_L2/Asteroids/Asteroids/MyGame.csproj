@@ -44,7 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Empires.cs" />
+    <Compile Include="EmpireShip.cs" />
     <Compile Include="BaseObject.cs" />
     <Compile Include="Bullet.cs" />
     <Compile Include="Explode.cs" />
@@ -129,6 +129,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\R2-D2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\redRay.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
