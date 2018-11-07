@@ -13,7 +13,7 @@ namespace Asteroids
         {
             Size = Settings.ButtonSize,
             Text = Settings.GameStart,
-            Font = new Font(Settings.GreetingsBtnFont, 18F, FontStyle.Italic),
+            Font = new Font(Settings.MainFont, 18F, FontStyle.Italic),
             ForeColor = Color.White,
             BackColor = Color.Transparent,
             FlatStyle = FlatStyle.Popup,
@@ -24,7 +24,7 @@ namespace Asteroids
         {
             Size = Settings.ButtonSize,
             Text = Settings.GameEnd,
-            Font = new Font(Settings.GreetingsBtnFont, 18F, FontStyle.Italic),
+            Font = new Font(Settings.MainFont, 18F, FontStyle.Italic),
             ForeColor = Color.White,
             BackColor = Color.Transparent,
             FlatStyle = FlatStyle.Popup,
@@ -36,7 +36,7 @@ namespace Asteroids
             Size = Settings.ButtonSize,
             Text = Settings.GameNextLvl,
             Visible = false,
-            Font = new Font(Settings.GreetingsBtnFont, 18F, FontStyle.Italic),
+            Font = new Font(Settings.MainFont, 18F, FontStyle.Italic),
             ForeColor = Color.White,
             BackColor = Color.Transparent,
             FlatStyle = FlatStyle.Popup,
@@ -48,7 +48,7 @@ namespace Asteroids
             Size = Settings.ButtonSize,
             Text = Settings.GamePlayOneMore,
             Visible = false,
-            Font = new Font(Settings.GreetingsBtnFont, 18F, FontStyle.Italic),
+            Font = new Font(Settings.MainFont, 18F, FontStyle.Italic),
             ForeColor = Color.White,
             BackColor = Color.Transparent,
             FlatStyle = FlatStyle.Popup,
@@ -56,13 +56,11 @@ namespace Asteroids
         };
         public static void Greeting(Form form)
         {
-
             BtnList.Clear();
             BtnList.Add(StartGameBtn);
             BtnList.Add(ExitBtn);
             form.Controls.Add(OneMoreGameBtn);
             form.Controls.Add(NewLevelBtn);
-
             for (int i = 0; i < BtnList.Count; i++)
             {
                 int startPos = GetStartPos();

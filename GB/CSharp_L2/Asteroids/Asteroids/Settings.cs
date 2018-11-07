@@ -132,7 +132,7 @@ namespace Asteroids
         /// <summary>
         /// Шрифт кнопки приветсвия
         /// </summary>
-        public static string GreetingsBtnFont { get; set; } = "Microsoft Sans Serif";
+        public static string MainFont { get; set; } = "Verdana";
         /// <summary>
         /// Текст кнопки старта игры
         /// </summary>
