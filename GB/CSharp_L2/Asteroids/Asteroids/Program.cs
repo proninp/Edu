@@ -4,9 +4,6 @@ using System.Windows.Forms;
 
 namespace Asteroids
 {
-    /*
-     * Dev. by Pronin P.S.
-     */
     class Program
     {
         #region Скрыть консоль
