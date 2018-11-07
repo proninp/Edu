@@ -1,4 +1,5 @@
 ﻿using System.Drawing;
+using System.Windows.Forms;
 
 namespace Asteroids
 {
@@ -21,6 +22,10 @@ namespace Asteroids
         /// </summary>
         Color InnerColor { get; set; }
         /// <summary>
+        /// Лэйбл для количественного отображения поинтов бара
+        /// </summary>
+        Label Label { get; set; }
+        /// <summary>
         /// Максимальное кол-во для поинтов бара
         /// </summary>
         int BarMaxPoints { get; set; }
@@ -40,6 +45,13 @@ namespace Asteroids
             InnerColor = innerColor;
             BarMaxPoints = maxPoints;
             DynamicColorChange = changeColor;
+            Label = new Label
+            {
+                Location = new Point(pos.X, pos.Y + size.Height + 100),
+                Text = $"{Health}/{BarMaxPoints}",
+                ForeColor = Color.White,
+                Font = new Font("Arial", 12, FontStyle.Bold)
+            };
         }
         /// <summary>
         /// Метод орисовки хелс бара, меняет цвет в зависимости от количества оставшихся хелс поинтов
@@ -53,6 +65,7 @@ namespace Asteroids
             Rect = new Rectangle(Pos, new Size(BarWidth, Size.Height));
             Shape.FillRectangle(solidBrush, Rect);
             solidBrush.Dispose();
+            Label.Text = $"{Health}/{BarMaxPoints}";
         }
 
     }

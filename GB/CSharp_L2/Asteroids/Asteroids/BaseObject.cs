@@ -28,9 +28,17 @@ namespace Asteroids
         /// </summary>
         protected Size Size;
         /// <summary>
+        /// Кол-во жизни объекта
+        /// </summary>
+        protected int health;
+        /// <summary>
         /// Уровень здоровья
         /// </summary>
-        public int Health { get; set; }
+        public virtual int Health
+        {
+            get { return health; }
+            set { health = value; }
+        }
         /// <summary>
         /// Размер прямоугольной области объекта
         /// </summary>

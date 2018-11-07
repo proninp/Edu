@@ -106,6 +106,10 @@ namespace Asteroids
         /// Количество энергии, затраченной на выстрел
         /// </summary>
         public static int[] EnergyCostShoot { get; set; } = new int[] { 2, 4, 6 };
+        /// <summary>
+        /// Шанс восстановления энергии колеблется в зависимости от уровня сложности
+        /// </summary>
+        public static int[] EnergyRecoveryChance { get; set; } = new int[] { 3, 6, 9 };
 
         /// <summary>
         /// Шаг изменения позиции астероидов по уровням сложности

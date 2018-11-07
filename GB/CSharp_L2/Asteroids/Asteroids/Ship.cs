@@ -21,6 +21,18 @@ namespace Asteroids
         /// </summary>
         private bool fire;
         /// <summary>
+        /// Свойство для управления поведением при изменении кол-ва поинтов жизни
+        /// </summary>
+        public override int Health
+        {
+            get { return health; }
+            set
+            {
+                health = (value > Settings.SpaceShipMaxHealth ? Settings.SpaceShipMaxHealth : value);
+                if (HealthBar != null) HealthBar.Health = health;
+            }
+        }
+        /// <summary>
         /// Доступная энергия корабля для выстрела
         /// </summary>
         private int energy;
@@ -41,10 +53,10 @@ namespace Asteroids
         public Ship(Point pos, Point dir, int health, int energy): base(pos, dir, health)
         {
             Img = Properties.Resources.x_wing;
+            HealthBar = new Bar(Settings.HPBarPos, Health, Settings.HPBarSize, Game.Buffer?.Graphics, Color.Green, Health, true);
             EnergyBar = new Bar(Settings.EnergyBarPos, energy, Settings.EnergyBarSize, Game.Buffer?.Graphics, Color.Blue, energy, false);
             Energy = energy;
             Rect = new Rectangle(Pos.X, Pos.Y, Img.Size.Width, Img.Size.Height);
-            HealthBar = new Bar(Settings.HPBarPos, Health, Settings.HPBarSize, Game.Buffer?.Graphics, Color.Green, Health, true);
             fire = false;
         }
         /// <summary>
@@ -71,6 +83,7 @@ namespace Asteroids
                     Game.Bullets?.Add(new Bullet(new Point(Game.Ship.Pos.X + Bullet.Img.Size.Width / 2, Game.Ship.Pos.Y + Img.Size.Height / 4), new Point(15, 0), 10));
                 GetDamage(Game.DiffLvl); // Если уровень выше первого, наносить урон самому себе при выстреле (такой вот хардкор)
             }
+            if (!fire && rand.Next(0, Settings.EnergyRecoveryChance[Game.DiffLvl]) == Game.DiffLvl) Energy++;
         }
         /// <summary>
         /// Метод начала/конца огня. Записал в виде метода, чтобы использовать ?. для экземпляра корабля
@@ -80,15 +93,15 @@ namespace Asteroids
         /// <summary>
         /// Движение корабля вверх
         /// </summary>
-        public void Up(bool move) => Dir.Y = (move && Pos.Y > 0) ? -Settings.SpaceShipStep : 0;
+        public void Up(bool move) => Dir.Y = (move && Pos.Y > Img.Size.Height / 2) ? -Settings.SpaceShipStep : 0;
         /// <summary>
         /// Движение корабля вниз
         /// </summary>
-        public void Down(bool move) => Dir.Y = (move && Pos.Y < (Settings.FieldHeight - Img.Size.Height)) ? Settings.SpaceShipStep : 0;
+        public void Down(bool move) => Dir.Y = (move && Pos.Y < (Settings.FieldHeight - Img.Size.Height * 2)) ? Settings.SpaceShipStep : 0;
         /// <summary>
         /// Движение корабля влево
         /// </summary>
-        public void Left(bool move) => Dir.X = (move && Pos.X > 0) ? -Settings.SpaceShipStep : 0;
+        public void Left(bool move) => Dir.X = (move && Pos.X > Img.Size.Width / 2) ? -Settings.SpaceShipStep : 0;
         /// <summary>
         /// Движение корабля вправо
         /// </summary>
@@ -100,8 +113,7 @@ namespace Asteroids
         public void GetDamage(int damage)
         {
             Health -= damage;
-            Energy -= rand.Next(0, damage);
-            HealthBar.Health = Health > Settings.SpaceShipMaxHealth ? Settings.SpaceShipMaxHealth : Health;
+            Energy -= (damage > 0) ? rand.Next(0, damage) : rand.Next(damage, 0);
         }
     }
 }
