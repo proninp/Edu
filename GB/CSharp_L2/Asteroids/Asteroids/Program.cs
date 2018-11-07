@@ -14,7 +14,6 @@ namespace Asteroids
         const int SW_HIDE = 0;
         const int SW_SHOW = 5;
         #endregion
-
         static void Main(string[] args)
         {
             var handle = GetConsoleWindow();
