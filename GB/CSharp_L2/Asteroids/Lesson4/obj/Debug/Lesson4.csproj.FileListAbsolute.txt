@@ -1,7 +1,0 @@
-C:\Users\Paul\source\repos\Git\Edu\GB\CSharp_L2\Asteroids\Lesson4\bin\Debug\Lesson4.exe.config
-C:\Users\Paul\source\repos\Git\Edu\GB\CSharp_L2\Asteroids\Lesson4\bin\Debug\Lesson4.exe
-C:\Users\Paul\source\repos\Git\Edu\GB\CSharp_L2\Asteroids\Lesson4\bin\Debug\Lesson4.pdb
-C:\Users\Paul\source\repos\Git\Edu\GB\CSharp_L2\Asteroids\Lesson4\obj\Debug\Lesson4.csprojAssemblyReference.cache
-C:\Users\Paul\source\repos\Git\Edu\GB\CSharp_L2\Asteroids\Lesson4\obj\Debug\Lesson4.csproj.CoreCompileInputs.cache
-C:\Users\Paul\source\repos\Git\Edu\GB\CSharp_L2\Asteroids\Lesson4\obj\Debug\Lesson4.exe
-C:\Users\Paul\source\repos\Git\Edu\GB\CSharp_L2\Asteroids\Lesson4\obj\Debug\Lesson4.pdb
