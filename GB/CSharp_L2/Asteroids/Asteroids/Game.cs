@@ -7,7 +7,7 @@ using St = Asteroids.Settings;
 namespace Asteroids
 {
     /*
-     * Сделал разные списки с объектами для ускорения проверок на коллизии и необходимость удаления экземпляра
+     * В данной игре вместо астероидов представлены корабли Империи из фильма "Star Wars"
      */
     static class Game
     {
@@ -16,7 +16,7 @@ namespace Asteroids
         public static BufferedGraphics Buffer { get; set; }
         public static Ship Ship { get; set; }
         public static List<BaseObject> BaseObj { get; set; }
-        public static List<Empires> Asteroids { get; set; } // Список астероидов
+        public static List<EmpireShip> Asteroids { get; set; } // Список астероидов
         public static List<Bullet> Bullets { get; set; } // Список снарядов
         public static List<Explode> Explodes { get; set; } // Список взрывов
         public static List<Kit> Kits { get; set; } // Список аптечек
@@ -107,11 +107,11 @@ namespace Asteroids
         public static void BasicLoad()
         {
             GameStart = true;
-            for (int i = 0; i < St.AsteroidsCount[DiffLvl]; i++)
-                Asteroids.Add(new Empires(
-                    new Point(Rand.Next(St.SpaceShipStartPos.X + 300, St.FieldWidth), Rand.Next(St.AsteroidAvgHeight, St.FieldHeight- St.AsteroidAvgHeight)), 
+            for (int i = 0; i < St.EmpireShipsCount[DiffLvl]; i++)
+                Asteroids.Add(new EmpireShip(
+                    new Point(Rand.Next(St.SpaceShipStartPos.X + 300, St.FieldWidth), Rand.Next(St.EmpireShipAvgHeight, St.FieldHeight- St.EmpireShipAvgHeight)), 
                     new Point(Rand.Next(St.AsteroidsDir[DiffLvl][0], St.AsteroidsDir[DiffLvl][1]), i / 2 - 1), 
-                    Rand.Next(St.AsteroidsMinDamage[DiffLvl], St.AsteroidsMaxDamage[DiffLvl])));
+                    Rand.Next(St.EmpireShipMinDamage[DiffLvl], St.EmpireShipMaxDamage[DiffLvl])));
             Ship = new Ship(St.SpaceShipStartPos, new Point(0, 0), St.SpaceShipMaxHealth, St.SpaceShipMaxEnergy);
         }
         /// <summary>
@@ -153,9 +153,9 @@ namespace Asteroids
         private static void InitLists()
         {
             BaseObj = new List<BaseObject>();
-            Asteroids = new List<Empires>(St.AsteroidsCount[DiffLvl]);
+            Asteroids = new List<EmpireShip>(St.EmpireShipsCount[DiffLvl]);
             Bullets = new List<Bullet>();
-            Explodes = new List<Explode>(St.AsteroidsCount[DiffLvl]);
+            Explodes = new List<Explode>(St.EmpireShipsCount[DiffLvl]);
             Kits = new List<Kit>();
         }
         /// <summary>

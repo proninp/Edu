@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Drawing;
-using System.Windows.Forms;
 
 namespace Asteroids
 {
@@ -39,29 +38,29 @@ namespace Asteroids
         /// </summary>
         public static int MaxDiffLevels { get; } = 2;
         /// <summary>
-        /// Минимальный размер элемента
+        /// Минимальный размер звезды
         /// </summary>
         public static int MinElementSize { get; set; } = 5;
         /// <summary>
-        /// Максимальный размер элемента
+        /// Максимальный размер звезды
         /// </summary>
         public static int MaxElementSize { get; set; } = 10;
         /// <summary>
-        /// Количество астероидов на игровом поле
+        /// Количество кораблей Империи на игровом поле
         /// </summary>
-        public static int[] AsteroidsCount { get; set; } = new int[] { 12, 15, 20 };
+        public static int[] EmpireShipsCount { get; set; } = new int[] { 12, 15, 20 };
         /// <summary>
-        /// Усредненное значение высоты астероида
+        /// Усредненное значение высоты корабля Империи
         /// </summary>
-        public static int AsteroidAvgHeight { get; set; } = 60;
+        public static int EmpireShipAvgHeight { get; set; } = 75;
         /// <summary>
-        /// Максимальный уровень урона астероида
+        /// Максимальный уровень урона корабля Империи
         /// </summary>
-        public static int[] AsteroidsMaxDamage { get; set; } = new int[] { 40, 50, 60 };
+        public static int[] EmpireShipMaxDamage { get; set; } = new int[] { 40, 50, 60 };
         /// <summary>
-        /// Минимальный уровень урона у астероида
+        /// Минимальный уровень урона у корабля Империи
         /// </summary>
-        public static int[] AsteroidsMinDamage { get; set; } = new int[] { 10, 20, 30 };
+        public static int[] EmpireShipMinDamage { get; set; } = new int[] { 10, 20, 30 };
         /// <summary>
         /// Количество звезд на поле
         /// </summary>
@@ -110,7 +109,6 @@ namespace Asteroids
         /// Шанс восстановления энергии колеблется в зависимости от уровня сложности
         /// </summary>
         public static int[] EnergyRecoveryChance { get; set; } = new int[] { 3, 6, 9 };
-
         /// <summary>
         /// Шаг изменения позиции астероидов по уровням сложности
         /// </summary>

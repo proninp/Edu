@@ -2,7 +2,7 @@
 
 namespace Asteroids
 {
-    class Empires: BaseObject
+    class EmpireShip: BaseObject
     {
         /// <summary>
         /// Массив возможных изображений астероидов
@@ -21,7 +21,7 @@ namespace Asteroids
         /// <param name="pos">Позиция</param>
         /// <param name="dir">Шаг изменения позиции</param>
         /// <param name="power">Урок астероида</param>
-        public Empires(Point pos, Point dir, int power) : base(pos, dir, power) { }
+        public EmpireShip(Point pos, Point dir, int power) : base(pos, dir, power) { }
         /// <summary>
         /// Метод отрисовки астероида, в который попал снаряд
         /// </summary>
@@ -29,7 +29,7 @@ namespace Asteroids
         {
             Game.Buffer.Graphics.DrawImage(Images[ImgIndex], Pos);
             Rect = new Rectangle(Pos.X, Pos.Y, Images[ImgIndex].Size.Width, Images[ImgIndex].Size.Height);
-            Health = Game.Rand.Next(Settings.AsteroidsMinDamage[Game.DiffLvl], Settings.AsteroidsMaxDamage[Game.DiffLvl]);
+            Health = Game.Rand.Next(Settings.EmpireShipMinDamage[Game.DiffLvl], Settings.EmpireShipMaxDamage[Game.DiffLvl]);
         }
         /// <summary>
         /// Смена позиции астероида за пределы экрана
