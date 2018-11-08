@@ -24,7 +24,8 @@ namespace Asteroids
         public static Ship Ship { get; set; }
         public static List<BaseObject> BaseObj { get; set; }
         public static List<EmpireShip> Asteroids { get; set; } // Список астероидов
-        public static List<Bullet> Bullets { get; set; } // Список снарядов
+        public static List<Bullet> ShipBullets { get; set; } // Список снарядов игрока
+        public static List<Bullet> EnemiesBullets { get; set; } // Список снарядов кораблей Империи
         public static List<Explode> Explodes { get; set; } // Список взрывов
         public static List<Kit> Kits { get; set; } // Список аптечек
         public static Random Rand { get; set; }
@@ -61,11 +62,11 @@ namespace Asteroids
             Buffer.Graphics.DrawImage(SpaceImg, new Point(0, 0)); // Отрисовка фона
             foreach (var e in BaseObj) e.Draw();
             for (int i = Asteroids.Count - 1; i >= 0 ; i--) // Проверка столкновения астероидов с пулями
-                for (int j = Bullets.Count - 1; j >= 0; j--)
-                    if (Asteroids[i].Collision(Bullets[j]))
+                for (int j = ShipBullets.Count - 1; j >= 0; j--)
+                    if (Asteroids[i].Collision(ShipBullets[j]) && ShipBullets[j].ImageIndex != 1)
                     {
-                        Bullets[j].Pos.X = St.FieldMaxWidth; // Чтобы сразу скрыть
-                        Bullets[j].Del(Bullets, j);
+                        ShipBullets[j].Pos.X = St.FieldMaxWidth; // Чтобы сразу скрыть
+                        ShipBullets[j].Del(ShipBullets, j);
                         Explodes.Add(new Explode(Asteroids[i].Pos)); // Создание взрыва
                         Asteroids[i].Del(Asteroids, i);
                         break;
@@ -88,7 +89,9 @@ namespace Asteroids
                         Kits[i].Del(Kits, i);
                     }
             }
-            foreach (var e in Bullets) e.Draw();
+            foreach (var e in ShipBullets) e.Draw();
+            foreach (var e in EnemiesBullets) e.Draw();
+            foreach (var e in EnemiesBullets) e.Draw();
             foreach (var e in Explodes) e.Draw();
             foreach (var e in Kits) e.Draw();
             foreach (var e in Asteroids) e.Draw();
@@ -128,7 +131,8 @@ namespace Asteroids
         {
             foreach (var o in BaseObj) o.Update();
             foreach (var o in Asteroids) o.Update();
-            foreach (var o in Bullets) o.Update();
+            foreach (var o in ShipBullets) o.Update();
+            foreach (var e in EnemiesBullets) e.Update();
             foreach (var o in Kits) o.Update();
             UpdateKits();
             Ship?.Update();
@@ -161,7 +165,8 @@ namespace Asteroids
         {
             BaseObj = new List<BaseObject>();
             Asteroids = new List<EmpireShip>(St.EmpireShipsCount[DiffLvl]);
-            Bullets = new List<Bullet>();
+            ShipBullets = new List<Bullet>();
+            EnemiesBullets = new List<Bullet>();
             Explodes = new List<Explode>(St.EmpireShipsCount[DiffLvl]);
             Kits = new List<Kit>();
         }

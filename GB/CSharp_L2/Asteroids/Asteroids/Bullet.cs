@@ -19,7 +19,7 @@ namespace Asteroids
         /// <summary>
         /// Индекс изображения пули
         /// </summary>
-        int ImageIndex { get; set; }
+        public int ImageIndex { get; set; }
         /// <summary>
         /// Конструктор
         /// </summary>

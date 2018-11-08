@@ -30,6 +30,8 @@ namespace Asteroids
             Game.Buffer.Graphics.DrawImage(Images[ImgIndex], Pos);
             Rect = new Rectangle(Pos.X, Pos.Y, Images[ImgIndex].Size.Width, Images[ImgIndex].Size.Height);
             Health = Game.Rand.Next(Settings.EmpireShipMinDamage[Game.DiffLvl], Settings.EmpireShipMaxDamage[Game.DiffLvl]);
+            if (rand.Next(0, 50) == rand.Next(0, 50))
+                Game.EnemiesBullets?.Add(new Bullet(new Point(Pos.X - Bullet.Img.Size.Width / 2, Pos.Y + Images[ImgIndex].Size.Height / 4), new Point(-15, 0), 10, 1));
         }
         /// <summary>
         /// Смена позиции астероида за пределы экрана
