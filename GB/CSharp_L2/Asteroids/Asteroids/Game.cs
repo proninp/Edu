@@ -88,6 +88,7 @@ namespace Asteroids
                         Kits[i].Pos.X = St.FieldMaxWidth;
                         Kits[i].Del(Kits, i);
                     }
+                // TODO Реализовать проверку на столкновение с пулями кораблей Империи
             }
             foreach (var e in ShipBullets) e.Draw();
             foreach (var e in EnemiesBullets) e.Draw();
