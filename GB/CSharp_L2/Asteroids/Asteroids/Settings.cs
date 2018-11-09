@@ -40,11 +40,11 @@ namespace Asteroids
         /// <summary>
         /// Минимальный размер звезды
         /// </summary>
-        public static int MinElementSize { get; set; } = 5;
+        public static int MinStarSize { get; set; } = 1;
         /// <summary>
         /// Максимальный размер звезды
         /// </summary>
-        public static int MaxElementSize { get; set; } = 10;
+        public static int MaxStarSize { get; set; } = 1;
         /// <summary>
         /// Количество кораблей Империи на игровом поле
         /// </summary>
@@ -60,7 +60,7 @@ namespace Asteroids
         /// <summary>
         /// Минимальный уровень урона у корабля Империи
         /// </summary>
-        public static int[] EmpireShipMinDamage { get; set; } = new int[] { 10, 20, 30 };
+        public static int[] EmpireShipMinDamage { get; set; } = new int[] { 20, 30, 40 };
         /// <summary>
         /// Индекс изображения пули корабля Империи
         /// </summary>

@@ -10,7 +10,6 @@ namespace Asteroids
      * Пронин П.С.
      * В данной игре вместо астероидов представлены корабли Империи из фильма "Star Wars"
      * TODO:
-     * Добавить возможность кораблям Империи стрелять, нанося урон кораблю игрока при попадании
      * Вывести счет игрока на экран
      * Доработать систему усложнения игры с увеличением счета игрока
      * Доработать главное меню, добавить возможность ставить игру на паузу
@@ -24,7 +23,7 @@ namespace Asteroids
         public static Ship Ship { get; set; }
         public static List<BaseObject> BaseObj { get; set; }
         public static List<EmpireShip> EmpireShips { get; set; } // Список астероидов
-        public static List<Bullet> ShipBullets { get; set; } // Список снарядов игрока
+        public static List<Bullet> PlayerBullets { get; set; } // Список снарядов игрока
         public static List<Bullet> EnemiesBullets { get; set; } // Список снарядов кораблей Империи
         public static List<Explode> Explodes { get; set; } // Список взрывов
         public static List<Kit> Kits { get; set; } // Список аптечек
@@ -61,33 +60,26 @@ namespace Asteroids
         {
             Buffer.Graphics.DrawImage(SpaceImg, new Point(0, 0)); // Отрисовка фона
             foreach (var e in BaseObj) e.Draw();
-            for (int i = EmpireShips.Count - 1; i >= 0 ; i--) 
-                for (int j = ShipBullets.Count - 1; j >= 0; j--)
-                {
-                    if (EmpireShips[i].Collision(ShipBullets[j]) && ShipBullets[j].ImageIndex != St.EmpireShipBulletIndex) // Проверка столкновения кораблей-противников с пулями
-                    {
-                        ShipBullets[j].Del(ShipBullets, j);
-                        Explodes.Add(new Explode(EmpireShips[i].Pos));
-                        EmpireShips[i].Del(EmpireShips, i);
-                        break;
-                    }
-                }
             if (Ship != null)
             {
-                for (int i = EmpireShips.Count - 1; i >= 0; i--) 
+                for (int i = EmpireShips.Count - 1; i >= 0; i--)
+                {
                     if (EmpireShips[i].Collision(Ship)) // Проверка столкновения корабля-противника с кораблём
                     {
                         Explodes.Add(new Explode(EmpireShips[i].Pos));
                         Ship.GetDamage(EmpireShips[i].Health);
                         EmpireShips[i].Del(EmpireShips, i);
+                        continue;
                     }
-                for (int i = Kits.Count - 1; i >= 0; i--)
-                    if (Ship != null && Kits[i].Collision(Ship)) // Проверка столкновения аптечки с кораблём
-                    {
-                        Kit.KitsCount--;
-                        Ship.GetDamage(Kits[i].Health);
-                        Kits[i].Del(Kits, i);
-                    }
+                    for (int j = PlayerBullets.Count - 1; j >= 0; j--)
+                        if (EmpireShips[i].Collision(PlayerBullets[j])) // Проверка столкновения кораблей-противников с пулями
+                        {
+                            PlayerBullets[j].Del(PlayerBullets, j);
+                            Explodes.Add(new Explode(EmpireShips[i].Pos));
+                            EmpireShips[i].Del(EmpireShips, i);
+                            break;
+                        }
+                }
                 for (int i = EnemiesBullets.Count - 1; i >= 0; i--)
                 {
                     if (EnemiesBullets[i].Collision(Ship)) // Проверка на столкновение пули корабля-противника с кораблём игрока
@@ -95,10 +87,26 @@ namespace Asteroids
                         Explodes.Add(new Explode(EnemiesBullets[i].Pos));
                         Ship.GetDamage(EnemiesBullets[i].Health);
                         EnemiesBullets[i].Del(EnemiesBullets, i);
+                        continue;
                     }
+                    for (int j = PlayerBullets.Count - 1; j >= 0; j--)
+                        if (EnemiesBullets[i].Collision(PlayerBullets[j])) // Проверка на столкновение пуль игрока с пулями кораблей-противников
+                        {
+                            PlayerBullets[j].Del(PlayerBullets, j);
+                            Explodes.Add(new Explode(EnemiesBullets[i].Pos));
+                            EnemiesBullets[i].Del(EnemiesBullets, i);
+                            break;
+                        }
                 }
+                for (int i = Kits.Count - 1; i >= 0; i--)
+                    if (Ship != null && Kits[i].Collision(Ship)) // Проверка столкновения аптечки с кораблём
+                    {
+                        Kit.KitsCount--;
+                        Ship.GetDamage(Kits[i].Health);
+                        Kits[i].Del(Kits, i);
+                    }
             }
-            foreach (var e in ShipBullets) e.Draw();
+            foreach (var e in PlayerBullets) e.Draw();
             foreach (var e in EnemiesBullets) e.Draw();
             foreach (var e in EnemiesBullets) e.Draw();
             foreach (var e in Explodes) e.Draw();
@@ -114,10 +122,10 @@ namespace Asteroids
         public static void InitialLoad()
         {
             InitLists();
-            int r = Rand.Next(St.MinElementSize, St.MaxElementSize);
             for (int i = 0; i < St.StarsCount; i++)
-                BaseObj.Add(new Star(new Point(Rand.Next(0, St.FieldWidth), Rand.Next(10, St.FieldHeight)),
-                    new Point(-i % 20 - 1, 0), new Size(r / 4, r / 4)));
+                BaseObj.Add(new Star(new Point(Rand.Next(0, St.FieldWidth),Rand.Next(10, St.FieldHeight)),
+                    new Point(i % 20 - 1, 0),
+                    new Size(St.MinStarSize, St.MaxStarSize)));
         }
         /// <summary>
         /// Загрузка объектов после нажатия кнопки "Начать игру"
@@ -140,7 +148,7 @@ namespace Asteroids
         {
             foreach (var o in BaseObj) o.Update();
             foreach (var o in EmpireShips) o.Update();
-            foreach (var o in ShipBullets) o.Update();
+            foreach (var o in PlayerBullets) o.Update();
             foreach (var e in EnemiesBullets) e.Update();
             foreach (var o in Kits) o.Update();
             UpdateKits();
@@ -174,7 +182,7 @@ namespace Asteroids
         {
             BaseObj = new List<BaseObject>();
             EmpireShips = new List<EmpireShip>(St.EmpireShipsCount[DiffLvl]);
-            ShipBullets = new List<Bullet>();
+            PlayerBullets = new List<Bullet>();
             EnemiesBullets = new List<Bullet>();
             Explodes = new List<Explode>(St.EmpireShipsCount[DiffLvl]);
             Kits = new List<Kit>();

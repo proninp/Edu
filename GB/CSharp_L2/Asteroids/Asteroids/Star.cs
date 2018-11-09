@@ -35,8 +35,10 @@ namespace Asteroids
         public override void Update()
         {
             Pos.X -= Dir.X;
-            if (Pos.X > Game.Width) Pos.X = Size.Width;
+            if (Pos.X > Game.Width) Pos.X -= Game.Width;
+            if (Pos.X < 0) Pos.X += Game.Width + Size.Width;
             if (Pos.Y > Game.Height) Pos.Y -= Game.Height;
+            if (Pos.Y < 0) Pos.Y += Game.Height;
         }
     }
 }
