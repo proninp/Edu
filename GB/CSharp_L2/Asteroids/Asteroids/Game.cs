@@ -23,7 +23,7 @@ namespace Asteroids
         public static BufferedGraphics Buffer { get; set; }
         public static Ship Ship { get; set; }
         public static List<BaseObject> BaseObj { get; set; }
-        public static List<EmpireShip> Asteroids { get; set; } // Список астероидов
+        public static List<EmpireShip> EmpireShips { get; set; } // Список астероидов
         public static List<Bullet> ShipBullets { get; set; } // Список снарядов игрока
         public static List<Bullet> EnemiesBullets { get; set; } // Список снарядов кораблей Империи
         public static List<Explode> Explodes { get; set; } // Список взрывов
@@ -61,41 +61,49 @@ namespace Asteroids
         {
             Buffer.Graphics.DrawImage(SpaceImg, new Point(0, 0)); // Отрисовка фона
             foreach (var e in BaseObj) e.Draw();
-            for (int i = Asteroids.Count - 1; i >= 0 ; i--) // Проверка столкновения астероидов с пулями
+            for (int i = EmpireShips.Count - 1; i >= 0 ; i--) 
                 for (int j = ShipBullets.Count - 1; j >= 0; j--)
-                    if (Asteroids[i].Collision(ShipBullets[j]) && ShipBullets[j].ImageIndex != 1)
+                {
+                    if (EmpireShips[i].Collision(ShipBullets[j]) && ShipBullets[j].ImageIndex != St.EmpireShipBulletIndex) // Проверка столкновения кораблей-противников с пулями
                     {
-                        ShipBullets[j].Pos.X = St.FieldMaxWidth; // Чтобы сразу скрыть
                         ShipBullets[j].Del(ShipBullets, j);
-                        Explodes.Add(new Explode(Asteroids[i].Pos)); // Создание взрыва
-                        Asteroids[i].Del(Asteroids, i);
+                        Explodes.Add(new Explode(EmpireShips[i].Pos));
+                        EmpireShips[i].Del(EmpireShips, i);
                         break;
                     }
+                }
             if (Ship != null)
             {
-                for (int i = Asteroids.Count - 1; i >= 0; i--) // Проверка столкновения астероидов с кораблём
-                    if (Asteroids[i].Collision(Ship))
+                for (int i = EmpireShips.Count - 1; i >= 0; i--) 
+                    if (EmpireShips[i].Collision(Ship)) // Проверка столкновения корабля-противника с кораблём
                     {
-                        Explodes.Add(new Explode(Asteroids[i].Pos));
-                        Ship.GetDamage(Asteroids[i].Health);
-                        Asteroids[i].Del(Asteroids, i);
+                        Explodes.Add(new Explode(EmpireShips[i].Pos));
+                        Ship.GetDamage(EmpireShips[i].Health);
+                        EmpireShips[i].Del(EmpireShips, i);
                     }
-                for (int i = Kits.Count - 1; i >= 0; i--) // Проверка столкновения аптечки с кораблём
-                    if (Ship != null && Kits[i].Collision(Ship))
+                for (int i = Kits.Count - 1; i >= 0; i--)
+                    if (Ship != null && Kits[i].Collision(Ship)) // Проверка столкновения аптечки с кораблём
                     {
                         Kit.KitsCount--;
                         Ship.GetDamage(Kits[i].Health);
-                        Kits[i].Pos.X = St.FieldMaxWidth;
                         Kits[i].Del(Kits, i);
                     }
-                // TODO Реализовать проверку на столкновение с пулями кораблей Империи
+                for (int i = EnemiesBullets.Count - 1; i >= 0; i--)
+                {
+                    if (EnemiesBullets[i].Collision(Ship)) // Проверка на столкновение пули корабля-противника с кораблём игрока
+                    {
+                        Explodes.Add(new Explode(EnemiesBullets[i].Pos));
+                        Ship.GetDamage(EnemiesBullets[i].Health);
+                        EnemiesBullets[i].Del(EnemiesBullets, i);
+                    }
+                }
             }
             foreach (var e in ShipBullets) e.Draw();
             foreach (var e in EnemiesBullets) e.Draw();
             foreach (var e in EnemiesBullets) e.Draw();
             foreach (var e in Explodes) e.Draw();
             foreach (var e in Kits) e.Draw();
-            foreach (var e in Asteroids) e.Draw();
+            foreach (var e in EmpireShips) e.Draw();
             Ship?.Draw();
             Buffer.Render();
         }
@@ -119,7 +127,7 @@ namespace Asteroids
         {
             GameStart = true;
             for (int i = 0; i < St.EmpireShipsCount[DiffLvl]; i++)
-                Asteroids.Add(new EmpireShip(
+                EmpireShips.Add(new EmpireShip(
                     new Point(Rand.Next(St.SpaceShipStartPos.X + 300, St.FieldWidth), Rand.Next(St.EmpireShipAvgHeight, St.FieldHeight- St.EmpireShipAvgHeight)), 
                     new Point(Rand.Next(St.AsteroidsDir[DiffLvl][0], St.AsteroidsDir[DiffLvl][1]), i / 2 - 1), 
                     Rand.Next(St.EmpireShipMinDamage[DiffLvl], St.EmpireShipMaxDamage[DiffLvl])));
@@ -131,7 +139,7 @@ namespace Asteroids
         public static void Update()
         {
             foreach (var o in BaseObj) o.Update();
-            foreach (var o in Asteroids) o.Update();
+            foreach (var o in EmpireShips) o.Update();
             foreach (var o in ShipBullets) o.Update();
             foreach (var e in EnemiesBullets) e.Update();
             foreach (var o in Kits) o.Update();
@@ -165,7 +173,7 @@ namespace Asteroids
         private static void InitLists()
         {
             BaseObj = new List<BaseObject>();
-            Asteroids = new List<EmpireShip>(St.EmpireShipsCount[DiffLvl]);
+            EmpireShips = new List<EmpireShip>(St.EmpireShipsCount[DiffLvl]);
             ShipBullets = new List<Bullet>();
             EnemiesBullets = new List<Bullet>();
             Explodes = new List<Explode>(St.EmpireShipsCount[DiffLvl]);
@@ -220,7 +228,7 @@ namespace Asteroids
         /// </summary>
         private static void IsEndLevel()
         {
-            if (Asteroids?.Count == 0 && Ship?.Health > 0) Finish(St.GameComplete, St.Greetings);
+            if (EmpireShips?.Count == 0 && Ship?.Health > 0) Finish(St.GameComplete, St.Greetings);
         }
         private static void UpdateButtons()
         {

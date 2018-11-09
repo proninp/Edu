@@ -62,6 +62,10 @@ namespace Asteroids
         /// </summary>
         public static int[] EmpireShipMinDamage { get; set; } = new int[] { 10, 20, 30 };
         /// <summary>
+        /// Индекс изображения пули корабля Империи
+        /// </summary>
+        public static int EmpireShipBulletIndex { get; set; } = 1;
+        /// <summary>
         /// Количество звезд на поле
         /// </summary>
         public static int StarsCount { get; } = 40;
@@ -125,6 +129,9 @@ namespace Asteroids
         /// Кол-во аптечек на уровень, в зависимости от сложности
         /// </summary>
         public static int[] KitsCount { get; } = new int[] { 3, 2, 1 };
+        /// <summary>
+        /// Шанс появления аптечки
+        /// </summary>
         public static int KitAppearence { get; } = 150;
         #endregion
 
