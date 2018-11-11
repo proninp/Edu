@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Persons
+﻿namespace Persons
 {
     class Employee : Person
     {
@@ -20,7 +14,7 @@ namespace Persons
         /// Конструктор с ЗП
         /// </summary>
         /// <param name="name">Имя</param>
-        /// <param name="surname">Фаимилия</param>
+        /// <param name="surname">Фамилия</param>
         /// <param name="age">Возраст</param>
         /// <param name="salary">Зарплата</param>
         public Employee(string name, string surname, int age, double salary) : this(name, surname, age)
@@ -28,7 +22,7 @@ namespace Persons
             Salary = salary;
         }
         /// <summary>
-        /// переопределенный метод получения средней зарплаты
+        /// Переопределенный метод получения средней зарплаты
         /// </summary>
         /// <returns>Средняя ЗП</returns>
         public override double AvgSalary() => Salary;
