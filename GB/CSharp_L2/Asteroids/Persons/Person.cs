@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Persons
 {
-    public abstract class Person
+    public abstract class Person : IComparable
     {
         public string Name { get; set; }
         public string Surname { get; set; }
@@ -31,6 +27,21 @@ namespace Persons
         /// <summary>
         /// Инфорация
         /// </summary>
-        public abstract void GetInfo();
+        public virtual void GetInfo()
+        {
+            Console.WriteLine(this.ToString());
+        }
+        /// <summary>
+        /// Переопределение ToString()
+        /// </summary>
+        /// <returns>вывод информации</returns>
+        public override string ToString() => $"Сотрудник {Name} {Surname}, возраст: {Age}, среднемесячная оплата: {AvgSalary().ToString("F2")}";
+        /// <summary>
+        /// Реализация компаратора
+        /// </summary>
+        /// <param name="obj">Экземпляр наследника Person</param>
+        /// <returns>Результат сравнения</returns>
+        public virtual int CompareTo(object obj) => ((AvgSalary()) > ((Person)obj).AvgSalary()) ? 1 :
+            ((AvgSalary() < ((Person)obj).AvgSalary()) ? -1 : 0);
     }
 }

@@ -1,15 +1,15 @@
 ﻿namespace Persons
 {
-    class Employee : Person
+    class Outsourcer : Person
     {
-        public double Salary { get; set; }
+        public double SalaryPH { get; set; }
         /// <summary>
         /// Конструктор
         /// </summary>
         /// <param name="name">Имя</param>
         /// <param name="surname">Фамилия</param>
         /// <param name="age">Возраст</param>
-        public Employee(string name, string surname, int age) : base(name, surname, age){ }
+        public Outsourcer(string name, string surname, int age) : base(name, surname, age){ }
         /// <summary>
         /// Конструктор с ЗП
         /// </summary>
@@ -17,14 +17,14 @@
         /// <param name="surname">Фамилия</param>
         /// <param name="age">Возраст</param>
         /// <param name="salary">Зарплата</param>
-        public Employee(string name, string surname, int age, double salary) : this(name, surname, age)
+        public Outsourcer(string name, string surname, int age, double salaryPH) : this(name, surname, age)
         {
-            Salary = salary;
+            SalaryPH = salaryPH;
         }
         /// <summary>
         /// Переопределенный метод получения средней зарплаты
         /// </summary>
         /// <returns>Средняя ЗП</returns>
-        public override double AvgSalary() => Salary;
+        public override double AvgSalary() => SalaryPH * 20.8 * 8;
     }
 }
