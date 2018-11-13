@@ -28,7 +28,7 @@ namespace Asteroids
             get { return health; }
             set
             {
-                health = (value > Settings.SpaceShipMaxHealth ? Settings.SpaceShipMaxHealth : value);
+                health = value > Settings.SpaceShipMaxHealth ? Settings.SpaceShipMaxHealth : (value < 0 ? 0 : value);
                 if (HealthBar != null) HealthBar.Health = health;
             }
         }
