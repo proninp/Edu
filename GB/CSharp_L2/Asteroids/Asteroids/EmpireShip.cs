@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System.Collections.Generic;
+using System.Drawing;
 
 namespace Asteroids
 {
@@ -41,5 +42,15 @@ namespace Asteroids
         /// Смена позиции астероида за пределы экрана
         /// </summary>
         public void Hide() => Pos = new Point(Settings.FieldWidth + Size.Width, rand.Next(0, Settings.FieldHeight - Size.Height));
+        /// <summary>
+        /// Уничтожение корабля противника
+        /// </summary>
+        /// <param name="list">Список кораблей противников</param>
+        /// <param name="i">индекс текущего корабля в списке</param>
+        public void Die(List<EmpireShip> list, int i)
+        {
+            if (Game.Stat != null) Game.Stat.Points += Health; // Вызов отрисовки статистики
+            Del(list, i);
+        }
     }
 }

@@ -21,6 +21,7 @@ namespace Asteroids
         static Form MainForm { get; set; }
         public static BufferedGraphics Buffer { get; set; }
         public static Ship Ship { get; set; }
+        public static Stat Stat { get; set; }
         public static List<BaseObject> BaseObj { get; set; }
         public static List<EmpireShip> EmpireShips { get; set; } // Список астероидов
         public static List<Bullet> PlayerBullets { get; set; } // Список снарядов игрока
@@ -68,7 +69,7 @@ namespace Asteroids
                     {
                         Explodes.Add(new Explode(EmpireShips[i].Pos));
                         Ship.GetDamage(EmpireShips[i].Health);
-                        EmpireShips[i].Del(EmpireShips, i);
+                        EmpireShips[i].Die(EmpireShips, i);
                         continue;
                     }
                     for (int j = PlayerBullets.Count - 1; j >= 0; j--)
@@ -76,7 +77,7 @@ namespace Asteroids
                         {
                             PlayerBullets[j].Del(PlayerBullets, j);
                             Explodes.Add(new Explode(EmpireShips[i].Pos));
-                            EmpireShips[i].Del(EmpireShips, i);
+                            EmpireShips[i].Die(EmpireShips, i);
                             break;
                         }
                 }
@@ -113,6 +114,7 @@ namespace Asteroids
             foreach (var e in Kits) e.Draw();
             foreach (var e in EmpireShips) e.Draw();
             Ship?.Draw();
+            Stat?.Draw();
             Buffer.Render();
         }
         /// <summary>
@@ -140,6 +142,7 @@ namespace Asteroids
                     new Point(Rand.Next(St.AsteroidsDir[DiffLvl][0], St.AsteroidsDir[DiffLvl][1]), i / 2 - 1), 
                     Rand.Next(St.EmpireShipMinDamage[DiffLvl], St.EmpireShipMaxDamage[DiffLvl])));
             Ship = new Ship(St.SpaceShipStartPos, new Point(0, 0), St.SpaceShipMaxHealth, St.SpaceShipMaxEnergy);
+            Stat = new Stat();
         }
         /// <summary>
         /// Обновление каждого объекта
@@ -212,7 +215,7 @@ namespace Asteroids
         /// </summary>
         private static void UpdateKits()
         {
-            if (Kit.KitsCount > 0 && Rand.Next(0, St.KitAppearence) == Rand.Next(0, St.KitAppearence) && Ship?.Health < St.SpaceShipMaxHealth * 0.5) // Создание новых аптечек
+            if (Kit.KitsCount > 0 && Kits.Count == 0 && Rand.Next(0, St.KitAppearence) == Rand.Next(0, St.KitAppearence) && Ship?.Health < St.SpaceShipMaxHealth * 0.5) // Создание новых аптечек
                 Kits.Add(new Kit(new Point(St.FieldMaxWidth - Kit.Img.Size.Width, Rand.Next(Kit.Img.Size.Height, St.FieldMaxHeight - Kit.Img.Size.Height)),
                     new Point(-St.KitDir[DiffLvl], Rand.Next(-St.KitDir[DiffLvl], St.KitDir[DiffLvl]))));
             for (int i = Kits.Count - 1; i >= 0; i--) // Обновление и удаление пропущенных аптечек
@@ -237,10 +240,6 @@ namespace Asteroids
         private static void IsEndLevel()
         {
             if (EmpireShips?.Count == 0 && Ship?.Health > 0) Finish(St.GameComplete, St.Greetings);
-        }
-        private static void UpdateButtons()
-        {
-            foreach (var b in SplashScreen.BtnList) b.Visible = true;
         }
 
     }

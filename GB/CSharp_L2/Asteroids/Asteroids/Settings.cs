@@ -106,9 +106,13 @@ namespace Asteroids
         /// </summary>
         public static Size EnergyBarSize { get; set; } = new Size(200, 12);
         /// <summary>
+        /// Положение отображения статистики
+        /// </summary>
+        public static Point StatPos { get; set; } = new Point(FieldWidth - 100, 10);
+        /// <summary>
         /// Количество энергии, затраченной на выстрел
         /// </summary>
-        public static int[] EnergyCostShoot { get; set; } = new int[] { 2, 4, 6 };
+        public static int[] EnergyCostShoot { get; set; } = new int[] { 6, 12, 20 };
         /// <summary>
         /// Шанс восстановления энергии колеблется в зависимости от уровня сложности
         /// </summary>
@@ -124,7 +128,7 @@ namespace Asteroids
         /// <summary>
         /// Скорость перемещения аптечек в зависимости от сложности
         /// </summary>
-        public static int[] KitDir { get; } = new int[] { 3, 5, 7};
+        public static int[] KitDir { get; } = new int[] { 5, 7, 9};
         /// <summary>
         /// Кол-во аптечек на уровень, в зависимости от сложности
         /// </summary>
@@ -132,7 +136,7 @@ namespace Asteroids
         /// <summary>
         /// Шанс появления аптечки
         /// </summary>
-        public static int KitAppearence { get; } = 150;
+        public static int KitAppearence { get; } = 100;
         #endregion
 
         #region Описания Элементов формы и исключительных ситуаций
