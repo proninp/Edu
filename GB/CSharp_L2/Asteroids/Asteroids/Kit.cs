@@ -11,13 +11,12 @@ namespace Asteroids
         /// Изображение аптечки
         /// </summary>
         public static Image Img { get; set; } = Properties.Resources.R2_D2;
-        public static int KitsCount { get; set; } = Settings.KitsCount[Game.DiffLvl];
         public Kit(Point pos, Point dir): base(pos, dir) { }
         public override void Draw()
         {
             Game.Buffer.Graphics.DrawImage(Img, Pos);
             Rect = new Rectangle(Pos.X, Pos.Y, Img.Size.Width, Img.Size.Height);
-            Health = Game.Rand.Next(-Settings.EmpireShipMaxDamage[Game.DiffLvl], Settings.EmpireShipMinDamage[Game.DiffLvl] * (-2));
+            Health = Game.Rand.Next(-Settings.EmpireShipMaxDamage[Game.DiffLvl], Settings.EmpireShipMinDamage[Game.DiffLvl]);
         }
         public override void Update()
         {

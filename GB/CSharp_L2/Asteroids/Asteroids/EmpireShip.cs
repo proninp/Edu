@@ -31,7 +31,7 @@ namespace Asteroids
             Game.Buffer.Graphics.DrawImage(Images[ImgIndex], Pos);
             Rect = new Rectangle(Pos.X, Pos.Y, Images[ImgIndex].Size.Width, Images[ImgIndex].Size.Height);
             Health = Game.Rand.Next(Settings.EmpireShipMinDamage[Game.DiffLvl], Settings.EmpireShipMaxDamage[Game.DiffLvl]);
-            if (rand.Next(0, 50) == rand.Next(0, 50))
+            if (rand.Next(0, Settings.EmpireShipShotChance[Game.DiffLvl]) == rand.Next(0, Settings.EmpireShipShotChance[Game.DiffLvl]))
                 Game.EnemiesBullets?.Add(new Bullet(
                     new Point(Pos.X - Bullet.Img.Size.Width / 2, Pos.Y + Images[ImgIndex].Size.Height / 4), // Позиция
                     new Point(-15, 0), // Направление движения
@@ -49,7 +49,7 @@ namespace Asteroids
         /// <param name="i">индекс текущего корабля в списке</param>
         public void Die(List<EmpireShip> list, int i)
         {
-            if (Game.Stat != null) Game.Stat.Points += Health; // Вызов отрисовки статистики
+            if (Game.Stats.Count > 0 && Game.Stats[0] != null) Game.Stats[0].StatValue += Health; // Вызов отрисовки статистики
             Del(list, i);
         }
     }

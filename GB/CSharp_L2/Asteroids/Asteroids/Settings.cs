@@ -36,7 +36,7 @@ namespace Asteroids
         /// <summary>
         /// Уровни сложности
         /// </summary>
-        public static int MaxDiffLevels { get; } = 2;
+        public static int MaxDiffLevel { get; } = 2;
         /// <summary>
         /// Минимальный размер звезды
         /// </summary>
@@ -56,11 +56,15 @@ namespace Asteroids
         /// <summary>
         /// Максимальный уровень урона корабля Империи
         /// </summary>
-        public static int[] EmpireShipMaxDamage { get; set; } = new int[] { 40, 50, 60 };
+        public static int[] EmpireShipMaxDamage { get; set; } = new int[] { 30, 40, 50 };
         /// <summary>
         /// Минимальный уровень урона у корабля Империи
         /// </summary>
         public static int[] EmpireShipMinDamage { get; set; } = new int[] { 20, 30, 40 };
+        /// <summary>
+        /// Шанс выстрела корабля соперника
+        /// </summary>
+        public static int[] EmpireShipShotChance { get; set; } = new int[] { 50, 40, 30 };
         /// <summary>
         /// Индекс изображения пули корабля Империи
         /// </summary>
@@ -106,24 +110,36 @@ namespace Asteroids
         /// </summary>
         public static Size EnergyBarSize { get; set; } = new Size(200, 12);
         /// <summary>
-        /// Положение отображения статистики
+        /// Положение отображения статистики счета
         /// </summary>
-        public static Point StatPos { get; set; } = new Point(FieldWidth - 100, 10);
+        public static Point ScoreStatPos { get; set; } = new Point(FieldWidth - 150, 10);
+        /// <summary>
+        /// Положение отображения статистики уровня сложности
+        /// </summary>
+        public static Point LevelStatPos { get; set; } = new Point(FieldWidth - 150, 25);
+        /// <summary>
+        /// Текстовое описание информации о счете игрока
+        /// </summary>
+        public static string ScoreStatText { get; set; } = "Score: ";
+        /// <summary>
+        /// Текстовое описание информации о уровне сложности
+        /// </summary>
+        public static string DiffLevelStatText { get; set; } = "Level: ";
         /// <summary>
         /// Количество энергии, затраченной на выстрел
         /// </summary>
-        public static int[] EnergyCostShoot { get; set; } = new int[] { 6, 12, 20 };
+        public static int[] EnergyCostShoot { get; set; } = new int[] { 6, 8, 10 };
         /// <summary>
         /// Шанс восстановления энергии колеблется в зависимости от уровня сложности
         /// </summary>
-        public static int[] EnergyRecoveryChance { get; set; } = new int[] { 3, 6, 9 };
+        public static int[] EnergyRecoveryChance { get; set; } = new int[] { 3, 4, 5 };
         /// <summary>
         /// Шаг изменения позиции астероидов по уровням сложности
         /// </summary>
         public static Dictionary<int, int[]> AsteroidsDir { get; } = new Dictionary<int, int[]> {
             [0] = new int[] { -10, -5 },
-            [1] = new int[] { -10, 10 },
-            [2] = new int[] { 5, 15 }
+            [1] = new int[] { -12, -5 },
+            [2] = new int[] { -15, -5 }
         };
         /// <summary>
         /// Скорость перемещения аптечек в зависимости от сложности
@@ -136,7 +152,7 @@ namespace Asteroids
         /// <summary>
         /// Шанс появления аптечки
         /// </summary>
-        public static int KitAppearence { get; } = 100;
+        public static int KitAppearence { get; } = 150;
         #endregion
 
         #region Описания Элементов формы и исключительных ситуаций

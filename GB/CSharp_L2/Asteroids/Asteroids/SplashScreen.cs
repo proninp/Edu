@@ -89,6 +89,7 @@ namespace Asteroids
                 if (e.KeyCode == Keys.Down) Game.Ship?.Down(true);
                 if (e.KeyCode == Keys.Left) Game.Ship?.Left(true);
                 if (e.KeyCode == Keys.Right) Game.Ship?.Right(true);
+                if (e.KeyCode == Keys.Escape && Game.GameStarting) Game.Pause();
             };
             form.KeyUp += (object sender, KeyEventArgs e) =>
             {
@@ -99,7 +100,7 @@ namespace Asteroids
                 if (e.KeyCode == Keys.Right) Game.Ship?.Right(false);
             };
             OneMoreGameBtn.Click += (object sender, EventArgs e) => Game.Restart();
-            NewLevelBtn.Click += (object sender, EventArgs e) => Game.ChangeDifficultLevel(Game.DiffLvl++);
+            //NewLevelBtn.Click += (object sender, EventArgs e) => Game.ChangeDifficultLevel(Game.DiffLvl++);
 
             #endregion
         }

@@ -9,14 +9,16 @@ namespace Asteroids
     class Stat : BaseObject
     {
         Graphics Graphics { get; set; }
-        public String Text { get; set; }
-        public int Points { get; set; }
+        public String StatText { get; set; }
+        public string Description { get; set; }
+        public int StatValue { get; set; }
 
-        public  Stat() : base(Settings.StatPos, new Point(0, 0))
+        public Stat(Point pos, string text, int value) : base(pos, new Point(0, 0))
         {
             Graphics = Game.Buffer?.Graphics;
-        Points = 0;
-            Text = $"Score: {Points}";
+            StatValue = value;
+            Description = text;
+            StatText = $"{Description} {StatValue}";
         }
 
         /// <summary>
@@ -24,8 +26,8 @@ namespace Asteroids
         /// </summary>
         public override void Draw()
         {
-            Text = $"Score: {Points}";
-            Graphics?.DrawString(Text, new Font(Settings.MainFont, 10, FontStyle.Bold), Brushes.White, Pos);
+            StatText = $"{Description} {StatValue}";
+            Graphics?.DrawString(StatText, new Font(Settings.MainFont, 10, FontStyle.Bold), Brushes.White, Pos);
         }
     }
 }
