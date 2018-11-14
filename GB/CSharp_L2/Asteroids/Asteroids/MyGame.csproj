@@ -64,6 +64,7 @@
     <Compile Include="Ship.cs" />
     <Compile Include="SplashScreen.cs" />
     <Compile Include="Star.cs" />
+    <Compile Include="Stat.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

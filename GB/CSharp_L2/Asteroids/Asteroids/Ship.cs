@@ -76,6 +76,10 @@ namespace Asteroids
         {
             Pos.X += Dir.X;
             Pos.Y += Dir.Y;
+            if (Pos.X < 0) Pos.X = 0;
+            else if (Pos.X > Game.Width - Img.Width) Pos.X = Game.Width - Img.Width;
+            if (Pos.Y < 0) Pos.Y = 0;
+            else if (Pos.Y > Game.Height - Img.Height * 2) Pos.Y = Game.Height - Img.Height * 2;
             if (fire)
             {
                 if (Energy > 0)
@@ -95,19 +99,19 @@ namespace Asteroids
         /// <summary>
         /// Движение корабля вверх
         /// </summary>
-        public void Up(bool move) => Dir.Y = (move && Pos.Y > Img.Size.Height / 2) ? -Settings.SpaceShipStep : 0;
+        public void Up(bool move) => Dir.Y = (move && Pos.Y > Img.Height / 2) ? -Settings.SpaceShipStep : 0;
         /// <summary>
         /// Движение корабля вниз
         /// </summary>
-        public void Down(bool move) => Dir.Y = (move && Pos.Y < (Settings.FieldHeight - Img.Size.Height * 2)) ? Settings.SpaceShipStep : 0;
+        public void Down(bool move) => Dir.Y = (move && Pos.Y < (Game.Height - Img.Height)) ? Settings.SpaceShipStep : 0;
         /// <summary>
         /// Движение корабля влево
         /// </summary>
-        public void Left(bool move) => Dir.X = (move && Pos.X > Img.Size.Width / 2) ? -Settings.SpaceShipStep : 0;
+        public void Left(bool move) => Dir.X = (move && Pos.X > 0) ? -Settings.SpaceShipStep : 0;
         /// <summary>
         /// Движение корабля вправо
         /// </summary>
-        public void Right(bool move) => Dir.X = (move && Pos.X < (Settings.FieldMaxWidth - Img.Size.Width)) ? Settings.SpaceShipStep : 0;
+        public void Right(bool move) => Dir.X = (move && Pos.X < (Game.Width - Img.Width)) ? Settings.SpaceShipStep : 0;
         /// <summary>
         /// Метод получения кораблём урона
         /// </summary>

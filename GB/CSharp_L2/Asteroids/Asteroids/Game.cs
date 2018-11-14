@@ -10,8 +10,6 @@ namespace Asteroids
      * Пронин П.С.
      * В данной игре вместо астероидов представлены корабли Империи из фильма "Star Wars"
      * TODO:
-     * Вывести счет игрока на экран
-     * Доработать систему усложнения игры с увеличением счета игрока
      * Доработать главное меню, добавить возможность ставить игру на паузу
      * Доработать систему рекордов
      */
@@ -21,6 +19,7 @@ namespace Asteroids
         static Form MainForm { get; set; }
         public static BufferedGraphics Buffer { get; set; }
         public static Ship Ship { get; set; }
+        public static List<Stat> Stats { get; set; }
         public static List<BaseObject> BaseObj { get; set; }
         public static List<EmpireShip> EmpireShips { get; set; } // Список астероидов
         public static List<Bullet> PlayerBullets { get; set; } // Список снарядов игрока
@@ -33,7 +32,7 @@ namespace Asteroids
         public static int DiffLvl { get; set; } = 0; // Уровень сложности (0, 1, 2)
         public static int Width { get; set; }
         public static int Height { get; set; }
-        public static bool GameStart { get; set; }
+        public static bool GameStarting { get; set; }
         /// <summary>
         /// инициализация формы
         /// </summary>
@@ -68,7 +67,7 @@ namespace Asteroids
                     {
                         Explodes.Add(new Explode(EmpireShips[i].Pos));
                         Ship.GetDamage(EmpireShips[i].Health);
-                        EmpireShips[i].Del(EmpireShips, i);
+                        EmpireShips[i].Die(EmpireShips, i);
                         continue;
                     }
                     for (int j = PlayerBullets.Count - 1; j >= 0; j--)
@@ -76,7 +75,7 @@ namespace Asteroids
                         {
                             PlayerBullets[j].Del(PlayerBullets, j);
                             Explodes.Add(new Explode(EmpireShips[i].Pos));
-                            EmpireShips[i].Del(EmpireShips, i);
+                            EmpireShips[i].Die(EmpireShips, i);
                             break;
                         }
                 }
@@ -101,7 +100,6 @@ namespace Asteroids
                 for (int i = Kits.Count - 1; i >= 0; i--)
                     if (Ship != null && Kits[i].Collision(Ship)) // Проверка столкновения аптечки с кораблём
                     {
-                        Kit.KitsCount--;
                         Ship.GetDamage(Kits[i].Health);
                         Kits[i].Del(Kits, i);
                     }
@@ -112,6 +110,7 @@ namespace Asteroids
             foreach (var e in Explodes) e.Draw();
             foreach (var e in Kits) e.Draw();
             foreach (var e in EmpireShips) e.Draw();
+            foreach (var e in Stats) e.Draw();
             Ship?.Draw();
             Buffer.Render();
         }
@@ -133,13 +132,22 @@ namespace Asteroids
         /// </summary>
         public static void BasicLoad()
         {
-            GameStart = true;
+            GameStarting = true;
+            CreateEnemiesShips();
+            Ship = new Ship(St.SpaceShipStartPos, new Point(0, 0), St.SpaceShipMaxHealth, St.SpaceShipMaxEnergy);
+            Stats.Add(new Stat(St.ScoreStatPos, St.ScoreStatText, 0));
+            Stats.Add(new Stat(St.LevelStatPos, St.DiffLevelStatText, 1));
+        }
+        /// <summary>
+        /// Заполнениее списка кораблей - противников новыми экземплярами
+        /// </summary>
+        public static void CreateEnemiesShips()
+        {
             for (int i = 0; i < St.EmpireShipsCount[DiffLvl]; i++)
                 EmpireShips.Add(new EmpireShip(
-                    new Point(Rand.Next(St.SpaceShipStartPos.X + 300, St.FieldWidth), Rand.Next(St.EmpireShipAvgHeight, St.FieldHeight- St.EmpireShipAvgHeight)), 
-                    new Point(Rand.Next(St.AsteroidsDir[DiffLvl][0], St.AsteroidsDir[DiffLvl][1]), i / 2 - 1), 
+                    new Point(Width + Rand.Next(50, 100), Rand.Next(50, Height)),
+                    new Point(Rand.Next(St.AsteroidsDir[DiffLvl][0], St.AsteroidsDir[DiffLvl][1]), i / 2 * (Rand.Next(0, 2) * 2 - 1)),
                     Rand.Next(St.EmpireShipMinDamage[DiffLvl], St.EmpireShipMaxDamage[DiffLvl])));
-            Ship = new Ship(St.SpaceShipStartPos, new Point(0, 0), St.SpaceShipMaxHealth, St.SpaceShipMaxEnergy);
         }
         /// <summary>
         /// Обновление каждого объекта
@@ -186,6 +194,7 @@ namespace Asteroids
             EnemiesBullets = new List<Bullet>();
             Explodes = new List<Explode>(St.EmpireShipsCount[DiffLvl]);
             Kits = new List<Kit>();
+            Stats = new List<Stat>();
         }
         /// <summary>
         /// Конец игры
@@ -193,6 +202,7 @@ namespace Asteroids
         public static void Finish(string message, string messageHeader)
         {
             Timer.Stop();
+            GameStarting = false;
             if (MessageBox.Show(message, messageHeader, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes) Application.Exit();
             else Restart();
         }
@@ -207,12 +217,18 @@ namespace Asteroids
             Init(MainForm);
             foreach (var e in SplashScreen.BtnList) e.Visible = true;
         }
+        public static void LevelUp()
+        {
+            if (Stats.Count > 1)
+                Stats[1].StatValue += ++DiffLvl; // Стататистика уровня слложности
+            CreateEnemiesShips();
+        }
         /// <summary>
         /// Создание и удаление аптечек
         /// </summary>
         private static void UpdateKits()
         {
-            if (Kit.KitsCount > 0 && Rand.Next(0, St.KitAppearence) == Rand.Next(0, St.KitAppearence) && Ship?.Health < St.SpaceShipMaxHealth * 0.5) // Создание новых аптечек
+            if (Kits.Count == 0 && Rand.Next(0, St.KitAppearence) == Rand.Next(0, St.KitAppearence) && Ship?.Health < St.SpaceShipMaxHealth * 0.5) // Создание новых аптечек
                 Kits.Add(new Kit(new Point(St.FieldMaxWidth - Kit.Img.Size.Width, Rand.Next(Kit.Img.Size.Height, St.FieldMaxHeight - Kit.Img.Size.Height)),
                     new Point(-St.KitDir[DiffLvl], Rand.Next(-St.KitDir[DiffLvl], St.KitDir[DiffLvl]))));
             for (int i = Kits.Count - 1; i >= 0; i--) // Обновление и удаление пропущенных аптечек
@@ -222,25 +238,18 @@ namespace Asteroids
             }
         }
         /// <summary>
-        /// Смена уровня сложности
-        /// </summary>
-        /// <param name="lvl">Уровень сложности</param>
-        public static void ChangeDifficultLevel(int lvl)
-        {
-            DiffLvl = lvl;
-            Kit.KitsCount = St.KitsCount[DiffLvl];
-            Restart();
-        }
-        /// <summary>
         /// Определяем прохождение текущего уровня
         /// </summary>
         private static void IsEndLevel()
         {
-            if (EmpireShips?.Count == 0 && Ship?.Health > 0) Finish(St.GameComplete, St.Greetings);
+            if (EmpireShips?.Count == 0 && Ship?.Health > 0)
+                if (DiffLvl == St.MaxDiffLevel) Finish(St.GameComplete, St.Greetings);
+                else LevelUp();
         }
-        private static void UpdateButtons()
+        public static void Pause()
         {
-            foreach (var b in SplashScreen.BtnList) b.Visible = true;
+            if (Timer.Enabled) Timer.Stop();
+            else Timer.Start();
         }
 
     }
