@@ -14,7 +14,7 @@ namespace Asteroids
         /// <summary>
         /// Лимит выхода объекта за пределы экрана
         /// </summary>
-        static readonly int beyoundLim = 50;
+        static readonly int beyoundLim = 101;
         /// <summary>
         /// Позиция
         /// </summary>
@@ -86,9 +86,10 @@ namespace Asteroids
         {
             Pos.X += Dir.X;
             Pos.Y += Dir.Y;
-            if (Pos.X < -beyoundLim) Pos.X = Game.Width;
+            if (Pos.X < -beyoundLim) Pos.X = Game.Width + beyoundLim - 1;
+            if (Pos.X > (Game.Width + beyoundLim)) Pos.X = -beyoundLim + 1;
             if (Pos.Y > Game.Height + beyoundLim) Pos.Y = 0;
-            if (Pos.X > (Game.Width + beyoundLim)) Pos.X = 0;
+            
             if (Pos.Y < -beyoundLim) Pos.Y = Game.Height;
         }
         /// <summary>
