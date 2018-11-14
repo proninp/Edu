@@ -100,8 +100,6 @@ namespace Asteroids
                 if (e.KeyCode == Keys.Right) Game.Ship?.Right(false);
             };
             OneMoreGameBtn.Click += (object sender, EventArgs e) => Game.Restart();
-            //NewLevelBtn.Click += (object sender, EventArgs e) => Game.ChangeDifficultLevel(Game.DiffLvl++);
-
             #endregion
         }
         public static int GetStartPos() => Settings.FieldHeight / 2 - (BtnList.Count * Settings.ButtonSize.Height + (BtnList.Count - 1) * Settings.HeightBetweenButtons);

@@ -246,6 +246,9 @@ namespace Asteroids
                 if (DiffLvl == St.MaxDiffLevel) Finish(St.GameComplete, St.Greetings);
                 else LevelUp();
         }
+        /// <summary>
+        /// Ставим игру на паузу
+        /// </summary>
         public static void Pause()
         {
             if (Timer.Enabled) Timer.Stop();
