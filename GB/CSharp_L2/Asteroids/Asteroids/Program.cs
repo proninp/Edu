@@ -27,7 +27,7 @@ namespace Asteroids
             form.MaximumSize = form.Size;
             form.BackgroundImage = Game.SpaceImg;
             Game.Init(form);
-            SplashScreen.Greeting(form);
+            SplashScreen.ControlsInit(form);
             form.Show();
             Game.Draw();
             Application.Run(form);

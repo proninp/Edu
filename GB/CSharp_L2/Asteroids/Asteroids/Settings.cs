@@ -30,11 +30,19 @@ namespace Asteroids
         /// Высота между кнопками
         /// </summary>
         public static int HeightBetweenButtons { get; } = 40;
+        /// <summary>
+        /// Размер лэйбла паузы
+        /// </summary>
+        public static Size PauseLblSize { get; } = new Size(150, 50);
         #endregion
 
         #region Настройки элементов игры
         /// <summary>
-        /// Уровни сложности
+        /// Минимальный уровень сложности
+        /// </summary>
+        public static int MinDiffLevel { get; } = 0;
+        /// <summary>
+        /// Максимальный уровень сложности
         /// </summary>
         public static int MaxDiffLevel { get; } = 2;
         /// <summary>
@@ -48,7 +56,11 @@ namespace Asteroids
         /// <summary>
         /// Количество кораблей Империи на игровом поле
         /// </summary>
-        public static int[] EmpireShipsCount { get; set; } = new int[] { 12, 15, 20 };
+        public static int[] EmpireShipsCount { get; set; } = new int[] { 20, 22, 25 };
+        /// <summary>
+        /// Шанс создания нового вражеского корабля
+        /// </summary>
+        public static int[] EmpireShipsCreatingChance { get; set; } = new int[] { 12, 10, 8 };
         /// <summary>
         /// Усредненное значение высоты корабля Империи
         /// </summary>

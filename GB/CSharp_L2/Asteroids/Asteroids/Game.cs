@@ -29,7 +29,7 @@ namespace Asteroids
         public static Random Rand { get; set; }
         public static Image SpaceImg { get; set; } = Properties.Resources.background;
         private static Timer Timer = new Timer { Interval = 80 };
-        public static int DiffLvl { get; set; } = 0; // Уровень сложности (0, 1, 2)
+        public static int DiffLvl { get; set; } // Уровень сложности (0, 1, 2)
         public static int Width { get; set; }
         public static int Height { get; set; }
         public static bool GameStarting { get; set; }
@@ -58,6 +58,7 @@ namespace Asteroids
         public static void Draw()
         {
             Buffer.Graphics.DrawImage(SpaceImg, new Point(0, 0)); // Отрисовка фона
+            CreateEnemiesShips();
             foreach (var e in BaseObj) e.Draw();
             if (Ship != null)
             {
@@ -121,6 +122,9 @@ namespace Asteroids
         public static void InitialLoad()
         {
             InitLists();
+            DiffLvl = St.MinDiffLevel;
+            EmpireShip.DestroyedShips = 0; // Обнуляем кол-во сбитых кораблей - противников
+            EmpireShip.CreatedShips = 0; // Обнуляем кол-во созданных кораблей - противников
             for (int i = 0; i < St.StarsCount; i++)
                 BaseObj.Add(new Star(new Point(Rand.Next(0, St.FieldWidth),Rand.Next(10, St.FieldHeight)),
                     new Point(i % 20 - 1, 0),
@@ -133,7 +137,6 @@ namespace Asteroids
         public static void BasicLoad()
         {
             GameStarting = true;
-            CreateEnemiesShips();
             Ship = new Ship(St.SpaceShipStartPos, new Point(0, 0), St.SpaceShipMaxHealth, St.SpaceShipMaxEnergy);
             Stats.Add(new Stat(St.ScoreStatPos, St.ScoreStatText, 0));
             Stats.Add(new Stat(St.LevelStatPos, St.DiffLevelStatText, 1));
@@ -143,10 +146,10 @@ namespace Asteroids
         /// </summary>
         public static void CreateEnemiesShips()
         {
-            for (int i = 0; i < St.EmpireShipsCount[DiffLvl]; i++)
+            if (GameStarting && (EmpireShip.CreatedShips < St.EmpireShipsCount[DiffLvl]) && (Rand.Next(St.EmpireShipsCreatingChance[DiffLvl]) == Rand.Next(St.EmpireShipsCreatingChance[DiffLvl])))
                 EmpireShips.Add(new EmpireShip(
                     new Point(Width + Rand.Next(50, 100), Rand.Next(50, Height)),
-                    new Point(Rand.Next(St.AsteroidsDir[DiffLvl][0], St.AsteroidsDir[DiffLvl][1]), i / 2 * (Rand.Next(0, 2) * 2 - 1)),
+                    new Point(Rand.Next(St.AsteroidsDir[DiffLvl][0], St.AsteroidsDir[DiffLvl][1]), (EmpireShip.DestroyedShips + 2) / 2 * (Rand.Next(0, 2) * 2 - 1)),
                     Rand.Next(St.EmpireShipMinDamage[DiffLvl], St.EmpireShipMaxDamage[DiffLvl])));
         }
         /// <summary>
@@ -219,9 +222,9 @@ namespace Asteroids
         }
         public static void LevelUp()
         {
-            if (Stats.Count > 1)
-                Stats[1].StatValue = ++DiffLvl + 1; // Стататистика уровня слложности
-            CreateEnemiesShips();
+            EmpireShip.DestroyedShips = 0;
+            EmpireShip.CreatedShips = 0;
+            if (Stats.Count > 1) Stats[1].StatValue = ++DiffLvl + 1; // Стататистика уровня слложности
         }
         /// <summary>
         /// Создание и удаление аптечек
@@ -242,7 +245,7 @@ namespace Asteroids
         /// </summary>
         private static void IsEndLevel()
         {
-            if (EmpireShips?.Count == 0 && Ship?.Health > 0)
+            if (St.EmpireShipsCount[DiffLvl] == EmpireShip.DestroyedShips && Ship?.Health > 0)
                 if (DiffLvl == St.MaxDiffLevel) Finish(St.GameComplete, St.Greetings);
                 else LevelUp();
         }
@@ -253,6 +256,7 @@ namespace Asteroids
         {
             if (Timer.Enabled) Timer.Stop();
             else Timer.Start();
+
         }
     }
 }

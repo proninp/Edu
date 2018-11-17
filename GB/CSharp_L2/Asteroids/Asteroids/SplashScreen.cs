@@ -54,13 +54,26 @@ namespace Asteroids
             FlatStyle = FlatStyle.Popup,
             Location = new Point(Settings.FieldWidth / 2 - Settings.ButtonSize.Width / 2, 10)
         };
-        public static void Greeting(Form form)
+        // Лэйбл Паузы
+        public static Label PauseLbl = new Label()
+        {
+            Text = "Pause",
+            Visible = false,
+            Font = new Font(Settings.MainFont, 24, FontStyle.Bold),
+            Size = Settings.PauseLblSize,
+            TextAlign = ContentAlignment.TopLeft,
+            ForeColor = Color.White,
+            Location = new Point(Settings.FieldWidth / 2 - Settings.PauseLblSize.Width / 2, Settings.FieldHeight / 2 - Settings.PauseLblSize.Height),
+            BackColor = Color.Transparent
+        };
+        public static void ControlsInit(Form form)
         {
             BtnList.Clear();
             BtnList.Add(StartGameBtn);
             BtnList.Add(ExitBtn);
             form.Controls.Add(OneMoreGameBtn);
             form.Controls.Add(NewLevelBtn);
+            form.Controls.Add(PauseLbl);
             for (int i = 0; i < BtnList.Count; i++)
             {
                 int startPos = GetStartPos();
@@ -89,7 +102,11 @@ namespace Asteroids
                 if (e.KeyCode == Keys.Down) Game.Ship?.Down(true);
                 if (e.KeyCode == Keys.Left) Game.Ship?.Left(true);
                 if (e.KeyCode == Keys.Right) Game.Ship?.Right(true);
-                if (e.KeyCode == Keys.Escape && Game.GameStarting) Game.Pause();
+                if (e.KeyCode == Keys.Escape && Game.GameStarting)
+                {
+                    Game.Pause();
+                    PauseLbl.Visible = !PauseLbl.Visible;
+                }
             };
             form.KeyUp += (object sender, KeyEventArgs e) =>
             {

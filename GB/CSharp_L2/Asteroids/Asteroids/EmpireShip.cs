@@ -6,6 +6,11 @@ namespace Asteroids
     class EmpireShip: BaseObject
     {
         /// <summary>
+        /// Кораблей сбито
+        /// </summary>
+        public static int DestroyedShips { get; set; } = 0;
+        public static int CreatedShips { get; set; } = 0;
+        /// <summary>
         /// Массив возможных изображений астероидов
         /// </summary>
         public static Image[] Images { get; set; } = new Image[4]
@@ -15,6 +20,9 @@ namespace Asteroids
             Properties.Resources.TIE_Interceptor_1,
             Properties.Resources.TIE_Interceptor_2
         };
+        /// <summary>
+        /// Индекс изображения для отрисовки корабля
+        /// </summary>
         int ImgIndex { get; set; } = rand.Next(0, Images.Length);
         /// <summary>
         /// Конструктор объекта Астероид
@@ -22,7 +30,7 @@ namespace Asteroids
         /// <param name="pos">Позиция</param>
         /// <param name="dir">Шаг изменения позиции</param>
         /// <param name="power">Урок астероида</param>
-        public EmpireShip(Point pos, Point dir, int power) : base(pos, dir, power) { }
+        public EmpireShip(Point pos, Point dir, int power) : base(pos, dir, power) { CreatedShips++; }
         /// <summary>
         /// Метод отрисовки астероида, в который попал снаряд
         /// </summary>
@@ -50,6 +58,7 @@ namespace Asteroids
         public void Die(List<EmpireShip> list, int i)
         {
             if (Game.Stats.Count > 0 && Game.Stats[0] != null) Game.Stats[0].StatValue += Health; // Вызов отрисовки статистики
+            DestroyedShips++;
             Del(list, i);
         }
     }
