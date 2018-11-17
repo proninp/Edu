@@ -220,7 +220,7 @@ namespace Asteroids
         public static void LevelUp()
         {
             if (Stats.Count > 1)
-                Stats[1].StatValue += ++DiffLvl; // Стататистика уровня слложности
+                Stats[1].StatValue = ++DiffLvl + 1; // Стататистика уровня слложности
             CreateEnemiesShips();
         }
         /// <summary>
@@ -254,6 +254,5 @@ namespace Asteroids
             if (Timer.Enabled) Timer.Stop();
             else Timer.Start();
         }
-
     }
 }
