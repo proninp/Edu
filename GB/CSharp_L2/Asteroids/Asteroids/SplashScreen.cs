@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using System.Drawing;
 using System.Collections.Generic;
 using System.Linq;
+using System.IO;
 
 namespace Asteroids
 {
@@ -15,7 +16,6 @@ namespace Asteroids
             Name = Settings.ButtonNames[0],
             Size = Settings.ButtonSize,
             Text = Settings.GameStart,
-            //Visible = true,
             Font = new Font(Settings.MainFont, 18F, FontStyle.Italic),
             ForeColor = Color.White,
             BackColor = Color.Transparent,
@@ -28,7 +28,6 @@ namespace Asteroids
             Name = Settings.ButtonNames[1],
             Size = Settings.ButtonSize,
             Text = Settings.GameEnd,
-            //Visible = true,
             Font = new Font(Settings.MainFont, 18F, FontStyle.Italic),
             ForeColor = Color.White,
             BackColor = Color.Transparent,
@@ -41,7 +40,6 @@ namespace Asteroids
             Name = Settings.ButtonNames[2],
             Size = Settings.ButtonSize,
             Text = Settings.GameContinue,
-            //Visible = false,
             Font = new Font(Settings.MainFont, 18F, FontStyle.Italic),
             ForeColor = Color.White,
             BackColor = Color.Transparent,
@@ -54,25 +52,16 @@ namespace Asteroids
             Name = Settings.ButtonNames[3],
             Size = Settings.ButtonSize,
             Text = Settings.Records,
-            //Visible = true,
             Font = new Font(Settings.MainFont, 18F, FontStyle.Italic),
             ForeColor = Color.White,
             BackColor = Color.Transparent,
             FlatStyle = FlatStyle.Popup,
             Location = new Point(Settings.FieldWidth / 2 - Settings.ButtonSize.Width / 2, 10)
         };
-        // Лэйбл Паузы
-        public static Label PauseLbl = new Label()
-        {
-            Text = "Pause",
-            //Visible = false,
-            Font = new Font(Settings.MainFont, 24, FontStyle.Bold),
-            Size = Settings.PauseLblSize,
-            TextAlign = ContentAlignment.TopLeft,
-            ForeColor = Color.White,
-            Location = new Point(Settings.FieldWidth / 2 - Settings.PauseLblSize.Width / 2, Settings.FieldHeight / 2 - Settings.PauseLblSize.Height),
-            BackColor = Color.Transparent
-        };
+        /// <summary>
+        /// Метод инициализации событий и добавления кнопок на основую форму
+        /// </summary>
+        /// <param name="form">Основная форма</param>
         public static void ControlsInit(Form form)
         {
             BtnList.Clear();
@@ -89,12 +78,22 @@ namespace Asteroids
                 ShowMenu(form, false);
                 if (MessageBox.Show("Игра началась!\n" + Settings.GameRules, $"Привет, {Settings.UserName}!",
                     MessageBoxButtons.OK, MessageBoxIcon.Asterisk) == DialogResult.OK)
-                    Game.BasicLoad();
+                    Game.Restart();
             };
             // Событие нажатия "Выход"
             ExitBtn.Click += (object sender, EventArgs e) =>
             {
                 if (MessageBox.Show("Вы уверены, что хотите выйти?", "Выход", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes) Application.Exit();
+            };
+            // Событие нажатия "Продолжить игру"
+            GameContinueBtn.Click += (object sender, EventArgs e) =>
+            {
+                if (Game.GameStarting) { Game.Pause(); form.Focus(); }
+            };
+            // Событие нажатия "Продолжить игру"
+            RecordsBtn.Click += (object sender, EventArgs e) =>
+            {
+                ShowRecordsFile();
             };
             // Событие нажатия клавиш
             form.KeyDown += (object sender, KeyEventArgs e) =>
@@ -107,7 +106,6 @@ namespace Asteroids
                 if (e.KeyCode == Keys.Escape && Game.GameStarting)
                 {
                     Game.Pause();
-                    PauseLbl.Visible = !PauseLbl.Visible;
                 }
             };
             form.KeyUp += (object sender, KeyEventArgs e) =>
@@ -132,19 +130,38 @@ namespace Asteroids
         /// <param name="isShow">Показать меню</param>
         public static void ShowMenu(Form form, bool isShow)
         {
-            int startPos = GetStartPos();
-            int deltaHeight = 0;
             for (int i = 0; i < BtnList.Count; i++)
             {
                 BtnList[i].Visible = isShow;
-                if (BtnList[i].Name == Settings.ButtonNames[2] && isShow)
-                    BtnList[i].Visible = Game.GameStarting; // Продолжить игру
+                if (BtnList[i].Name == Settings.ButtonNames[2]) BtnList[i].Visible = Game.GameStarting && isShow; // Продолжить игру
+            }
+            int startPos = GetStartPos();
+            int deltaHeight = 0;
+            for (int i = 0; i < BtnList.Count; i++)
                 if (BtnList[i].Visible)
                 {
                     BtnList[i].Location = new Point(BtnList[i].Location.X, startPos + deltaHeight);
                     deltaHeight += Settings.ButtonSize.Height + Settings.HeightBetweenButtons;
                 }
-            }
+        }
+        /// <summary>
+        /// Отображение статистики рекордов
+        /// </summary>
+        public static void ShowRecordsFile()
+        {
+            string text = Settings.RecordsInitString;
+            if (Properties.Resources.FirstPlace != "")
+                text += Settings.RecordsFirst + Properties.Resources.FirstPlace;
+            if (Properties.Resources.SecondPlace != "")
+                text += "\n" + Settings.RecordsSecond + Properties.Resources.SecondPlace;
+            if (Properties.Resources.ThirdPlace != "")
+                text += "\n" + Settings.RecordsThird + Properties.Resources.ThirdPlace;
+            if (Properties.Resources.FourthPlace != "")
+                text += "\n" + Settings.RecordsFourth + Properties.Resources.FourthPlace;
+            if (Properties.Resources.FifthPlace != "")
+                text += "\n" + Settings.RecordsFifth + Properties.Resources.FifthPlace;
+            File.WriteAllText(Directory.GetCurrentDirectory() + "\\Records.txt", text);
+            if (File.Exists(Directory.GetCurrentDirectory() + "\\Records.txt")) File.OpenText(Directory.GetCurrentDirectory() + "\\Records.txt");
         }
     }
 }

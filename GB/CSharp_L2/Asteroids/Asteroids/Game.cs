@@ -218,7 +218,8 @@ namespace Asteroids
             Ship = null;
             Timer.Tick -= Timer_Tick;
             Init(MainForm);
-            foreach (var e in SplashScreen.BtnList) e.Visible = true;
+            BasicLoad();
+            //foreach (var e in SplashScreen.BtnList) e.Visible = true;
         }
         public static void LevelUp()
         {
@@ -254,9 +255,16 @@ namespace Asteroids
         /// </summary>
         public static void Pause()
         {
-            if (Timer.Enabled) Timer.Stop();
-            else Timer.Start();
-
+            if (Timer.Enabled)
+            {
+                SplashScreen.ShowMenu(MainForm, Timer.Enabled);
+                Timer.Stop();
+            }
+            else
+            {
+                SplashScreen.ShowMenu(MainForm, Timer.Enabled);
+                Timer.Start();
+            }
         }
     }
 }

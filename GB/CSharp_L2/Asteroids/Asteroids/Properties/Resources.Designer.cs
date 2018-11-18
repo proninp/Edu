@@ -181,6 +181,33 @@ namespace Asteroids.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на .
+        /// </summary>
+        internal static string FifthPlace {
+            get {
+                return ResourceManager.GetString("FifthPlace", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на .
+        /// </summary>
+        internal static string FirstPlace {
+            get {
+                return ResourceManager.GetString("FirstPlace", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на .
+        /// </summary>
+        internal static string FourthPlace {
+            get {
+                return ResourceManager.GetString("FourthPlace", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap R2_D2 {
@@ -211,6 +238,15 @@ namespace Asteroids.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на .
+        /// </summary>
+        internal static string SecondPlace {
+            get {
+                return ResourceManager.GetString("SecondPlace", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap stormtrooper {
@@ -237,6 +273,15 @@ namespace Asteroids.Properties {
             get {
                 object obj = ResourceManager.GetObject("The_Death_Star_Damaged", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на .
+        /// </summary>
+        internal static string ThirdPlace {
+            get {
+                return ResourceManager.GetString("ThirdPlace", resourceCulture);
             }
         }
         

@@ -234,6 +234,17 @@ namespace Asteroids
         /// Вы успешно завершили игру! Сыграть еще раз?
         /// </summary>
         public static string RestartOrQuit { get; } = "Сыграть еще раз или выйти?\nСыграть еще раз?";
+        /// <summary>
+        /// Начало строки с рекордами
+        /// </summary>
+        public static string RecordsInitString { get; } = "--==  РЕКОРДЫ  ==--\n";
+        #region Описание порядковых номеров рекордов
+        public static string RecordsFirst{ get; } = "Первое место: ";
+        public static string RecordsSecond { get; } = "Второе место: ";
+        public static string RecordsThird { get; } = "Третье место: ";
+        public static string RecordsFourth { get; } = "Четвертое место: ";
+        public static string RecordsFifth { get; } = "Пятое место: ";
+        #endregion
         #endregion
     }
 }
