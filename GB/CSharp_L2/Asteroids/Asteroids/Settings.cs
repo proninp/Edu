@@ -25,7 +25,7 @@ namespace Asteroids
         /// <summary>
         /// Размер кнопок
         /// </summary>
-        public static Size ButtonSize { get; set; } = new Size(200, 50);
+        public static Size ButtonSize { get; set; } = new Size(250, 50);
         /// <summary>
         /// Высота между кнопками
         /// </summary>
@@ -34,6 +34,7 @@ namespace Asteroids
         /// Размер лэйбла паузы
         /// </summary>
         public static Size PauseLblSize { get; } = new Size(150, 50);
+        public static string[] ButtonNames { get; set; } = { "NewGame", "Exit", "Continue", "Records" };
         #endregion
 
         #region Настройки элементов игры
@@ -175,15 +176,15 @@ namespace Asteroids
         /// <summary>
         /// Текст кнопки старта игры
         /// </summary>
-        public static string GameStart { get; set; } = "Начать игру";
+        public static string GameStart { get; set; } = "Новая игра";
         /// <summary>
         /// Перейти на новый уровень
         /// </summary>
-        public static string GameNextLvl { get; set; } = "Новый уровень";
+        public static string GameContinue { get; set; } = "Продолжить игру";
         /// <summary>
         /// Сыграть еще раз
         /// </summary>
-        public static string GamePlayOneMore { get; set; } = "Сыграть еще раз";
+        public static string Records { get; set; } = "Рекорды";
         /// <summary>
         /// Текст сообщения при старте
         /// </summary>

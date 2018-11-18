@@ -2,17 +2,20 @@
 using System.Windows.Forms;
 using System.Drawing;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Asteroids
 {
     class SplashScreen
     {
         public static List<Button> BtnList { get; set; } = new List<Button>(); // Список кнопок формы
-        // Кнопка "Начать игру"
-        public static Button StartGameBtn = new Button()
+        // Кнопка "Новая игра"
+        public static Button NewGameBtn = new Button()
         {
+            Name = Settings.ButtonNames[0],
             Size = Settings.ButtonSize,
             Text = Settings.GameStart,
+            //Visible = true,
             Font = new Font(Settings.MainFont, 18F, FontStyle.Italic),
             ForeColor = Color.White,
             BackColor = Color.Transparent,
@@ -22,32 +25,36 @@ namespace Asteroids
         // Кнопка "Выйти"
         public static Button ExitBtn = new Button()
         {
+            Name = Settings.ButtonNames[1],
             Size = Settings.ButtonSize,
             Text = Settings.GameEnd,
+            //Visible = true,
             Font = new Font(Settings.MainFont, 18F, FontStyle.Italic),
             ForeColor = Color.White,
             BackColor = Color.Transparent,
             FlatStyle = FlatStyle.Popup,
             Location = new Point(Settings.FieldWidth / 2 - Settings.ButtonSize.Width / 2, 10)
         };
-        // Кнопка "Перейти на новый уровень"
-        public static Button NewLevelBtn = new Button()
+        // Кнопка "Продолжить игру"
+        public static Button GameContinueBtn = new Button()
         {
+            Name = Settings.ButtonNames[2],
             Size = Settings.ButtonSize,
-            Text = Settings.GameNextLvl,
-            Visible = false,
+            Text = Settings.GameContinue,
+            //Visible = false,
             Font = new Font(Settings.MainFont, 18F, FontStyle.Italic),
             ForeColor = Color.White,
             BackColor = Color.Transparent,
             FlatStyle = FlatStyle.Popup,
             Location = new Point(Settings.FieldWidth / 2 - Settings.ButtonSize.Width / 2, 10)
-        }; 
-        // Кнопка "Сыграть еще раз"
-        public static Button OneMoreGameBtn = new Button()
+        };
+        // Кнопка "Рекорды"
+        public static Button RecordsBtn = new Button()
         {
+            Name = Settings.ButtonNames[3],
             Size = Settings.ButtonSize,
-            Text = Settings.GamePlayOneMore,
-            Visible = false,
+            Text = Settings.Records,
+            //Visible = true,
             Font = new Font(Settings.MainFont, 18F, FontStyle.Italic),
             ForeColor = Color.White,
             BackColor = Color.Transparent,
@@ -58,7 +65,7 @@ namespace Asteroids
         public static Label PauseLbl = new Label()
         {
             Text = "Pause",
-            Visible = false,
+            //Visible = false,
             Font = new Font(Settings.MainFont, 24, FontStyle.Bold),
             Size = Settings.PauseLblSize,
             TextAlign = ContentAlignment.TopLeft,
@@ -69,23 +76,18 @@ namespace Asteroids
         public static void ControlsInit(Form form)
         {
             BtnList.Clear();
-            BtnList.Add(StartGameBtn);
+            BtnList.Add(GameContinueBtn);
+            BtnList.Add(NewGameBtn);
+            BtnList.Add(RecordsBtn);
             BtnList.Add(ExitBtn);
-            form.Controls.Add(OneMoreGameBtn);
-            form.Controls.Add(NewLevelBtn);
-            form.Controls.Add(PauseLbl);
-            for (int i = 0; i < BtnList.Count; i++)
-            {
-                int startPos = GetStartPos();
-                BtnList[i].Location = new Point(BtnList[i].Location.X, startPos + (i * Settings.ButtonSize.Height) + (i * Settings.HeightBetweenButtons));
-                form.Controls.Add(BtnList[i]);
-            }
+            ShowMenu(form, true); // Показать меню
+            foreach (var b in BtnList) form.Controls.Add(b);
             #region Описание событий
             // Событие нажатия "Начать игру"
-            StartGameBtn.Click += (object sender, EventArgs e) =>
+            NewGameBtn.Click += (object sender, EventArgs e) =>
             {
-                foreach (var b in BtnList) b.Visible = false;
-                if (MessageBox.Show("Игра началась!\n" + Settings.GameRules, $"Привет, {Settings.UserName}!", 
+                ShowMenu(form, false);
+                if (MessageBox.Show("Игра началась!\n" + Settings.GameRules, $"Привет, {Settings.UserName}!",
                     MessageBoxButtons.OK, MessageBoxIcon.Asterisk) == DialogResult.OK)
                     Game.BasicLoad();
             };
@@ -116,9 +118,33 @@ namespace Asteroids
                 if (e.KeyCode == Keys.Left) Game.Ship?.Left(false);
                 if (e.KeyCode == Keys.Right) Game.Ship?.Right(false);
             };
-            OneMoreGameBtn.Click += (object sender, EventArgs e) => Game.Restart();
             #endregion
         }
-        public static int GetStartPos() => Settings.FieldHeight / 2 - (BtnList.Count * Settings.ButtonSize.Height + (BtnList.Count - 1) * Settings.HeightBetweenButtons);
+        /// <summary>
+        /// Поиск стартовой позиции для кнопок меню
+        /// </summary>
+        /// <returns>Позиция по оси Y</returns>
+        public static int GetStartPos() => Settings.FieldHeight / 2 - (BtnList.Where(b => b.Visible).ToList().Count * Settings.ButtonSize.Height + BtnList.Where(b => b.Visible).ToList().Count * Settings.HeightBetweenButtons) / 2;
+        /// <summary>
+        /// Функция отображения меню
+        /// </summary>
+        /// <param name="form">Основная форма</param>
+        /// <param name="isShow">Показать меню</param>
+        public static void ShowMenu(Form form, bool isShow)
+        {
+            int startPos = GetStartPos();
+            int deltaHeight = 0;
+            for (int i = 0; i < BtnList.Count; i++)
+            {
+                BtnList[i].Visible = isShow;
+                if (BtnList[i].Name == Settings.ButtonNames[2] && isShow)
+                    BtnList[i].Visible = Game.GameStarting; // Продолжить игру
+                if (BtnList[i].Visible)
+                {
+                    BtnList[i].Location = new Point(BtnList[i].Location.X, startPos + deltaHeight);
+                    deltaHeight += Settings.ButtonSize.Height + Settings.HeightBetweenButtons;
+                }
+            }
+        }
     }
 }
