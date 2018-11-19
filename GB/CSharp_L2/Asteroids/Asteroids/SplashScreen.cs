@@ -149,7 +149,11 @@ namespace Asteroids
         /// </summary>
         public static void ShowRecordsFile()
         {
-            if (File.Exists(Settings.RecordsFile)) System.Diagnostics.Process.Start(Settings.RecordsFile);   
+            try
+            {
+                if (File.Exists(Settings.RecordsFile)) System.Diagnostics.Process.Start(Settings.RecordsFile);
+            }
+            catch (Exception e) { MessageBox.Show(e.Message, "Ошибка!"); }
         }
     }
 }

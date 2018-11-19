@@ -33,9 +33,11 @@ namespace Asteroids
         public void WriteRecords()
         {
             string text = "";
+            List<string> records = new List<string>();
             if (File.Exists(Settings.RecordsFile))
                 text = File.ReadAllText(Settings.RecordsFile);
-            List <string> records = text.Split(new[] { Environment.NewLine }, StringSplitOptions.None).Skip(1).ToList();
+            if (text.Contains(Environment.NewLine))
+                records = text.Split(new[] { Environment.NewLine }, StringSplitOptions.None).Skip(1).ToList();
             for (int i = 0; i < records.Count; i++)
                 if (records[i] == "" || StatValue > Convert.ToInt32(records[i])) {
                     if (records[i] == "") records[i] = StatValue.ToString();
@@ -43,8 +45,9 @@ namespace Asteroids
                     StatValue = 0;
                     break;
                 }
+
             text = Settings.RecordsInitString + Environment.NewLine + string.Join(Environment.NewLine, records);
-            if (File.Exists(Settings.RecordsFile))
+            if (File.Exists(Settings.RecordsFile) && text != "")
                 File.WriteAllText(Settings.RecordsFile, text);
         }
     }
