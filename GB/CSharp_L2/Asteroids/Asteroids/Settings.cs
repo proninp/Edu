@@ -25,16 +25,25 @@ namespace Asteroids
         /// <summary>
         /// Размер кнопок
         /// </summary>
-        public static Size ButtonSize { get; set; } = new Size(200, 50);
+        public static Size ButtonSize { get; set; } = new Size(250, 50);
         /// <summary>
         /// Высота между кнопками
         /// </summary>
         public static int HeightBetweenButtons { get; } = 40;
+        /// <summary>
+        /// Размер лэйбла паузы
+        /// </summary>
+        public static Size PauseLblSize { get; } = new Size(150, 50);
+        public static string[] ButtonNames { get; set; } = { "NewGame", "Exit", "Continue", "Records" };
         #endregion
 
         #region Настройки элементов игры
         /// <summary>
-        /// Уровни сложности
+        /// Минимальный уровень сложности
+        /// </summary>
+        public static int MinDiffLevel { get; } = 0;
+        /// <summary>
+        /// Максимальный уровень сложности
         /// </summary>
         public static int MaxDiffLevel { get; } = 2;
         /// <summary>
@@ -48,7 +57,11 @@ namespace Asteroids
         /// <summary>
         /// Количество кораблей Империи на игровом поле
         /// </summary>
-        public static int[] EmpireShipsCount { get; set; } = new int[] { 12, 15, 20 };
+        public static int[] EmpireShipsCount { get; set; } = new int[] { 20, 22, 25 };
+        /// <summary>
+        /// Шанс создания нового вражеского корабля
+        /// </summary>
+        public static int[] EmpireShipsCreatingChance { get; set; } = new int[] { 12, 10, 8 };
         /// <summary>
         /// Усредненное значение высоты корабля Империи
         /// </summary>
@@ -163,15 +176,15 @@ namespace Asteroids
         /// <summary>
         /// Текст кнопки старта игры
         /// </summary>
-        public static string GameStart { get; set; } = "Начать игру";
+        public static string GameStart { get; set; } = "Новая игра";
         /// <summary>
         /// Перейти на новый уровень
         /// </summary>
-        public static string GameNextLvl { get; set; } = "Новый уровень";
+        public static string GameContinue { get; set; } = "Продолжить игру";
         /// <summary>
         /// Сыграть еще раз
         /// </summary>
-        public static string GamePlayOneMore { get; set; } = "Сыграть еще раз";
+        public static string Records { get; set; } = "Рекорды";
         /// <summary>
         /// Текст сообщения при старте
         /// </summary>
@@ -221,6 +234,21 @@ namespace Asteroids
         /// Вы успешно завершили игру! Сыграть еще раз?
         /// </summary>
         public static string RestartOrQuit { get; } = "Сыграть еще раз или выйти?\nСыграть еще раз?";
+        /// <summary>
+        /// Начало строки с рекордами
+        /// </summary>
+        public static string RecordsInitString { get; } = "--==  РЕКОРДЫ  ==--\n";
+        #region Описание порядковых номеров рекордов
+        public static string RecordsFirst{ get; } = "Первое место: ";
+        public static string RecordsSecond { get; } = "Второе место: ";
+        public static string RecordsThird { get; } = "Третье место: ";
+        public static string RecordsFourth { get; } = "Четвертое место: ";
+        public static string RecordsFifth { get; } = "Пятое место: ";
+        #endregion
+        /// <summary>
+        /// Путь файла с рекордами
+        /// </summary>
+        public static string RecordsFile { get; } = System.IO.Directory.GetCurrentDirectory() + "\\Records.txt";
         #endregion
     }
 }
