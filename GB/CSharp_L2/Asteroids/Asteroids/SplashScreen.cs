@@ -149,19 +149,7 @@ namespace Asteroids
         /// </summary>
         public static void ShowRecordsFile()
         {
-            string text = Settings.RecordsInitString;
-            if (Properties.Resources.FirstPlace != "")
-                text += Settings.RecordsFirst + Properties.Resources.FirstPlace;
-            if (Properties.Resources.SecondPlace != "")
-                text += "\n" + Settings.RecordsSecond + Properties.Resources.SecondPlace;
-            if (Properties.Resources.ThirdPlace != "")
-                text += "\n" + Settings.RecordsThird + Properties.Resources.ThirdPlace;
-            if (Properties.Resources.FourthPlace != "")
-                text += "\n" + Settings.RecordsFourth + Properties.Resources.FourthPlace;
-            if (Properties.Resources.FifthPlace != "")
-                text += "\n" + Settings.RecordsFifth + Properties.Resources.FifthPlace;
-            File.WriteAllText(Directory.GetCurrentDirectory() + "\\Records.txt", text);
-            if (File.Exists(Directory.GetCurrentDirectory() + "\\Records.txt")) File.OpenText(Directory.GetCurrentDirectory() + "\\Records.txt");
+            if (File.Exists(Settings.RecordsFile)) System.Diagnostics.Process.Start(Settings.RecordsFile);   
         }
     }
 }

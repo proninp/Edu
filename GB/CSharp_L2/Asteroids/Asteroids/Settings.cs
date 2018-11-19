@@ -245,6 +245,10 @@ namespace Asteroids
         public static string RecordsFourth { get; } = "Четвертое место: ";
         public static string RecordsFifth { get; } = "Пятое место: ";
         #endregion
+        /// <summary>
+        /// Путь файла с рекордами
+        /// </summary>
+        public static string RecordsFile { get; } = System.IO.Directory.GetCurrentDirectory() + "\\Records.txt";
         #endregion
     }
 }

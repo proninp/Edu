@@ -22,7 +22,7 @@ namespace Asteroids.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    public class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace Asteroids.Properties {
         ///   Возвращает кэшированный экземпляр ResourceManager, использованный этим классом.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Asteroids.Properties.Resources", typeof(Resources).Assembly);
@@ -51,7 +51,7 @@ namespace Asteroids.Properties {
         ///   обращений к ресурсу с помощью этого класса ресурса со строгой типизацией.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +63,7 @@ namespace Asteroids.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Advanced_x1_1 {
+        public static System.Drawing.Bitmap Advanced_x1_1 {
             get {
                 object obj = ResourceManager.GetObject("Advanced_x1_1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -73,7 +73,7 @@ namespace Asteroids.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Advanced_x1_2 {
+        public static System.Drawing.Bitmap Advanced_x1_2 {
             get {
                 object obj = ResourceManager.GetObject("Advanced_x1_2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -83,7 +83,7 @@ namespace Asteroids.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap ast_0 {
+        public static System.Drawing.Bitmap ast_0 {
             get {
                 object obj = ResourceManager.GetObject("ast_0", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -93,7 +93,7 @@ namespace Asteroids.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap ast_1 {
+        public static System.Drawing.Bitmap ast_1 {
             get {
                 object obj = ResourceManager.GetObject("ast_1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -103,7 +103,7 @@ namespace Asteroids.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap ast_2 {
+        public static System.Drawing.Bitmap ast_2 {
             get {
                 object obj = ResourceManager.GetObject("ast_2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -113,7 +113,7 @@ namespace Asteroids.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap ast_3 {
+        public static System.Drawing.Bitmap ast_3 {
             get {
                 object obj = ResourceManager.GetObject("ast_3", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -123,7 +123,7 @@ namespace Asteroids.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap background {
+        public static System.Drawing.Bitmap background {
             get {
                 object obj = ResourceManager.GetObject("background", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -133,7 +133,7 @@ namespace Asteroids.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Dart_Kit {
+        public static System.Drawing.Bitmap Dart_Kit {
             get {
                 object obj = ResourceManager.GetObject("Dart_Kit", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -143,7 +143,7 @@ namespace Asteroids.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap explode_1 {
+        public static System.Drawing.Bitmap explode_1 {
             get {
                 object obj = ResourceManager.GetObject("explode_1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -153,7 +153,7 @@ namespace Asteroids.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap explode_2 {
+        public static System.Drawing.Bitmap explode_2 {
             get {
                 object obj = ResourceManager.GetObject("explode_2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -163,7 +163,7 @@ namespace Asteroids.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap explode_3 {
+        public static System.Drawing.Bitmap explode_3 {
             get {
                 object obj = ResourceManager.GetObject("explode_3", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -173,7 +173,7 @@ namespace Asteroids.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap explode_4 {
+        public static System.Drawing.Bitmap explode_4 {
             get {
                 object obj = ResourceManager.GetObject("explode_4", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -183,7 +183,7 @@ namespace Asteroids.Properties {
         /// <summary>
         ///   Ищет локализованную строку, похожую на .
         /// </summary>
-        internal static string FifthPlace {
+        public static string FifthPlace {
             get {
                 return ResourceManager.GetString("FifthPlace", resourceCulture);
             }
@@ -192,7 +192,7 @@ namespace Asteroids.Properties {
         /// <summary>
         ///   Ищет локализованную строку, похожую на .
         /// </summary>
-        internal static string FirstPlace {
+        public static string FirstPlace {
             get {
                 return ResourceManager.GetString("FirstPlace", resourceCulture);
             }
@@ -201,7 +201,7 @@ namespace Asteroids.Properties {
         /// <summary>
         ///   Ищет локализованную строку, похожую на .
         /// </summary>
-        internal static string FourthPlace {
+        public static string FourthPlace {
             get {
                 return ResourceManager.GetString("FourthPlace", resourceCulture);
             }
@@ -210,7 +210,7 @@ namespace Asteroids.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap R2_D2 {
+        public static System.Drawing.Bitmap R2_D2 {
             get {
                 object obj = ResourceManager.GetObject("R2_D2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -220,7 +220,7 @@ namespace Asteroids.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap ray {
+        public static System.Drawing.Bitmap ray {
             get {
                 object obj = ResourceManager.GetObject("ray", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -230,7 +230,7 @@ namespace Asteroids.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap redRay {
+        public static System.Drawing.Bitmap redRay {
             get {
                 object obj = ResourceManager.GetObject("redRay", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -240,7 +240,7 @@ namespace Asteroids.Properties {
         /// <summary>
         ///   Ищет локализованную строку, похожую на .
         /// </summary>
-        internal static string SecondPlace {
+        public static string SecondPlace {
             get {
                 return ResourceManager.GetString("SecondPlace", resourceCulture);
             }
@@ -249,7 +249,7 @@ namespace Asteroids.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap stormtrooper {
+        public static System.Drawing.Bitmap stormtrooper {
             get {
                 object obj = ResourceManager.GetObject("stormtrooper", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -259,7 +259,7 @@ namespace Asteroids.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap The_Death_Star {
+        public static System.Drawing.Bitmap The_Death_Star {
             get {
                 object obj = ResourceManager.GetObject("The_Death_Star", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -269,7 +269,7 @@ namespace Asteroids.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap The_Death_Star_Damaged {
+        public static System.Drawing.Bitmap The_Death_Star_Damaged {
             get {
                 object obj = ResourceManager.GetObject("The_Death_Star_Damaged", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -279,7 +279,7 @@ namespace Asteroids.Properties {
         /// <summary>
         ///   Ищет локализованную строку, похожую на .
         /// </summary>
-        internal static string ThirdPlace {
+        public static string ThirdPlace {
             get {
                 return ResourceManager.GetString("ThirdPlace", resourceCulture);
             }
@@ -288,7 +288,7 @@ namespace Asteroids.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap TIE_Interceptor_1 {
+        public static System.Drawing.Bitmap TIE_Interceptor_1 {
             get {
                 object obj = ResourceManager.GetObject("TIE_Interceptor_1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -298,7 +298,7 @@ namespace Asteroids.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap TIE_Interceptor_2 {
+        public static System.Drawing.Bitmap TIE_Interceptor_2 {
             get {
                 object obj = ResourceManager.GetObject("TIE_Interceptor_2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -308,7 +308,7 @@ namespace Asteroids.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap x_wing {
+        public static System.Drawing.Bitmap x_wing {
             get {
                 object obj = ResourceManager.GetObject("x_wing", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));

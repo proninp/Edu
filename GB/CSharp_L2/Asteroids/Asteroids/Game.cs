@@ -167,7 +167,8 @@ namespace Asteroids
             for (int i = Explodes.Count - 1; i >= 0; i--) // Проверка на необходимость удаления взрыва
             {
                 Explodes[i].Update();
-                if (Explodes[i].VisabilityTicksCount > 0 && Explodes[i].VisabilityTicksCount < 4) { if (Ship.Health <= 0) Finish(St.LooseMessage, St.LooseMessageHeader); }
+                if (Explodes[i].VisabilityTicksCount > 0 && Explodes[i].VisabilityTicksCount < 4)
+                { if (Ship.Health <= 0) { Finish(St.LooseMessage, St.LooseMessageHeader); } }
                 else if (Explodes[i].VisabilityTicksCount <= 0)
                 {
                     Explodes[i].Pos.X = St.FieldMaxWidth;
@@ -205,6 +206,7 @@ namespace Asteroids
         public static void Finish(string message, string messageHeader)
         {
             Timer.Stop();
+            Stats[0]?.WriteRecords();
             GameStarting = false;
             if (MessageBox.Show(message, messageHeader, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes) Application.Exit();
             else Restart();
@@ -219,7 +221,6 @@ namespace Asteroids
             Timer.Tick -= Timer_Tick;
             Init(MainForm);
             BasicLoad();
-            //foreach (var e in SplashScreen.BtnList) e.Visible = true;
         }
         public static void LevelUp()
         {
@@ -255,16 +256,9 @@ namespace Asteroids
         /// </summary>
         public static void Pause()
         {
-            if (Timer.Enabled)
-            {
-                SplashScreen.ShowMenu(MainForm, Timer.Enabled);
-                Timer.Stop();
-            }
-            else
-            {
-                SplashScreen.ShowMenu(MainForm, Timer.Enabled);
-                Timer.Start();
-            }
+            SplashScreen.ShowMenu(MainForm, Timer.Enabled);
+            if (Timer.Enabled) Timer.Stop();
+            else Timer.Start();
         }
     }
 }
