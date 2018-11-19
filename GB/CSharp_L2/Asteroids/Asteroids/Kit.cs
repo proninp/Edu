@@ -16,7 +16,7 @@ namespace Asteroids
         {
             Game.Buffer.Graphics.DrawImage(Img, Pos);
             Rect = new Rectangle(Pos.X, Pos.Y, Img.Size.Width, Img.Size.Height);
-            Health = Game.Rand.Next(-Settings.EmpireShipMaxDamage[Game.DiffLvl], Settings.EmpireShipMinDamage[Game.DiffLvl]);
+            Health = Game.Rand.Next(-Settings.EmpireShipMaxDamage[Game.DiffLvl], -Settings.EmpireShipMinDamage[Game.DiffLvl]);
         }
         public override void Update()
         {
