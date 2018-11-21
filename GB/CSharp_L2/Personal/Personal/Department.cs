@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,14 +20,14 @@ namespace Personal
         /// <summary>
         /// Список сотрудников Департамента
         /// </summary>
-        public List<Employee> Employees { get; set; }
-        public Department(int id, string name, List<Employee> employees)
+        public ObservableCollection<Employee> Employees { get; set; }
+        public Department(int id, string name, ObservableCollection<Employee> employees)
         {
             Id = id;
             Name = name;
             Employees = employees;
         }
-        public Department(int id, string name) : this (id, name, new List<Employee>()) { }
+        public Department(int id, string name) : this (id, name, new ObservableCollection<Employee>()) { }
 
     }
 }

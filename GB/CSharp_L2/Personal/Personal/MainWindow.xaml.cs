@@ -23,6 +23,7 @@ namespace Personal
         public MainWindow()
         {
             InitializeComponent();
+            cbDep.ItemsSource = Data.Departments;
         }
     }
 }
