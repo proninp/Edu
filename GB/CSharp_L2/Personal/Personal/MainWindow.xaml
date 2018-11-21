@@ -46,7 +46,6 @@
                           Grid.Row="1"
                           Margin="10"
                           ItemsSource="{Binding ElementName=cbDep, Path=SelectedItem}">
-
                 </ListView>
             </Grid>
             <Grid Grid.Row="1">
@@ -67,6 +66,9 @@
                         Content="Заблокировать сотрудника">
                 </Button>
             </Grid>
+        </Grid>
+        <Grid Grid.Row="1" Grid.Column="3" Background="AliceBlue">
+            
         </Grid>
     </Grid>
 </Window>
