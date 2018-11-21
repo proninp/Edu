@@ -18,7 +18,7 @@ namespace Personal
         /// </summary>
         public string Name { get; set; }
         /// <summary>
-        /// Список сотрудников Департамента
+        /// Список сотрудников департамента
         /// </summary>
         public ObservableCollection<Employee> Employees { get; set; }
         public Department(int id, string name, ObservableCollection<Employee> employees)
@@ -27,7 +27,7 @@ namespace Personal
             Name = name;
             Employees = employees;
         }
-        public Department(int id, string name) : this (id, name, new ObservableCollection<Employee>()) { }
+        public Department(int id, string name) : this(id, name, new ObservableCollection<Employee>()) { }
 
     }
 }

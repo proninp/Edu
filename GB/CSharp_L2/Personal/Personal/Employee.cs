@@ -20,6 +20,11 @@ namespace Personal
         /// Фамилия
         /// </summary>
         public string LastName { get; set; }
+
+        public string FullName
+        {
+            get => $"{FirstName} {LastName}";
+        }
         /// <summary>
         /// Возраст
         /// </summary>

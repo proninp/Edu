@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,7 +24,12 @@ namespace Personal
         public MainWindow()
         {
             InitializeComponent();
-            cbDep.ItemsSource = Data.Departments;
+            cbDep.ItemsSource = Data.Dep;
+        }
+
+        private void cbDep_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            lvEmpl.ItemsSource = Data.Dep.Where(x => x.Id == ((Department)((ComboBox)sender).SelectedItem).Id).First().Employees;
         }
     }
 }

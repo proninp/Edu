@@ -24,7 +24,9 @@
             <ColumnDefinition Width="60*"/>
             <ColumnDefinition Width="2*"/>
         </Grid.ColumnDefinitions>
-        <Grid Grid.Row="1" Grid.Column="1" Background="AliceBlue">
+        <Grid Grid.Row="1"
+              Grid.Column="1"
+              Background="AliceBlue">
             <Grid.RowDefinitions>
                 <RowDefinition Height="12*"/>
                 <RowDefinition Height="2*"/>
@@ -34,20 +36,35 @@
                     <RowDefinition Height="1*"/>
                     <RowDefinition Height="9*"/>
                 </Grid.RowDefinitions>
-                <ComboBox x:Name="cbDep" Grid.Row="0" Margin="10">
+                <ComboBox x:Name="cbDep"
+                          DisplayMemberPath="Name"
+                          Grid.Row="0"
+                          Margin="10" SelectionChanged="cbDep_SelectionChanged">
                 </ComboBox>
-                <ListBox x:Name="lbEmpl" Grid.Row="1" Margin="10">
+                <ListView x:Name="lvEmpl"
+                          DisplayMemberPath="FullName"
+                          Grid.Row="1"
+                          Margin="10"
+                          ItemsSource="{Binding ElementName=cbDep, Path=SelectedItem}">
 
-                </ListBox>
+                </ListView>
             </Grid>
             <Grid Grid.Row="1">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
-                <Button x:Name="btnAdd" Grid.Row="0" Margin="10" Height="20" Content="Добавить сотрудника">
+                <Button x:Name="btnAdd"
+                        Grid.Row="0"
+                        Margin="10"
+                        Height="20"
+                        Content="Добавить сотрудника">
                 </Button>
-                <Button x:Name="btnBlock" Grid.Row="1" Margin="10,0,10,10" Height="20" Content="Заблокировать сотрудника">
+                <Button x:Name="btnBlock"
+                        Grid.Row="1"
+                        Margin="10,0,10,10"
+                        Height="20"
+                        Content="Заблокировать сотрудника">
                 </Button>
             </Grid>
         </Grid>
