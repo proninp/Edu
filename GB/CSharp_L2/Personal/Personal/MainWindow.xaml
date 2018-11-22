@@ -5,8 +5,69 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Personal"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
+        Title="MainWindow" Height="600" Width="600">
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="FontFamily" Value="Arial"/>
+        </Style>
+    </Window.Resources>
+    <Grid x:Name="Layout">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="96*"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="34*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="60*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Row="1"
+              Grid.Column="1"
+              Background="AliceBlue">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="12*"/>
+                <RowDefinition Height="2*"/>
+            </Grid.RowDefinitions>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="9*"/>
+                </Grid.RowDefinitions>
+                <ComboBox x:Name="cbDep"
+                          DisplayMemberPath="Name"
+                          Grid.Row="0"
+                          Margin="10" SelectionChanged="CbDep_SelectionChanged">
+                </ComboBox>
+                <ListView x:Name="lvEmpl"
+                          DisplayMemberPath="FullName"
+                          Grid.Row="1"
+                          Margin="10">
+                </ListView>
+            </Grid>
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Button x:Name="btnAdd"
+                        Grid.Row="0"
+                        Margin="10"
+                        Height="20"
+                        Content="Добавить сотрудника">
+                </Button>
+                <Button x:Name="btnBlock"
+                        Grid.Row="1"
+                        Margin="10,0,10,10"
+                        Height="20"
+                        Content="Заблокировать сотрудника">
+                </Button>
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="1" Grid.Column="3" Background="AliceBlue">
+            
+        </Grid>
     </Grid>
 </Window>
