@@ -27,7 +27,7 @@ namespace Personal
             cbDep.ItemsSource = Data.Dep;
         }
 
-        private void cbDep_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void CbDep_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             lvEmpl.ItemsSource = Data.Dep.Where(x => x.Id == ((Department)((ComboBox)sender).SelectedItem).Id).First().Employees;
         }
