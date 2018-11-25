@@ -5,11 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Personal"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="600">
+        Title="MainWindow"
+        Height="500"
+        Width="400">
     <Window.Resources>
         <Style TargetType="Button">
-            <Setter Property="FontFamily" Value="Arial"/>
+            <Setter Property="FontFamily"
+                    Value="Arial"/>
         </Style>
+        <local:DepToEmpListConverter x:Key="DepToListConv"/>
+        <local:LVEmplSelectConverter x:Key="LVEmplConv"/>
     </Window.Resources>
     <Grid x:Name="Layout">
         <Grid.RowDefinitions>
@@ -19,55 +24,112 @@
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*"/>
-            <ColumnDefinition Width="34*"/>
+            <ColumnDefinition Width="50*"/>
             <ColumnDefinition Width="2*"/>
-            <ColumnDefinition Width="60*"/>
+            <ColumnDefinition Width="44*"/>
             <ColumnDefinition Width="2*"/>
         </Grid.ColumnDefinitions>
         <Grid Grid.Row="1"
               Grid.Column="1"
               Background="AliceBlue">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="12*"/>
-                <RowDefinition Height="2*"/>
-            </Grid.RowDefinitions>
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="1*"/>
                     <RowDefinition Height="9*"/>
                 </Grid.RowDefinitions>
                 <ComboBox x:Name="cbDep"
-                          DisplayMemberPath="Name"
                           Grid.Row="0"
-                          Margin="10" SelectionChanged="CbDep_SelectionChanged">
+                          Margin="10"
+                          ItemsSource="{Binding Path=Name}">
                 </ComboBox>
                 <ListView x:Name="lvEmpl"
-                          DisplayMemberPath="FullName"
                           Grid.Row="1"
-                          Margin="10">
+                          Margin="10"
+                          ItemsSource="{Binding ElementName=cbDep,
+                    Path=SelectedItem,
+                    UpdateSourceTrigger=PropertyChanged,
+                    Converter={StaticResource DepToListConv}}">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Имя"
+                                            DisplayMemberBinding="{Binding FirstName}"
+                                            Width="Auto"/>
+                            <GridViewColumn Header="Фамилия"
+                                            DisplayMemberBinding="{Binding LastName}"
+                                            Width="Auto"/>
+                            <GridViewColumn Header="Возраст"
+                                            DisplayMemberBinding="{Binding Age}"
+                                            Width="Auto"/>
+                        </GridView>
+                    </ListView.View>
                 </ListView>
             </Grid>
-            <Grid Grid.Row="1">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
-                <Button x:Name="btnAdd"
-                        Grid.Row="0"
-                        Margin="10"
-                        Height="20"
-                        Content="Добавить сотрудника">
-                </Button>
-                <Button x:Name="btnBlock"
-                        Grid.Row="1"
-                        Margin="10,0,10,10"
-                        Height="20"
-                        Content="Заблокировать сотрудника">
-                </Button>
-            </Grid>
         </Grid>
-        <Grid Grid.Row="1" Grid.Column="3" Background="AliceBlue">
-            
+        <GridSplitter Grid.Column="2" 
+                      Grid.Row="1"
+                      HorizontalAlignment="Center"
+                      VerticalAlignment="Stretch"
+                      Width="3"
+                      Background="AliceBlue"/>
+        <Grid Grid.Row="1" 
+              Grid.Column="3"
+              Background="AliceBlue">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="5*"/>
+                    <RowDefinition Height="2*"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <StackPanel x:Name="EmplSP"
+                                DataContext="{Binding ElementName=lvEmpl,
+                    Path=SelectedItem,
+                    UpdateSourceTrigger=PropertyChanged,
+                    Converter={StaticResource LVEmplConv}}">
+                        <TextBlock Margin="10 5 10 5"
+                               Text="Имя:"/>
+                        <TextBox x:Name="FirstNameTb"
+                                 Margin="10, 5, 10, 5"
+                                 Text="{Binding Path=FirstName}"/>
+                        <TextBlock Margin="10 5 10 5"
+                               Text="Фамилия:"/>
+                        <TextBox x:Name="LastNameTb"
+                                 Margin="10 5 10 5"
+                                 Text="{Binding Path=LastName}"/>
+                        <TextBlock Margin="10 5 10 5"
+                               Text="Возраст:"/>
+                        <TextBox x:Name="AgeTb"
+                                 Margin="10, 5, 10, 5"
+                                 Text="{Binding Path=Age}"/>
+                        <TextBlock Margin="10 5 10 5"
+                               Text="Должность:"/>
+                        <TextBox x:Name="PositionTb"
+                                 Margin="10, 5, 10, 0"
+                                 Text="{Binding Path=Position}"/>
+                        <TextBlock Margin="10 5 10 5"
+                               Text="Зарплата:"/>
+                        <TextBox x:Name="SalaryTb"
+                                 Margin="10 5 10 0"
+                                 Text="{Binding Path=Salary}"/>
+                        <CheckBox x:Name="Blocked"
+                                  Content="Заблокирован"
+                                  Margin="10 10 10 0"
+                                  IsChecked="{Binding Blocked}"
+                            />
+                    </StackPanel>
+                </Grid>
+                <DockPanel Grid.Row="1" LastChildFill="False">
+                    <Button x:Name="btnEmplBlock"
+                            DockPanel.Dock="Bottom"
+                            Margin="10"
+                        Content="Заблокировать">
+                    </Button>
+                    <Button x:Name="btnEmplAdd"
+                            DockPanel.Dock="Bottom"
+                            Content="Добавить"
+                            Margin="10">
+                    </Button>
+                </DockPanel>
+            </Grid>
         </Grid>
     </Grid>
 </Window>

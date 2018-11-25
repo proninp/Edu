@@ -29,5 +29,7 @@ namespace Personal
         }
         public Department(int id, string name) : this(id, name, new ObservableCollection<Employee>()) { }
 
+        public override string ToString() => Name;
+
     }
 }

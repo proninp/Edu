@@ -13,23 +13,23 @@ namespace Personal
         {
             new Department(1, "Администрация", new ObservableCollection<Employee>
             {
-                new Employee(1, "Иван", "Иванов", 50, "Директор"),
-                new Employee(2, "Лариса", "Дмитриева", 40, "Секретарь")
+                new Employee(1, "Иван", "Иванов", 50, "Директор", "100000"),
+                new Employee(2, "Лариса", "Дмитриева", 40, "Секретарь", "30000")
             }),
             new Department(2, "Бухгалтерия", new ObservableCollection<Employee>
             {
-                new Employee(3, "Федор", "Петров", 45, "Главный бухгалтер"),
-                new Employee(4, "Ирина", "Сидорова", 38, "Бухгалтер")
+                new Employee(3, "Федор", "Петров", 45, "Главный бухгалтер", "80000"),
+                new Employee(4, "Ирина", "Сидорова", 38, "Бухгалтер", "40000")
             }),
             new Department(4, "Продажи", new ObservableCollection<Employee>
             {
-                new Employee(5, "Роман", "Борисов", 35, "Директор по продажам"),
-                new Employee(6, "Дмитрий", "Медведев", 28, "Менеджер")
+                new Employee(5, "Роман", "Борисов", 35, "Директор по продажам", "90000"),
+                new Employee(6, "Дмитрий", "Медведев", 28, "Менеджер", "50000")
             }),
             new Department(5, "ИТ", new ObservableCollection<Employee>
             {
-                new Employee(7, "Николай", "Федоров", 30, "Руководитель отдела"),
-                new Employee(8, "Михаил", "Смирнов", 25, "Программист")
+                new Employee(7, "Николай", "Федоров", 30, "Руководитель отдела", "80000"),
+                new Employee(8, "Михаил", "Смирнов", 25, "Программист", "50000")
             })
         };
         //Department Administartion { get; set; } = new Department(1, "Администрация",
