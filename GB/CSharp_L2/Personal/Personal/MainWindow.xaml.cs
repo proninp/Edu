@@ -31,6 +31,7 @@ namespace Personal
                 {
                     ((Employee)EmplSP.DataContext).Blocked = true;
                     cbDep.DataContext = cbDep.SelectedItem;
+                    // Я не нашел, как моментально скрыть сотрудника из списка при установке галочки "Заблокировать"
                 }
             };
             btnEmplAdd.Click += (sender, args) =>
@@ -41,6 +42,7 @@ namespace Personal
                     ((Department)cbDep.SelectedItem).Employees.Add(new Employee(lastId, "Имя", "Фамилия", 18, "", "0"));
                     lvEmpl.ItemsSource = ((Department)cbDep.SelectedItem).Employees;
                     lvEmpl.SelectedItem = ((Department)cbDep.SelectedItem).Employees.OrderByDescending(e => e.Id).Take(1);
+                    // Я не смог понять, как при добавлении сотрудника сразу выбрать его в ListView
                 }
             };
         }
