@@ -20,3 +20,22 @@ WITH q
      FROM q w
      GROUP BY point,
               date;
+
+
+-- second variant
+
+WITH tot
+     AS (
+     SELECT point,
+            date,
+            inc amount
+     FROM Income
+     UNION ALL
+     SELECT point,
+            date,
+            -out
+     FROM Outcome)
+SELECT DISTINCT point,
+       CONVERT(VARCHAR, date, 103) dt,
+       SUM(amount) OVER (PARTITION BY point ORDER BY date) amount
+FROM tot t
