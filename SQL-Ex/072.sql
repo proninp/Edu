@@ -15,22 +15,3 @@ FROM
 ) q
 JOIN Passenger p ON p.ID_psg = q.ID_psg
 ORDER BY tripCount DESC;
-
-
--- var. 2
-
-SELECT q.maker
-FROM (SELECT p.maker,
-           COUNT(model) ttlmodel
-    FROM Product p
-    WHERE type = 'pc'
-    GROUP BY p.maker) q
-JOIN (SELECT maker,
-           COUNT(model) qty
-      FROM(
-	   SELECT DISTINCT maker,
-           pc.model
-        FROM Product p
-        JOIN PC ON p.model = pc.model) q
-    GROUP BY maker) w ON w.maker = q.maker
-WHERE q.ttlmodel = w.qty
