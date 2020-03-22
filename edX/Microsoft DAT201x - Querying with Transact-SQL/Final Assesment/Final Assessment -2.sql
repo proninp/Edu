@@ -54,7 +54,8 @@ SELECT OrderID,
 FROM dbo.Orders
 
 
---Using the Orders table, get the order ID and month of the order by using DATENAME(). Alias the month as OrderMonth.
+--Using the Orders table, get the order ID and month of the order by using DATENAME().
+--Alias the month as OrderMonth.
 SELECT OrderID,
        DATENAME(month, OrderDate) OrderMonth
 FROM dbo.Orders
