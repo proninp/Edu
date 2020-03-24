@@ -15,3 +15,15 @@ FROM
 ) q
 JOIN Passenger p ON p.ID_psg = q.ID_psg
 ORDER BY tripCount DESC;
+
+
+/* Option 2 */
+
+SELECT TOP 1 WITH TIES p.name
+		 ,COUNT(t.trip_no) trips_qty
+FROM Trip t
+JOIN Pass_in_trip pit ON pit.trip_no = t.trip_no
+JOIN Passenger p ON pit.ID_psg = p.ID_psg
+GROUP BY pit.ID_psg,p.name
+HAVING COUNT(DISTINCT ID_comp) = 1
+ORDER BY trips_qty DESC
