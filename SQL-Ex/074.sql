@@ -11,3 +11,17 @@ WITH q
                             class
      FROM q
      ORDER BY val DESC;
+
+/* Option 2 */
+
+SELECT country
+	,class
+FROM Classes
+WHERE country LIKE
+  CASE 
+    WHEN EXISTS (SELECT class
+			  FROM Classes
+			  WHERE country = 'Russia')
+    THEN 'Russia'
+    ELSE '%'
+  END;
