@@ -24,3 +24,20 @@ FROM Trip t
 JOIN q ON q.trip_no = t.trip_no) qs
 GROUP BY name
 ORDER BY time_in_trip
+
+/* Option 2 */
+
+SELECT p.Name,
+       [Flyght Duration]
+FROM (
+    SELECT pt.ID_psg,
+		 SUM(IIF(DATEDIFF(mi,time_out,time_in) > 0,DATEDIFF(mi,time_out,time_in),24*60+DATEDIFF(mi,time_out,time_in))) [Flyght Duration]
+    FROM Trip t
+    JOIN Pass_in_trip pt ON pt.trip_no = t.trip_no
+    WHERE pt.ID_psg IN (
+	   SELECT ID_psg
+	   FROM Pass_in_trip pit
+	   GROUP BY ID_psg
+	   HAVING COUNT(DISTINCT place) = COUNT(trip_no))
+    GROUP BY pt.ID_psg) q
+JOIN Passenger p ON p.ID_psg = q.ID_psg
