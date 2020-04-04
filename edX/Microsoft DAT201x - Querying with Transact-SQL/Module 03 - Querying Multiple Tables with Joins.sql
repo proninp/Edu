@@ -1,3 +1,6 @@
+-- Write a query that returns the company name from the Sale.
+-- Customer table, the sales order ID and total due from the SalesLT.SalesOrderHeader table.
+-- Make sure to use the aliases provided, and default column names elsewhere.
 -- select the CompanyName, SalesOrderId, and TotalDue columns from the appropriate tables
 SELECT c.CompanyName, oh.SalesOrderId, oh.TotalDue
 FROM SalesLT.Customer AS c
@@ -6,6 +9,9 @@ JOIN SalesLT.SalesOrderHeader AS oh
 ON c.CustomerID = oh.CustomerID;
 
 
+-- Extend your customer orders query to include the main office address for each customer,
+-- including the full street address, city, state or province, postal code, and country or region.
+-- Make sure to use the aliases provided, and default column names elsewhere.
 SELECT c.CompanyName, a.AddressLine1, ISNULL(a.AddressLine2, '') AS AddressLine2, a.City, a.StateProvince, a.PostalCode, a.CountryRegion, oh.SalesOrderID, oh.TotalDue
 FROM SalesLT.Customer AS c
 -- join the SalesOrderHeader table
@@ -18,6 +24,8 @@ ON c.CustomerID = ca.CustomerID AND AddressType = 'Main Office'
 JOIN SalesLT.Address AS a
 ON ca.AddressID = a.AddressID;
 
+-- Customers who have not placed any orders should be included at the bottom of the list with NULL values for the order ID and total due.
+-- Make sure to use the aliases provided, and default column names elsewhere.
 -- select the CompanyName, FirstName, LastName, SalesOrderID and TotalDue columns
 -- from the appropriate tables
 SELECT c.CompanyName, c.FirstName, c.LastName, oh.SalesOrderID, oh.TotalDue
@@ -29,6 +37,9 @@ ON c.CustomerID = oh.CustomerID
 ORDER BY oh.SalesOrderID DESC;
 
 
+-- Write a query that returns a list of customer IDs, company names, contact names (first name and last name),
+-- and phone numbers for customers with no address stored in the database.
+-- Make sure to use the aliases provided, and default column names elsewhere.
 SELECT c.CompanyName, c.FirstName, c.LastName, c.Phone
 FROM SalesLT.Customer AS c
 LEFT JOIN SalesLT.CustomerAddress AS ca
@@ -37,6 +48,12 @@ ON c.CustomerID = ca.CustomerID
 -- filter for when the AddressID doesn't exist
 WHERE ca.AddressID IS NULL;
 
+
+-- Write a query that returns a column of customer IDs for customers who have never placed an order,
+-- and a column of product IDs for products that have never been ordered.
+-- Each row with a customer ID should have a NULL product ID (because the customer has never ordered a product) and each row with a product ID
+-- should have a NULL customer ID (because the product has never been ordered by a customer).
+-- Make sure to use the aliases provided, and default column names elsewhere.
 SELECT c.CustomerID, p.ProductID
 FROM SalesLT.Customer AS c
 FULL JOIN SalesLT.SalesOrderHeader AS oh
