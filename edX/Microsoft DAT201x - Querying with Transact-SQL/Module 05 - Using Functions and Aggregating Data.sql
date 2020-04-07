@@ -1,7 +1,17 @@
+/*
+Write a query to return the product ID of each product, together with the product name formatted as upper case and a column named ApproxWeight
+with the weight of each product rounded to the nearest whole unit. Make sure to use the aliases provided, and default column names elsewhere.
+*/
 -- select ProductID and use the appropriate functions with the appropriate columns
 SELECT ProductID, UPPER(Name) AS ProductName, ROUND(Weight, 0) AS ApproxWeight
 FROM SalesLT.Product;
 
+
+/*
+Extend your query to include columns named SellStartYear and SellStartMonth containing the year and month in which
+AdventureWorks started selling each product. The month should be displayed as the month name (e.g. 'January').
+Make sure to use the aliases provided, and default column names elsewhere.
+*/
 SELECT ProductID, UPPER(Name) AS ProductName, ROUND(Weight, 0) AS ApproxWeight,
        -- get the year of the SellStartDate
        YEAR(SellStartDate) as SellStartYear,
@@ -9,6 +19,11 @@ SELECT ProductID, UPPER(Name) AS ProductName, ROUND(Weight, 0) AS ApproxWeight,
        DATENAME(m,SellStartDate) as SellStartMonth
 FROM SalesLT.Product;
 
+
+/*
+Extend your query to include a column named ProductType that contains the leftmost two characters from the product number.
+Make sure to use the aliases provided, and default column names elsewhere.
+*/
 SELECT ProductID, UPPER(Name) AS ProductName, ROUND(Weight, 0) AS ApproxWeight,
        YEAR(SellStartDate) as SellStartYear,
        DATENAME(m, SellStartDate) as SellStartMonth,
@@ -16,6 +31,11 @@ SELECT ProductID, UPPER(Name) AS ProductName, ROUND(Weight, 0) AS ApproxWeight,
        LEFT(ProductNumber, 2) AS ProductType
 FROM SalesLT.Product;
 
+
+/*
+Extend your query to filter the product returned so that only products with a numeric size are included.
+Make sure to use the aliases provided, and default column names elsewhere.
+*/
 SELECT ProductID, UPPER(Name) AS ProductName, ROUND(Weight, 0) AS ApproxWeight,
        YEAR(SellStartDate) as SellStartYear,
        DATENAME(m, SellStartDate) as SellStartMonth,
@@ -24,6 +44,11 @@ FROM SalesLT.Product
 -- filter for numeric product size data
 WHERE ISNUMERIC(Size) = 1;
 
+
+/*
+Write a query that returns a list of company names with a ranking of their place in a list of highest TotalDue values from the SalesOrderHeader table.
+Make sure to use the aliases provided, and default column names elsewhere.
+*/
 -- select CompanyName and TotalDue columns
 SELECT CompanyName, TotalDue AS Revenue,
        -- get ranking and order by appropriate column
@@ -33,8 +58,13 @@ FROM SalesLT.SalesOrderHeader AS SOH
 JOIN SalesLT.Customer AS C
 ON SOH.CustomerID = C.CustomerID;
 
+
+/*
+Write a query to retrieve a list of the product names and the total revenue calculated as the sum of the LineTotal from the SalesLT.SalesOrderDetail table,
+with the results sorted in descending order of total revenue. Make sure to use the aliases provided, and default column names elsewhere.
+*/
 -- select the Name column and use the appropriate function with the appropriate column
-SELECT Name, SUM(LineTotal) AS TotalRevenue
+SELECT P.Name, SUM(LineTotal) AS TotalRevenue
 FROM SalesLT.SalesOrderDetail AS SOD
 -- use the appropriate join
 JOIN SalesLT.Product AS P
@@ -43,6 +73,11 @@ ON P.ProductID = SOD.ProductID
 GROUP BY P.Name
 ORDER BY TotalRevenue DESC;
 
+
+/*
+Modify the previous query to include sales totals for products that have a list price of more than 1000.
+Make sure to use the aliases provided, and default column names elsewhere.
+*/
 SELECT Name, SUM(LineTotal) AS TotalRevenue
 FROM SalesLT.SalesOrderDetail AS SOD
 JOIN SalesLT.Product AS P
@@ -52,6 +87,11 @@ WHERE P.ListPrice > 1000
 GROUP BY P.Name
 ORDER BY TotalRevenue DESC;
 
+
+/*
+Modify the previous query to only include products with total sales greater than 20000.
+Make sure to use the aliases provided, and default column names elsewhere.
+*/
 SELECT Name, SUM(LineTotal) AS TotalRevenue
 FROM SalesLT.SalesOrderDetail AS SOD
 JOIN SalesLT.Product AS P
