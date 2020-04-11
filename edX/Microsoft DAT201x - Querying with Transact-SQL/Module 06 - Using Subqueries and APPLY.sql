@@ -1,5 +1,5 @@
---Retrieve the product ID, name, and list price for each product where the list price is higher
---than the average unit price for all products that have been sold.
+/*Retrieve the product ID, name, and list price for each product where the list price is higher
+than the average unit price for all products that have been sold.*/
 
 -- select the ProductID, Name, and ListPrice columns
 SELECT ProductID, Name, ListPrice
@@ -10,8 +10,8 @@ WHERE ListPrice >
 (SELECT AVG(UnitPrice) FROM SalesLT.SalesOrderDetail)
 ORDER BY ProductID;
 
---Retrieve the product ID, name, and list price for each product where the list price is 10--0 or more,
---and the product has been sold for (strictly) less than 100.
+/*Retrieve the product ID, name, and list price for each product where the list price is 10--0 or more,
+and the product has been sold for (strictly) less than 100.*/
 
 --Remember, the ProductID in your subquery will be from the SalesLT.SalesOrderDetail table.
 SELECT ProductID, Name, ListPrice
@@ -23,8 +23,8 @@ WHERE ProductID IN
 AND ListPrice >= 100
 ORDER BY ProductID;
 
---Retrieve the product ID, name, cost, and list price for each product along with the average unit price
---for which that product has been sold. Make sure to use the aliases provided, and default column names elsewhere.
+/*Retrieve the product ID, name, cost, and list price for each product along with the average unit price
+for which that product has been sold. Make sure to use the aliases provided, and default column names elsewhere.*/
 
 SELECT ProductID, Name, StandardCost, ListPrice,
 -- get the average UnitPrice
@@ -36,8 +36,8 @@ SELECT ProductID, Name, StandardCost, ListPrice,
 FROM SalesLT.Product AS P
 ORDER BY P.ProductID;
 
---Filter the query for the previous exercise to include only products where the cost is higher than the average selling price.
---Make sure to use the aliases provided, and default column names elsewhere.
+/*Filter the query for the previous exercise to include only products where the cost is higher than the average selling price.
+Make sure to use the aliases provided, and default column names elsewhere.*/
 
 SELECT ProductID, Name, StandardCost, ListPrice,
 (SELECT AVG(UnitPrice)
@@ -54,9 +54,9 @@ WHERE StandardCost >
  WHERE P.ProductID = SOD.ProductID)
 ORDER BY P.ProductID;
 
---Retrieve the sales order ID, customer ID, first name, last name, and total due for all sales orders
---from the SalesLT.SalesOrderHeader table and the dbo.ufnGetCustomerInformation function.
---Make sure to use the aliases provided, and default column names elsewhere.
+/*Retrieve the sales order ID, customer ID, first name, last name, and total due for all sales orders
+from the SalesLT.SalesOrderHeader table and the dbo.ufnGetCustomerInformation function.
+Make sure to use the aliases provided, and default column names elsewhere.*/
 
 -- select SalesOrderID, CustomerID, FirstName, LastName, TotalDue from the appropriate tables
 SELECT SalesOrderID, SOH.CustomerID, FirstName, LastName, TotalDue
@@ -66,9 +66,9 @@ CROSS APPLY dbo.ufnGetCustomerInformation(SOH.CustomerID) AS CI
 -- finish the clause
 ORDER BY SOH.SalesOrderID;
 
---Retrieve the customer ID, first name, last name, address line 1 and city for all customers from the SalesLT.Address
---and SalesLT.CustomerAddress tables, using the dbo.ufnGetCustomerInformation function.
---Make sure to use the aliases provided, and default column names elsewhere.
+/*Retrieve the customer ID, first name, last name, address line 1 and city for all customers from the SalesLT.Address
+and SalesLT.CustomerAddress tables, using the dbo.ufnGetCustomerInformation function.
+Make sure to use the aliases provided, and default column names elsewhere.*/
 
 -- select the CustomerID, FirstName, LastName, Addressline1, and City columns from the appropriate tables
 SELECT CA.CustomerID, CI.FirstName, CI.LastName, A.Addressline1, A.City
