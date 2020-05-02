@@ -1,7 +1,7 @@
---Modify the code to check for the existence of the specified order ID before attempting to delete it.
---If the order does not exist, your code should throw an error.
---Otherwise, it should go ahead and delete the order data.
---If you coded the script correctly, your code should generate an error when you run it, as the order with ID 0 does not exist.
+/*Modify the code to check for the existence of the specified order ID before attempting to delete it.
+If the order does not exist, your code should throw an error.
+Otherwise, it should go ahead and delete the order data.
+If you coded the script correctly, your code should generate an error when you run it, as the order with ID 0 does not exist.*/
 
 DECLARE @OrderID int = 0
 
@@ -19,9 +19,9 @@ BEGIN
 END
 
 
---Add a TRY...CATCH to the code:
---Include the IF-ELSE block in the TRY part.
---In the CATCH part, print the error with ERROR_MESSAGE();
+/*Add a TRY...CATCH to the code:
+Include the IF-ELSE block in the TRY part.
+In the CATCH part, print the error with ERROR_MESSAGE();*/
 
 DECLARE @OrderID int = 71774
 DECLARE @error VARCHAR(30) = 'Order #' + cast(@OrderID as VARCHAR) + ' does not exist';
@@ -44,9 +44,9 @@ BEGIN CATCH
 END CATCH
 
 
---Add BEGIN TRANSACTION and COMMIT TRANSACTION to treat the two DELETE statements as a single transactional unit of work.
---In the error handler, modify the code so that if a transaction is in process, it is rolled back.
---If no transaction is in process the error handler should continue to simply print the error message.
+/*Add BEGIN TRANSACTION and COMMIT TRANSACTION to treat the two DELETE statements as a single transactional unit of work.
+In the error handler, modify the code so that if a transaction is in process, it is rolled back.
+If no transaction is in process the error handler should continue to simply print the error message.*/
 
 DECLARE @OrderID int = 0
 DECLARE @error VARCHAR(30) = 'Order #' + cast(@OrderID as VARCHAR) + ' does not exist';
