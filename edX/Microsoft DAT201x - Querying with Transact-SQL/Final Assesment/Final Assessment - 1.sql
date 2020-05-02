@@ -22,8 +22,8 @@ FROM dbo.Products
 ORDER BY UnitPrice DESC
 
 
---Select the product ID, product name, and quantity per unit for all products in the Products table.
---Sort your results alphabetically by product name (where A comes first).
+/*Select the product ID, product name, and quantity per unit for all products in the Products table.
+Sort your results alphabetically by product name (where A comes first).*/
 SELECT ProductID,
        ProductName,
        QuantityPerUnit
@@ -31,9 +31,9 @@ FROM dbo.Products
 ORDER BY ProductName
 
 
---Select the product ID, product name, and unit price of all products in the Products table.
---Sort your results by number of units in stock, from greatest to least.
---Skip the first 10 results and get the next 5 after that.
+/*Select the product ID, product name, and unit price of all products in the Products table.
+Sort your results by number of units in stock, from greatest to least.
+Skip the first 10 results and get the next 5 after that.*/
 SELECT ProductID,
        ProductName,
        UnitPrice
@@ -42,21 +42,21 @@ ORDER BY UnitsInStock DESC
 OFFSET 10 ROWS FETCH FIRST 5 ROW ONLY
 
 
---Use STR, CONVERT, and NVARCHAR(30) where appropriate to display the first name,
---employee ID and birthdate (as Unicode in ISO 8601 format) for each employee in the Employees table.
---Each result should be a single string in the following format,
---where each <<value>> is replaced by the appropriately converted value:
---<<FirstName>> has an EmployeeID of <<EmployeeID>> and was born <<BirthDate>>
+/*Use STR, CONVERT, and NVARCHAR(30) where appropriate to display the first name,
+employee ID and birthdate (as Unicode in ISO 8601 format) for each employee in the Employees table.
+Each result should be a single string in the following format,
+where each <<value>> is replaced by the appropriately converted value:
+<<FirstName>> has an EmployeeID of <<EmployeeID>> and was born <<BirthDate>>*/
 SELECT FirstName + ' has an EmployeeID of ' + 
        CONVERT(NVARCHAR(5),EmployeeID) + ' and was born ' + 
 	  CONVERT(NVARCHAR(30),BirthDate,126) Employees
 FROM dbo.Employees
 
 
---Select from the Orders table.
---The first column of your result should be a single string in exactly the following format:
---<<ShipName>> is from <<ShipCity or ShipRegion or ShipCountry>>
---If there is no ShipCity, then you should select ShipRegion, and if there is no ShipRegion you should select ShipCountry.
+/*Select from the Orders table.
+The first column of your result should be a single string in exactly the following format:
+<<ShipName>> is from <<ShipCity or ShipRegion or ShipCountry>>
+If there is no ShipCity, then you should select ShipRegion, and if there is no ShipRegion you should select ShipCountry.*/
 SELECT ShipName + ' is from ' + COALESCE(ShipCity,ShipRegion,ShipCountry) Description
 FROM dbo.Orders
 
@@ -67,9 +67,9 @@ SELECT ShipName,
 FROM dbo.Orders
 
 
---Using the Suppliers table, select the company name, and use a simple CASE expression to display 'outdated'
---if the company has a fax number, or 'modern' if it doesn't. Do this by specifying IS NULL in your conditional statement.
---Alias the result of the CASE expression to Status.
+/*Using the Suppliers table, select the company name, and use a simple CASE expression to display 'outdated'
+if the company has a fax number, or 'modern' if it doesn't. Do this by specifying IS NULL in your conditional statement.
+Alias the result of the CASE expression to Status.*/
 SELECT CompanyName,
        CASE
          WHEN Fax IS NULL THEN
