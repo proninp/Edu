@@ -1,5 +1,5 @@
---Get the order ID and unit price for each order by joining the Orders table and the Order Details table.
---Note that you need to use [Order Details] since the table name contains whitespace.
+/*Get the order ID and unit price for each order by joining the Orders table and the Order Details table.
+Note that you need to use [Order Details] since the table name contains whitespace.*/
 SELECT o.OrderID,
        od.UnitPrice
 FROM dbo.Orders o
@@ -13,8 +13,8 @@ FROM dbo.Orders o
 JOIN dbo.Employees e ON o.EmployeeID = e.EmployeeID
 
 
---Get the employee ID and related territory description for each territory an employee is in,
---by joining the Employees, EmployeeTerritories and Territories tables.
+/*Get the employee ID and related territory description for each territory an employee is in,
+by joining the Employees, EmployeeTerritories and Territories tables.*/
 SELECT e.EmployeeID,
        t.TerritoryDescription
 FROM dbo.Employees e
@@ -54,8 +54,8 @@ SELECT OrderID,
 FROM dbo.Orders
 
 
---Using the Orders table, get the order ID and month of the order by using DATENAME().
---Alias the month as OrderMonth.
+/*Using the Orders table, get the order ID and month of the order by using DATENAME().
+Alias the month as OrderMonth.*/
 SELECT OrderID,
        DATENAME(month, OrderDate) OrderMonth
 FROM dbo.Orders
@@ -66,8 +66,8 @@ SELECT LEFT(RegionDescription,2) RegionDescription
 FROM dbo.Region
 
 
---Using the Suppliers table, select the city and postal code for each supplier, using WHERE and ISNUMERIC()
---to select only those postal codes which have no letters in them.
+/*Using the Suppliers table, select the city and postal code for each supplier, using WHERE and ISNUMERIC()
+to select only those postal codes which have no letters in them.*/
 SELECT City,
     PostalCode
 FROM Suppliers
