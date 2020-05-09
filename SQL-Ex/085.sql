@@ -1,14 +1,7 @@
 SELECT maker
-FROM Product p
-WHERE type IN ('PC','Printer')
-EXCEPT
-SELECT maker
-FROM Product
-GROUP BY maker
-HAVING COUNT(DISTINCT type) > 1
-EXCEPT
-SELECT maker
-FROM Product p
-WHERE p.type = 'PC'
-GROUP BY maker
-HAVING COUNT(model) < 3
+FROM
+  (SELECT p.maker, COUNT(DISTINCT model) q, MAX(type) type
+    FROM Product p
+    GROUP BY p.maker
+    HAVING COUNT(DISTINCT type) = 1) t
+WHERE t.type = 'Printer' OR (t.type = 'PC' AND q > 2)
