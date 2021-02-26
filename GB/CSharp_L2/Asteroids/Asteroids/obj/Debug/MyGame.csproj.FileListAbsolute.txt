@@ -1,9 +1,0 @@
-C:\Users\Paul\source\repos\Git\Edu\GB\CSharp_L2\Asteroids\Asteroids\bin\Debug\Asteroids.exe.config
-C:\Users\Paul\source\repos\Git\Edu\GB\CSharp_L2\Asteroids\Asteroids\bin\Debug\Asteroids.exe
-C:\Users\Paul\source\repos\Git\Edu\GB\CSharp_L2\Asteroids\Asteroids\bin\Debug\Asteroids.pdb
-C:\Users\Paul\source\repos\Git\Edu\GB\CSharp_L2\Asteroids\Asteroids\obj\Debug\MyGame.csprojAssemblyReference.cache
-C:\Users\Paul\source\repos\Git\Edu\GB\CSharp_L2\Asteroids\Asteroids\obj\Debug\MyGame.csproj.CoreCompileInputs.cache
-C:\Users\Paul\source\repos\Git\Edu\GB\CSharp_L2\Asteroids\Asteroids\obj\Debug\Asteroids.exe
-C:\Users\Paul\source\repos\Git\Edu\GB\CSharp_L2\Asteroids\Asteroids\obj\Debug\Asteroids.pdb
-C:\Users\Paul\source\repos\Git\Edu\GB\CSharp_L2\Asteroids\Asteroids\obj\Debug\Asteroids.Properties.Resources.resources
-C:\Users\Paul\source\repos\Git\Edu\GB\CSharp_L2\Asteroids\Asteroids\obj\Debug\MyGame.csproj.GenerateResource.cache

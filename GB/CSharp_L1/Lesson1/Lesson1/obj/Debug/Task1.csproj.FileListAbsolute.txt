@@ -1,7 +1,0 @@
-C:\Users\Paul\source\repos\GB_C-Setka_1\Lesson1\Lesson1\bin\Debug\Lesson1.exe.config
-C:\Users\Paul\source\repos\GB_C-Setka_1\Lesson1\Lesson1\bin\Debug\Lesson1.exe
-C:\Users\Paul\source\repos\GB_C-Setka_1\Lesson1\Lesson1\bin\Debug\Lesson1.pdb
-C:\Users\Paul\source\repos\GB_C-Setka_1\Lesson1\Lesson1\obj\Debug\Task1.csprojResolveAssemblyReference.cache
-C:\Users\Paul\source\repos\GB_C-Setka_1\Lesson1\Lesson1\obj\Debug\Task1.csproj.CoreCompileInputs.cache
-C:\Users\Paul\source\repos\GB_C-Setka_1\Lesson1\Lesson1\obj\Debug\Lesson1.exe
-C:\Users\Paul\source\repos\GB_C-Setka_1\Lesson1\Lesson1\obj\Debug\Lesson1.pdb

@@ -1,6 +1,0 @@
-C:\Users\Paul\source\repos\GB_C-Setka_1\Lesson1\Task4\bin\Debug\Task4.exe.config
-C:\Users\Paul\source\repos\GB_C-Setka_1\Lesson1\Task4\bin\Debug\Task4.exe
-C:\Users\Paul\source\repos\GB_C-Setka_1\Lesson1\Task4\bin\Debug\Task4.pdb
-C:\Users\Paul\source\repos\GB_C-Setka_1\Lesson1\Task4\obj\Debug\Task4.csproj.CoreCompileInputs.cache
-C:\Users\Paul\source\repos\GB_C-Setka_1\Lesson1\Task4\obj\Debug\Task4.exe
-C:\Users\Paul\source\repos\GB_C-Setka_1\Lesson1\Task4\obj\Debug\Task4.pdb

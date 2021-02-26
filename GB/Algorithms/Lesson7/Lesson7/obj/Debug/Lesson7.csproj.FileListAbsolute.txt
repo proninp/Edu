@@ -1,7 +1,0 @@
-C:\Users\Paul\source\repos\Algorithms\Lesson7\Lesson7\bin\Debug\Lesson7.exe.config
-C:\Users\Paul\source\repos\Algorithms\Lesson7\Lesson7\bin\Debug\Lesson7.exe
-C:\Users\Paul\source\repos\Algorithms\Lesson7\Lesson7\bin\Debug\Lesson7.pdb
-C:\Users\Paul\source\repos\Algorithms\Lesson7\Lesson7\obj\Debug\Lesson7.csprojAssemblyReference.cache
-C:\Users\Paul\source\repos\Algorithms\Lesson7\Lesson7\obj\Debug\Lesson7.csproj.CoreCompileInputs.cache
-C:\Users\Paul\source\repos\Algorithms\Lesson7\Lesson7\obj\Debug\Lesson7.exe
-C:\Users\Paul\source\repos\Algorithms\Lesson7\Lesson7\obj\Debug\Lesson7.pdb
