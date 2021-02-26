@@ -1,3 +1,0 @@
-UPDATE Battles
-SET Name = REPLICATE(' ',DATALENGTH(Name) - LEN(RTRIM(Name))) + RTRIM(Name)
-WHERE DATALENGTH(Name) <> LEN(RTRIM(Name))
