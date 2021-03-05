@@ -10,7 +10,7 @@ namespace Algorithms_theory_and_practice.Methods
     {
         static void Main(string[] args)
         {
-            Sample1_1();
+            Sample2_2();
             Console.ReadLine();
         }
         
@@ -28,6 +28,21 @@ namespace Algorithms_theory_and_practice.Methods
              * 10
              */
             Console.WriteLine(Console.ReadLine().Sum(c => char.IsDigit(c) ? c - 48 : 0));
+        }
+        static void Sample2_2()
+        {
+            /*
+             * Given an integer 1 < = n < = 40, it is necessary to calculate the n-th Fibonacci number
+            */
+            int x = int.Parse(Console.ReadLine());
+            int res = 1;
+            int y = 0;
+            for (int i = 2; i <= x; i++)
+            {
+                res += y;
+                y = res - y;
+            }
+            Console.WriteLine(res);
         }
     }
 
