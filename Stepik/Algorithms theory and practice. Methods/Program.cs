@@ -10,7 +10,7 @@ namespace Algorithms_theory_and_practice.Methods
     {
         static void Main(string[] args)
         {
-            Sample2_2();
+            Sample2_2_3();
             Console.ReadLine();
         }
         
@@ -29,7 +29,7 @@ namespace Algorithms_theory_and_practice.Methods
              */
             Console.WriteLine(Console.ReadLine().Sum(c => char.IsDigit(c) ? c - 48 : 0));
         }
-        static void Sample2_2()
+        static void Sample2_2_1()
         {
             /*
              * Given an integer 1 < = n < = 40, it is necessary to calculate the n-th Fibonacci number
@@ -44,6 +44,39 @@ namespace Algorithms_theory_and_practice.Methods
             }
             Console.WriteLine(res);
         }
+        static void Sample2_2_2()
+        {
+            /*
+             * Given an integer 1 < = n < = 10^7, you need to find the last number of bigger Fibonacci number
+            */
+            int x = int.Parse(Console.ReadLine());
+            int res = 1;
+            int y = 0;
+            for (int i = 2; i <= x; i++)
+            {
+                res += y;
+                y = res - y;
+                res = res % 10;
+            }
+            Console.WriteLine(res);
+        }
+        static void Sample2_2_3()
+        {
+            /*
+             * Given an integer 1 < = n < = 10^7, you need to find the last number of bigger Fibonacci number
+            */
+            string[] s = Console.ReadLine().Split(' ');
+            long x = long.Parse(s[0]);
+            long n = long.Parse(s[1]);
+            long res = 1;
+            long y = 0;
+            for (long i = 2; i <= x; i++)
+            {
+                res += y;
+                y = res - y;
+            }
+            res = res % n;
+            Console.WriteLine(res);
+        }
     }
-
 }
