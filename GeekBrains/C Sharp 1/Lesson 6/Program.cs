@@ -9,8 +9,9 @@ namespace Lesson_6
     {
         static void Main(string[] args)
         {
-            //Task1.Go();
+            Task1.Go();
             Task2.Go();
+            Task3.Go();
             Console.ReadLine();
         }
     }
