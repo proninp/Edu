@@ -1,7 +1,7 @@
 /*
-* —реди тех, кто пользуетс€ услугами только одной компании,
-* определить имена разных пассажиров,летавших чаще других.
-* ¬ывести: им€ пассажира, число полетов и название компании.
+* Among those who use the services of only one company,
+* identify the names of different passengers who flew more often than others.
+* Output: passenger name, number of flights, and company name.
 */
 
 SELECT (SELECT name FROM Passenger WHERE ID_psg = q.id_psg) passanger,
