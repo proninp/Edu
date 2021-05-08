@@ -1,6 +1,0 @@
-DELETE
-FROM PC
-WHERE code NOT IN (
-  SELECT MAX(code) code
-  FROM PC
-  GROUP BY model)
