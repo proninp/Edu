@@ -15,7 +15,7 @@ namespace CodeWars
         public static void Main()
         {
             //Console.WriteLine(Calculator.Evaluate("-1-1"));
-            Console.WriteLine(BallUpwards.MaxBall(85));
+            Console.WriteLine(OddOrEvenTask.OddOrEven(new int[] { 0 }));
             Console.ReadLine();
         }   
     }
