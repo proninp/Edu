@@ -15,7 +15,7 @@ namespace CodeWars
         public static void Main()
         {
             //Console.WriteLine(Calculator.Evaluate("-1-1"));
-            Console.WriteLine(OddOrEvenTask.OddOrEven(new int[] { 0 }));
+            WhichAreIn.Test1();
             Console.ReadLine();
         }   
     }
