@@ -90,6 +90,7 @@
     <Compile Include="6kyu\PositionsAverage.cs" />
     <Compile Include="6kyu\PossibilitiesOfThrowingACoinNTimes.cs" />
     <Compile Include="6kyu\RectangleIntoSquares.cs" />
+    <Compile Include="6kyu\SmallestPermutation.cs" />
     <Compile Include="6kyu\SplitStrings.cs" />
     <Compile Include="6kyu\Stop_gninnipS_My_sdroW.cs" />
     <Compile Include="6kyu\StringLetterCounting.cs" />
