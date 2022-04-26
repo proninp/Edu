@@ -10,11 +10,11 @@ namespace LeetCode
     {
         static void Main(string[] args)
         {
-            Console.WriteLine(Easy.Palindrome_Number.IsPalindrome(121));
-            Console.WriteLine(Easy.Palindrome_Number.IsPalindrome(123));
-            Console.WriteLine(Easy.Palindrome_Number.IsPalindrome(-121));
-            Console.WriteLine(Easy.Palindrome_Number.IsPalindrome(10));
-            Console.WriteLine(Easy.Palindrome_Number.IsPalindrome(12321));
+            Console.WriteLine(Easy.Longest_Common_Prefix.LongestCommonPrefix(new string[] { "flower", "flow", "flight" }));
+            Console.WriteLine(Easy.Longest_Common_Prefix.LongestCommonPrefix(new string[] { "dog", "racecar", "car" }));
+            Console.WriteLine(Easy.Longest_Common_Prefix.LongestCommonPrefix(new string[] { "a" }));
+            Console.WriteLine(Easy.Longest_Common_Prefix.LongestCommonPrefix(new string[] { "ab", "a"}));
+            Console.WriteLine(Easy.Longest_Common_Prefix.LongestCommonPrefix(new string[] { "geeksforgeeks", "geeks", "geek", "geezer" }));
             Console.ReadLine();
         }
         static string PrintArray(int[] a)

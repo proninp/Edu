@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Easy\Longest_Common_Prefix.cs" />
     <Compile Include="Easy\Palindrome_Number.cs" />
     <Compile Include="Easy\Roman_to_integer.cs" />
     <Compile Include="Easy\Two_Sum.cs" />
