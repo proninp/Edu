@@ -10,10 +10,11 @@ namespace LeetCode
     {
         static void Main(string[] args)
         {
-            Console.WriteLine(PrintArray(Easy.Two_Sum.TwoSum(new int[] { 2, 7, 11, 15 }, 9)));
-            Console.WriteLine(PrintArray(Easy.Two_Sum.TwoSum(new int[] { 3, 2, 4 }, 6)));
-            Console.WriteLine(PrintArray(Easy.Two_Sum.TwoSum(new int[] { 3, 3}, 6)));
-            Console.WriteLine(PrintArray(Easy.Two_Sum.TwoSum(new int[] { 1, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 7, 1, 1, 1, 1, 1 }, 11)));
+            Console.WriteLine(Easy.Palindrome_Number.IsPalindrome(121));
+            Console.WriteLine(Easy.Palindrome_Number.IsPalindrome(123));
+            Console.WriteLine(Easy.Palindrome_Number.IsPalindrome(-121));
+            Console.WriteLine(Easy.Palindrome_Number.IsPalindrome(10));
+            Console.WriteLine(Easy.Palindrome_Number.IsPalindrome(12321));
             Console.ReadLine();
         }
         static string PrintArray(int[] a)
