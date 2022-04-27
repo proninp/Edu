@@ -47,6 +47,7 @@
     <Compile Include="Easy\Palindrome_Number.cs" />
     <Compile Include="Easy\Roman_to_integer.cs" />
     <Compile Include="Easy\Two_Sum.cs" />
+    <Compile Include="Easy\Valid_Parentheses.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

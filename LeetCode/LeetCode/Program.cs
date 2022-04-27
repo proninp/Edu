@@ -10,11 +10,13 @@ namespace LeetCode
     {
         static void Main(string[] args)
         {
-            Console.WriteLine(Easy.Longest_Common_Prefix.LongestCommonPrefix(new string[] { "flower", "flow", "flight" }));
-            Console.WriteLine(Easy.Longest_Common_Prefix.LongestCommonPrefix(new string[] { "dog", "racecar", "car" }));
-            Console.WriteLine(Easy.Longest_Common_Prefix.LongestCommonPrefix(new string[] { "a" }));
-            Console.WriteLine(Easy.Longest_Common_Prefix.LongestCommonPrefix(new string[] { "ab", "a"}));
-            Console.WriteLine(Easy.Longest_Common_Prefix.LongestCommonPrefix(new string[] { "geeksforgeeks", "geeks", "geek", "geezer" }));
+            Console.WriteLine(Easy.Valid_Parentheses.IsValid("()[]{}"));
+            Console.WriteLine(Easy.Valid_Parentheses.IsValid("()"));
+            Console.WriteLine(Easy.Valid_Parentheses.IsValid("(]"));
+            Console.WriteLine(Easy.Valid_Parentheses.IsValid("[()]"));
+            Console.WriteLine(Easy.Valid_Parentheses.IsValid("{[()]}"));
+            Console.WriteLine(Easy.Valid_Parentheses.IsValid("([{{[(())]}}])"));
+            Console.WriteLine(Easy.Valid_Parentheses.IsValid("([{{[(())]}]])"));
             Console.ReadLine();
         }
         static string PrintArray(int[] a)
