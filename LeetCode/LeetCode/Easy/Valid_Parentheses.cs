@@ -30,19 +30,20 @@ namespace LeetCode.Easy
         public static bool IsValid(string s)
         {
             int len = s.Length;
-            if (len < 2)
+            if ((len < 2) || (len % 2 != 0))
                 return false;
-            char[] openings = new char[] { '(', '[', '{' };
-            Dictionary<char, int> map = new Dictionary<char, int>() { { ')', 0 }, { ']', 1 }, { '}', 2 } };
+            Dictionary<char, char> map = new Dictionary<char, char>() { { ')', '(' }, { ']', '[' }, { '}', '{' } };
             Stack<char> box = new Stack<char>();
             for (int i = 0; i < len; i++)
+            {
                 if (map.ContainsKey(s[i]))
                 {
-                    if ((box.Count == 0) || (openings[map[s[i]]] != box.Pop()))
+                    if ((box.Count == 0) || (map[s[i]] != box.Pop()))
                         return false;
                 }
                 else
                     box.Push(s[i]);
+            }
             return (box.Count == 0);
         }
     }

@@ -10,13 +10,11 @@ namespace LeetCode
     {
         static void Main(string[] args)
         {
-            Console.WriteLine(Easy.Valid_Parentheses.IsValid("()[]{}"));
-            Console.WriteLine(Easy.Valid_Parentheses.IsValid("()"));
-            Console.WriteLine(Easy.Valid_Parentheses.IsValid("(]"));
-            Console.WriteLine(Easy.Valid_Parentheses.IsValid("[()]"));
-            Console.WriteLine(Easy.Valid_Parentheses.IsValid("{[()]}"));
-            Console.WriteLine(Easy.Valid_Parentheses.IsValid("([{{[(())]}}])"));
-            Console.WriteLine(Easy.Valid_Parentheses.IsValid("([{{[(())]}]])"));
+            Console.WriteLine(Easy.Remove_Element.RemoveElement(new int[] { 3, 2, 2, 3 }, 3));
+            Console.WriteLine(Easy.Remove_Element.RemoveElement(new int[] { 0, 1, 2, 2, 3, 0, 4, 2 }, 2));
+            Console.WriteLine(Easy.Remove_Element.RemoveElement(new int[] { 3, 5, 6, 2, 1, 2 }, 2));
+            Console.WriteLine(Easy.Remove_Element.RemoveElement(new int[] { 1 }, 0));
+
             Console.ReadLine();
         }
         static string PrintArray(int[] a)
