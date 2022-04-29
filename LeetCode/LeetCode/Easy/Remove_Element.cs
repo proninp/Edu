@@ -17,25 +17,16 @@ namespace LeetCode.Easy
     {
         public static int RemoveElement(int[] nums, int val)
         {
-            byte count = 0;
-            byte size = (byte)nums.Length;
-            byte lastSwapIndex = (byte)(size - 1);
-            for (byte i = 0; i < size; i++)
-            {
-                if (nums[i] == val)
+            if (nums.Length == 0)
+                return 0;
+            int j = 0;
+            for (int i = 0; i < nums.Length; i++)
+                if (nums[i] != val)
                 {
-                    while (nums[lastSwapIndex] == val && lastSwapIndex > i)
-                        lastSwapIndex--;
-                    if (lastSwapIndex <= i)
-                        return count;
-                    
-                    nums[lastSwapIndex] += nums[i];
-                    nums[i] = nums[lastSwapIndex] - nums[i];
-                    nums[lastSwapIndex] -= nums[i];
+                    nums[j] = nums[i];
+                    j++;
                 }
-                count++;
-            }
-            return count;
+            return j;
         }
     }
 }
