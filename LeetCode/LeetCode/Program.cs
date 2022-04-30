@@ -10,10 +10,12 @@ namespace LeetCode
     {
         static void Main(string[] args)
         {
-            Console.WriteLine(Easy.Remove_Element.RemoveElement(new int[] { 3, 2, 2, 3 }, 3));
-            Console.WriteLine(Easy.Remove_Element.RemoveElement(new int[] { 0, 1, 2, 2, 3, 0, 4, 2 }, 2));
-            Console.WriteLine(Easy.Remove_Element.RemoveElement(new int[] { 3, 5, 6, 2, 1, 2 }, 2));
-            Console.WriteLine(Easy.Remove_Element.RemoveElement(new int[] { 1 }, 0));
+            Console.WriteLine(Easy.Search_Insert_Position.SearchInsert(new int[] { 1, 3 }, 1));
+            Console.WriteLine(Easy.Search_Insert_Position.SearchInsert(new int[] { 1, 3, 5, 6 }, 5));
+            Console.WriteLine(Easy.Search_Insert_Position.SearchInsert(new int[] { 1, 3, 5, 6, 8, 9, 11 }, 7));
+            Console.WriteLine(Easy.Search_Insert_Position.SearchInsert(new int[] { 1, 3, 5, 6, 7 }, 9));
+            Console.WriteLine(Easy.Search_Insert_Position.SearchInsert(new int[] { 1, 3, 5, 6, 7, 12 }, 2));
+            Console.WriteLine(Easy.Search_Insert_Position.SearchInsert(new int[] { 1, 3, 5, 6, 7, 12 }, 9));
 
             Console.ReadLine();
         }
