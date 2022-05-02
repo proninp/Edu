@@ -10,10 +10,10 @@ namespace LeetCode
     {
         static void Main(string[] args)
         {
-            Console.WriteLine(Middle.Longest_Substring_Without_Repeating_Characters.LengthOfLongestSubstring("abcabcbb"));
-            Console.WriteLine(Middle.Longest_Substring_Without_Repeating_Characters.LengthOfLongestSubstring("bbbbb"));
-            Console.WriteLine(Middle.Longest_Substring_Without_Repeating_Characters.LengthOfLongestSubstring("pwwkew"));
-            Console.WriteLine(Middle.Longest_Substring_Without_Repeating_Characters.LengthOfLongestSubstring("au"));
+            Console.WriteLine(Easy.Remove_Duplicates_From_Sorted_Array.RemoveDuplicates(new int[] { 1, 1, 2 }));
+            Console.WriteLine(Easy.Remove_Duplicates_From_Sorted_Array.RemoveDuplicates(new int[] { 0, 0, 1, 1, 1, 2, 2, 3, 3, 4 }));
+            Console.WriteLine(Easy.Remove_Duplicates_From_Sorted_Array.RemoveDuplicates(new int[] { 2 }));
+            Console.WriteLine(Easy.Remove_Duplicates_From_Sorted_Array.RemoveDuplicates(new int[] { 2, 2, 2, 2, 2, 2 }));
 
             Console.ReadLine();
         }
