@@ -25,25 +25,24 @@ namespace LeetCode.Easy
         public static int SearchInsert(int[] nums, int target)
         {
             int size = nums.Length;
-            if (size == 0)
-                return 0;
-            if (size == 1)
-                return (nums[0] >= target ? 0 : 1);
             if (target < nums[0])
                 return 0;
             if (target > nums[size - 1])
                 return size;
-            int left = -1;
+            int left = 0;
             int right = size - 1;
-            while(right > left + 1)
+            int middle = (left + right) / 2;
+            while (left <= right)
             {
-                int middle = (left + right) / 2;
-                if (nums[middle] >= target)
-                    right = middle;
+                if (nums[middle] == target)
+                    return middle;
+                else if (nums[middle] < target)
+                    left = middle + 1;
                 else
-                    left = middle; 
+                    right = middle - 1;
+                middle = (left + right) / 2;
             }
-            return (nums[right] >= target ? right : right + 1);
+            return (nums[middle] < target ? middle + 1 : middle);
         }
     }
 }

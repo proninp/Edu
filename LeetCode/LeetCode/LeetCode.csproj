@@ -50,6 +50,7 @@
     <Compile Include="Easy\Search Insert Position.cs" />
     <Compile Include="Easy\Two_Sum.cs" />
     <Compile Include="Easy\Valid_Parentheses.cs" />
+    <Compile Include="Middle\Longest_Substring_Without_Repeating_Characters.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

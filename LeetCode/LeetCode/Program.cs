@@ -10,12 +10,10 @@ namespace LeetCode
     {
         static void Main(string[] args)
         {
-            Console.WriteLine(Easy.Search_Insert_Position.SearchInsert(new int[] { 1, 3 }, 1));
-            Console.WriteLine(Easy.Search_Insert_Position.SearchInsert(new int[] { 1, 3, 5, 6 }, 5));
-            Console.WriteLine(Easy.Search_Insert_Position.SearchInsert(new int[] { 1, 3, 5, 6, 8, 9, 11 }, 7));
-            Console.WriteLine(Easy.Search_Insert_Position.SearchInsert(new int[] { 1, 3, 5, 6, 7 }, 9));
-            Console.WriteLine(Easy.Search_Insert_Position.SearchInsert(new int[] { 1, 3, 5, 6, 7, 12 }, 2));
-            Console.WriteLine(Easy.Search_Insert_Position.SearchInsert(new int[] { 1, 3, 5, 6, 7, 12 }, 9));
+            Console.WriteLine(Middle.Longest_Substring_Without_Repeating_Characters.LengthOfLongestSubstring("abcabcbb"));
+            Console.WriteLine(Middle.Longest_Substring_Without_Repeating_Characters.LengthOfLongestSubstring("bbbbb"));
+            Console.WriteLine(Middle.Longest_Substring_Without_Repeating_Characters.LengthOfLongestSubstring("pwwkew"));
+            Console.WriteLine(Middle.Longest_Substring_Without_Repeating_Characters.LengthOfLongestSubstring("au"));
 
             Console.ReadLine();
         }
