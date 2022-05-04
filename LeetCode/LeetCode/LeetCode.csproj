@@ -43,13 +43,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Easy\Implement_strStr.cs" />
     <Compile Include="Easy\Longest_Common_Prefix.cs" />
     <Compile Include="Easy\Maximum_Subarray.cs" />
     <Compile Include="Easy\Palindrome_Number.cs" />
     <Compile Include="Easy\Remove_Duplicates_From_Sorted_Array.cs" />
     <Compile Include="Easy\Remove_Element.cs" />
     <Compile Include="Easy\Roman_to_integer.cs" />
-    <Compile Include="Easy\Search Insert Position.cs" />
+    <Compile Include="Easy\Search_Insert_Position.cs" />
     <Compile Include="Easy\Two_Sum.cs" />
     <Compile Include="Easy\Valid_Parentheses.cs" />
     <Compile Include="Middle\Longest_Substring_Without_Repeating_Characters.cs" />

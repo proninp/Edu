@@ -10,10 +10,13 @@ namespace LeetCode
     {
         static void Main(string[] args)
         {
-            Console.WriteLine(Easy.Maximum_Subarray.MaxSubArray(new int[] { -2, 1, -3, 4, -1, 2, 1, -5, 4 }));
-            Console.WriteLine(Easy.Maximum_Subarray.MaxSubArray(new int[] { 1 }));
-            Console.WriteLine(Easy.Maximum_Subarray.MaxSubArray(new int[] { 5, 4, -1, 7, 8 }));
-            Console.WriteLine(Easy.Maximum_Subarray.MaxSubArray(new int[] { 5, 0, 1, -5, 9 }));
+            Console.WriteLine(Easy.Implement_strStr.StrStr("hello", "ll"));
+            Console.WriteLine(Easy.Implement_strStr.StrStr("aaaaa", "bba"));
+            Console.WriteLine(Easy.Implement_strStr.StrStr("hello", "h"));
+            Console.WriteLine(Easy.Implement_strStr.StrStr("bigstrstr", "str"));
+            Console.WriteLine(Easy.Implement_strStr.StrStr("b", "s"));
+            Console.WriteLine(Easy.Implement_strStr.StrStr("mississippi", "issip"));
+
 
             Console.ReadLine();
         }
