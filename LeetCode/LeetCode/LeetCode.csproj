@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Easy\Longest_Common_Prefix.cs" />
+    <Compile Include="Easy\Maximum_Subarray.cs" />
     <Compile Include="Easy\Palindrome_Number.cs" />
     <Compile Include="Easy\Remove_Duplicates_From_Sorted_Array.cs" />
     <Compile Include="Easy\Remove_Element.cs" />

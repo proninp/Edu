@@ -10,10 +10,10 @@ namespace LeetCode
     {
         static void Main(string[] args)
         {
-            Console.WriteLine(Easy.Remove_Duplicates_From_Sorted_Array.RemoveDuplicates(new int[] { 1, 1, 2 }));
-            Console.WriteLine(Easy.Remove_Duplicates_From_Sorted_Array.RemoveDuplicates(new int[] { 0, 0, 1, 1, 1, 2, 2, 3, 3, 4 }));
-            Console.WriteLine(Easy.Remove_Duplicates_From_Sorted_Array.RemoveDuplicates(new int[] { 2 }));
-            Console.WriteLine(Easy.Remove_Duplicates_From_Sorted_Array.RemoveDuplicates(new int[] { 2, 2, 2, 2, 2, 2 }));
+            Console.WriteLine(Easy.Maximum_Subarray.MaxSubArray(new int[] { -2, 1, -3, 4, -1, 2, 1, -5, 4 }));
+            Console.WriteLine(Easy.Maximum_Subarray.MaxSubArray(new int[] { 1 }));
+            Console.WriteLine(Easy.Maximum_Subarray.MaxSubArray(new int[] { 5, 4, -1, 7, 8 }));
+            Console.WriteLine(Easy.Maximum_Subarray.MaxSubArray(new int[] { 5, 0, 1, -5, 9 }));
 
             Console.ReadLine();
         }
