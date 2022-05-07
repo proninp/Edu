@@ -10,13 +10,12 @@ namespace LeetCode
     {
         static void Main(string[] args)
         {
-            Console.WriteLine(Easy.Implement_strStr.StrStr("hello", "ll"));
-            Console.WriteLine(Easy.Implement_strStr.StrStr("aaaaa", "bba"));
-            Console.WriteLine(Easy.Implement_strStr.StrStr("hello", "h"));
-            Console.WriteLine(Easy.Implement_strStr.StrStr("bigstrstr", "str"));
-            Console.WriteLine(Easy.Implement_strStr.StrStr("b", "s"));
-            Console.WriteLine(Easy.Implement_strStr.StrStr("mississippi", "issip"));
-
+            Console.WriteLine(Easy.Length_of_Last_Word.LengthOfLastWord("Hello World"));
+            Console.WriteLine(Easy.Length_of_Last_Word.LengthOfLastWord("   fly me   to   the moon  "));
+            Console.WriteLine(Easy.Length_of_Last_Word.LengthOfLastWord("luffy is still joyboy"));
+            Console.WriteLine(Easy.Length_of_Last_Word.LengthOfLastWord(" "));
+            Console.WriteLine(Easy.Length_of_Last_Word.LengthOfLastWord("as "));
+            Console.WriteLine(Easy.Length_of_Last_Word.LengthOfLastWord(""));
 
             Console.ReadLine();
         }
