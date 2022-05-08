@@ -10,12 +10,12 @@ namespace LeetCode
     {
         static void Main(string[] args)
         {
-            Console.WriteLine(Easy.Length_of_Last_Word.LengthOfLastWord("Hello World"));
-            Console.WriteLine(Easy.Length_of_Last_Word.LengthOfLastWord("   fly me   to   the moon  "));
-            Console.WriteLine(Easy.Length_of_Last_Word.LengthOfLastWord("luffy is still joyboy"));
-            Console.WriteLine(Easy.Length_of_Last_Word.LengthOfLastWord(" "));
-            Console.WriteLine(Easy.Length_of_Last_Word.LengthOfLastWord("as "));
-            Console.WriteLine(Easy.Length_of_Last_Word.LengthOfLastWord(""));
+            Console.WriteLine(PrintArray(Easy.Plus_One.PlusOne(new int[] { 1, 2, 3 })));
+            Console.WriteLine(PrintArray(Easy.Plus_One.PlusOne(new int[] { 4, 3, 2, 1 })));
+            Console.WriteLine(PrintArray(Easy.Plus_One.PlusOne(new int[] { 9 })));
+            Console.WriteLine(PrintArray(Easy.Plus_One.PlusOne(new int[] { 8, 9, 9 })));
+            Console.WriteLine(PrintArray(Easy.Plus_One.PlusOne(new int[] { 9, 9, 9 })));
+            Console.WriteLine(PrintArray(Easy.Plus_One.PlusOne(new int[] { 1, 9, 9, 9, 9, 9 })));
 
             Console.ReadLine();
         }
