@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Easy\Add_Binary.cs" />
     <Compile Include="Easy\Implement_strStr.cs" />
     <Compile Include="Easy\Length_of_Last_Word.cs" />
     <Compile Include="Easy\Longest_Common_Prefix.cs" />

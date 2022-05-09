@@ -10,12 +10,11 @@ namespace LeetCode
     {
         static void Main(string[] args)
         {
-            Console.WriteLine(PrintArray(Easy.Plus_One.PlusOne(new int[] { 1, 2, 3 })));
-            Console.WriteLine(PrintArray(Easy.Plus_One.PlusOne(new int[] { 4, 3, 2, 1 })));
-            Console.WriteLine(PrintArray(Easy.Plus_One.PlusOne(new int[] { 9 })));
-            Console.WriteLine(PrintArray(Easy.Plus_One.PlusOne(new int[] { 8, 9, 9 })));
-            Console.WriteLine(PrintArray(Easy.Plus_One.PlusOne(new int[] { 9, 9, 9 })));
-            Console.WriteLine(PrintArray(Easy.Plus_One.PlusOne(new int[] { 1, 9, 9, 9, 9, 9 })));
+            Console.WriteLine(Easy.Add_Binary.AddBinary("11", "1"));
+            Console.WriteLine(Easy.Add_Binary.AddBinary("1010", "1011"));
+            Console.WriteLine(Easy.Add_Binary.AddBinary("1111", "1111"));
+            Console.WriteLine(Easy.Add_Binary.AddBinary("100", "110010"));
+
 
             Console.ReadLine();
         }
