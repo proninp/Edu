@@ -9,12 +9,12 @@ namespace LeetCode
     class Program
     {
         static void Main(string[] args)
-        {
-            Console.WriteLine(Easy.Add_Binary.AddBinary("11", "1"));
-            Console.WriteLine(Easy.Add_Binary.AddBinary("1010", "1011"));
-            Console.WriteLine(Easy.Add_Binary.AddBinary("1111", "1111"));
-            Console.WriteLine(Easy.Add_Binary.AddBinary("100", "110010"));
-
+        {   
+            Console.WriteLine(Easy.Sqrt_x.MySqrt(4));
+            Console.WriteLine(Easy.Sqrt_x.MySqrt(8));
+            Console.WriteLine(Easy.Sqrt_x.MySqrt(9));
+            Console.WriteLine(Easy.Sqrt_x.MySqrt(4901));
+            Console.WriteLine(Easy.Sqrt_x.MySqrt(2147483647));
 
             Console.ReadLine();
         }
