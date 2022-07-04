@@ -1,3 +1,5 @@
+package org.Stepik.JavaBasicCourse;
+import java.math.BigDecimal;
 import java.math.BigInteger;
 
 public class Main {
@@ -5,7 +7,23 @@ public class Main {
         //System.out.println(isPalindrome("Madam, I'm Adam!"));
         //System.out.println(factorial(10).toString());
         //System.out.println(Arrays.toString(mergeArrays(new int[]{1, 2, 5, 5, 8, 9, 11}, new int[]{1, 1, 6, 7, 8, 9, 10})));
-        testPrintTextPerRole();
+        //testPrintTextPerRole();
+        Robot robot = new Robot();
+        robot.printPosition();
+        System.out.println(robot.getDirection().toString());
+
+//        robot.turnLeft();
+//        robot.stepForward();
+//        robot.stepForward();
+//        robot.stepForward();
+//        robot.turnLeft();
+//        robot.stepForward();
+//        robot.stepForward();
+//        robot.printPosition();
+
+        moveRobot(robot, 3, 0);
+
+        robot.printPosition();
     }
 
     // 2.2
@@ -29,7 +47,7 @@ public class Main {
         return BigInteger.valueOf(value).multiply(factorial(value - 1));
     }
 
-    // 2.4.2
+    //region 2.4.2
     public static int[] mergeArrays(int[] a1, int[] a2) {
         int[] a3 = new int[a1.length + a2.length];
         int i = 0, j = 0, k = 0;
@@ -76,4 +94,29 @@ public class Main {
         }
         return text.toString();
     }
+    //endregion
+
+    //region 3.3
+    public static void moveRobot(Robot robot, int toX, int toY) {
+        getMoveProperties(robot, toX, robot.getX(), Direction.RIGHT, Direction.LEFT);
+        getMoveProperties(robot, toY, robot.getY(), Direction.UP, Direction.DOWN);
+    }
+    public static void getMoveProperties(Robot robot, int moveTo, int currentCoord, Direction lessPointDir, Direction greaterPointDir) {
+        if (moveTo == currentCoord)
+            return;
+        Direction newDirection = robot.getDirection();
+        int steps = 0;
+        if (currentCoord < moveTo) {
+            newDirection = lessPointDir;
+            steps = moveTo - currentCoord;
+        } else {
+            newDirection = greaterPointDir;
+            steps = currentCoord - moveTo;
+        }
+        while (robot.getDirection() != newDirection)
+            robot.turnLeft();
+        while (steps-- > 0)
+            robot.stepForward();
+    }
+    //endregion
 }
