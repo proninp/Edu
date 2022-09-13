@@ -1,10 +1,23 @@
 package org.Stepik.JavaBasicCourse;
 import java.math.BigInteger;
 import  org.Stepik.JavaBasicCourse.s3_5.*;
+import org.Stepik.JavaBasicCourse.s4_1.SomeClassA;
+import org.Stepik.JavaBasicCourse.s4_1.SomeClassB;
 
 public class Main {
     public static void main(String[] args) {
-        Test3_5();
+        getCallerClassAndMethodName();
+        try {
+            Object o = null;
+            o.toString();
+
+            System.out.println("try");
+        } catch (NullPointerException e) {
+            System.out.println("catch");
+            throw new IndexOutOfBoundsException();
+        } finally {
+            System.out.println("finaly");
+        }
     }
 
     // 2.2
@@ -171,5 +184,19 @@ public class Main {
         }
     }
 
+    //endregion
+
+    //region 4.1
+    public static double sqrt(double x) throws java.lang.IllegalArgumentException {
+        if (x < 0)
+            throw new IllegalArgumentException("Expected non-negative number, got " + x);
+        return Math.sqrt(x);
+    }
+    public static String getCallerClassAndMethodName() {
+        if (Thread.currentThread().getStackTrace().length > 3) {
+            return Thread.currentThread().getStackTrace()[3].getClassName() + "#" + Thread.currentThread().getStackTrace()[3].getMethodName();
+        }
+        return null;
+    }
     //endregion
 }
