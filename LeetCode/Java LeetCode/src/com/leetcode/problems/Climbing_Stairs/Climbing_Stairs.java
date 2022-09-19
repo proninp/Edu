@@ -10,12 +10,19 @@ public class Climbing_Stairs {
     public static int climbStairs(int n) {
         if (resultHash.containsKey(n))
             return resultHash.get(n);
-        if (n == 2)
-            return 2; // 2 / 1 + 1 steps
-        if (n == 1)
-            return 1;
+        if( (n == 2) || (n == 1))
+            return n; // 2 / 1 + 1 steps
         int res = climbStairs(n - 1) + climbStairs(n - 2);
         resultHash.put(n, res);
         return res;
+    }
+    public static int climbStairs2(int n) {
+        int[] a = new int[n];
+        a[0] = 1;
+        a[1] = 2;
+        for (int i = 2; i < n; i++) {
+            a[i] = a[i - 2] + a[i - 1];
+        }
+        return a[n-1];
     }
 }
