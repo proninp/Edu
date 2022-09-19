@@ -17,6 +17,8 @@ public class Climbing_Stairs {
         return res;
     }
     public static int climbStairs2(int n) {
+        if( (n == 2) || (n == 1))
+            return n;
         int[] a = new int[n];
         a[0] = 1;
         a[1] = 2;
