@@ -1,11 +1,9 @@
 package com.leetcode.problems;
 import com.leetcode.problems.*;
-import com.leetcode.problems.Palindrome_Number.Palindrome_Number;
-import com.leetcode.problems.Reverse_Integer.Reverse_Integer;
+import com.leetcode.problems.Climbing_Stairs.Climbing_Stairs;
 
 public class Main {
     public static void main(String[] args) {
-        //System.out.println(Reverse_Integer.reverse(Integer.MAX_VALUE));
-        System.out.println(Reverse_Integer.reverse(1463847412));
+        System.out.println(Climbing_Stairs.climbStairs(45));
     }
 }
