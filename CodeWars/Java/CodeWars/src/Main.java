@@ -7,7 +7,7 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println(YoutOrderPlease.order("Empty input should return empty string"));
+        System.out.println(ValidBraces.isValid(")(}{]["));
 
     }
 }
