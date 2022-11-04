@@ -7,6 +7,6 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println(BackspacesInString.cleanString("abc#d##c"));
+        System.out.println(SecureTester.alphanumeric("nave"));
     }
 }
