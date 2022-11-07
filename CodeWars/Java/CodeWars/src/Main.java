@@ -7,6 +7,7 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println(Counting1WantSomeSubsetsNotAll.F(20));
+        System.out.println(ConsecutiveStrings.longestConsec(
+                new String[]{"it","wkppv","ixoyx", "3452", "zzzzzzzzzzzz"}, 3));
     }
 }
