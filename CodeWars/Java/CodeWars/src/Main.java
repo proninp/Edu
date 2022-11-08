@@ -7,7 +7,6 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println(ConsecutiveStrings.longestConsec(
-                new String[]{"it","wkppv","ixoyx", "3452", "zzzzzzzzzzzz"}, 3));
+        System.out.println(FindFibonacciLastDigit.getFibNumb(20001));
     }
 }
