@@ -8,6 +8,6 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println(Arrays.toString(MakeTheDeadfishSwim.parse("aaaaaaa")));
+        System.out.println(PhoneWords.phoneWords("271755533"));
     }
 }
