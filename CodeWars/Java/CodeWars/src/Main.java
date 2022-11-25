@@ -8,6 +8,6 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println(PhoneWords.phoneWords("271755533"));
+        System.out.println(Character.toString(ColouredTriangles.triangle2("RBRGBRBGGRRRBGBBBGG")));
     }
 }
