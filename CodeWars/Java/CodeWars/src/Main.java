@@ -8,6 +8,6 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println(LetterTriangles.triangle("triangle"));
+        System.out.println(MeanSquareError.solution(new int[] {10, 20, 10, 2}, new int[] {10, 25, 5, -2}));
     }
 }
