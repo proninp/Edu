@@ -8,6 +8,7 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println(NumbersThatAreAPowerOfTheirSumOfDigits.powerSumDigTerm(4));
+        //System.out.println(NumbersThatAreAPowerOfTheirSumOfDigits.powerSumDigTerm2(20));
+        System.out.println(GreedIsGood.greedy(new int[]{2,4,4,5,4}));
     }
 }
