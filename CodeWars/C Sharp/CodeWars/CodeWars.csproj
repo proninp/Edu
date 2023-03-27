@@ -8,9 +8,10 @@
     <OutputType>Exe</OutputType>
     <RootNamespace>CodeWars</RootNamespace>
     <AssemblyName>CodeWars</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -118,6 +119,7 @@
     <Compile Include="7kyu\SimpleFun37HouseNumbersSum.cs" />
     <Compile Include="7kyu\SquareEveryDigit.cs" />
     <Compile Include="7kyu\StringEndsWith.cs" />
+    <Compile Include="7kyu\SumOfConsecutiveIntegers.cs" />
     <Compile Include="7kyu\SumOfOddNumbers.cs" />
     <Compile Include="7kyu\SumOfTheFirstNthTermOfSeries.cs" />
     <Compile Include="7kyu\SumOfAllTheMultiplesOf3Or5.cs" />

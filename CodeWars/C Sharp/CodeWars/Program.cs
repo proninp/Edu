@@ -14,9 +14,7 @@ namespace CodeWars
     {
         public static void Main()
         {
-            //Console.WriteLine(Calculator.Evaluate("-1-1"));
-            Console.WriteLine(SmallestPermutation.MinPermutation(32));
-            Console.ReadLine();
+            Console.WriteLine(SumOfConsecutiveIntegers.Position(5, 0, 0));
         }   
     }
 }
