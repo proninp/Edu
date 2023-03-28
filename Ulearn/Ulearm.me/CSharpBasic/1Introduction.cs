@@ -61,7 +61,25 @@ namespace CSharpBasic
             h %= 12;
             return (h <= 6) ? h * 30 : (180 - (h - 6) * 30);
         }
-
+        /// <summary>
+        /// Expr4. Найти количество чисел меньших N, которые имеют простые делители X или Y.
+        /// </summary>
+        /// <param name="n"></param>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <returns></returns>
+        public static int Expr4(int n, int x, int y)
+        {
+            int c = 0;
+            for (int i = (n - 1); i > 1; i++)
+            {
+                int a = n / x;
+                int b = n / y;
+                if ((a * x == n) && (b * y == n))
+                    c++;
+            }
+            return c;
+        }
     }
 
 }

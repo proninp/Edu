@@ -14,7 +14,20 @@ namespace CodeWars
     {
         public static void Main()
         {
-            Console.WriteLine(SumOfConsecutiveIntegers.Position(5, 0, 0));
+            List<int> numbers = new List<int> { 5, 3, 2, 1, 4 };
+            List<int> list = Remover.RemoveSmallest(numbers);
+            Console.WriteLine("Numbers:");
+            foreach (var item in numbers)
+            {
+                Console.WriteLine(item);
+            }
+            Console.WriteLine("List:");
+            foreach (var item in list)
+            {
+                Console.WriteLine(item);
+            }
+            
+            Console.WriteLine();
         }   
     }
 }
