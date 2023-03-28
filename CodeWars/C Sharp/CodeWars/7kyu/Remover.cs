@@ -46,5 +46,10 @@ namespace CodeWars._7kyu
             result.RemoveAt(minIndex);
             return result;
         }
+        public static List<int> RemoveSmallest2(List<int> numbers)
+        {
+            numbers.Remove(numbers.DefaultIfEmpty().Min());
+            return numbers;
+        }
     }
 }
