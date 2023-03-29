@@ -14,20 +14,10 @@ namespace CodeWars
     {
         public static void Main()
         {
-            List<int> numbers = new List<int> { 5, 3, 2, 1, 4 };
-            List<int> list = Remover.RemoveSmallest(numbers);
-            Console.WriteLine("Numbers:");
-            foreach (var item in numbers)
-            {
-                Console.WriteLine(item);
-            }
-            Console.WriteLine("List:");
-            foreach (var item in list)
-            {
-                Console.WriteLine(item);
-            }
-            
-            Console.WriteLine();
+            List<Tuple<int, int>> list = CalculateFibReturnDigitPccurrencesCount.FibDigits(10000);
+            foreach(Tuple<int, int> t in list)
+                Console.WriteLine(t.Item1 + ", " + t.Item2);
+            Console.ReadLine();
         }   
     }
 }

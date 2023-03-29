@@ -57,6 +57,7 @@
     <Compile Include="4kyu\TwiceLinear.cs" />
     <Compile Include="5kyu\ArrayDifferent.cs" />
     <Compile Include="5kyu\BuddyPairs.cs" />
+    <Compile Include="5kyu\CalculateFibReturnDigitPccurrencesCount.cs" />
     <Compile Include="5kyu\CanYouGetTheLoop.cs" />
     <Compile Include="5kyu\CommonDenominators.cs" />
     <Compile Include="5kyu\DidYouMean.cs" />
