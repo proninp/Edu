@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO.IsolatedStorage;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -18,35 +19,38 @@ namespace CodeWars._5kyu
     {
         public static List<Tuple<int, int>> FibDigits(int n)
         {
-            long fib = Fib(n);
+            BigInteger fib = Fib(n);
             Dictionary<int, int> map = GetFibDictionaryDigits(fib);
             return map.Select(x => new Tuple<int, int>(x.Value, x.Key)).ToList();
 
         }
-        static long Fib(int n)
+        static BigInteger Fib(int n)
         {
             if (n == 0 || n == 1)
                 return n;
+            BigInteger[] integers = new BigInteger[n + 1];
             long[] ar = new long[n+1];
             ar[0] = 0;
             ar[1] = 1;
+            integers[0] = BigInteger.Zero;
+            integers[1] = BigInteger.One;
             for (int i = 2; i <= n; i++)
-                ar[i] = ar[i - 2] + ar[i - 1];
-            return ar[n];
+                integers[i] = integers[i - 2] + integers[i - 1];
+            return integers[n];
         }
-        static Dictionary<int, int> GetFibDictionaryDigits(long fibNumber)
+        static Dictionary<int, int> GetFibDictionaryDigits(BigInteger fibNumber)
         {
             Dictionary<int, int> fibDictionary = new Dictionary<int, int>();
             while (fibNumber > 0)
             {
-                int fibDigit = (int) (fibNumber % 10);
+                int key = (int) (fibNumber % 10);
                 fibNumber /= 10;
-                if (!fibDictionary.ContainsKey(fibDigit))
-                    fibDictionary.Add(fibDigit, 1);
+                if (!fibDictionary.ContainsKey(key))
+                    fibDictionary.Add(key, 1);
                 else
-                    fibDictionary[fibDigit]++;
+                    fibDictionary[key]++;
             }
-            return fibDictionary;
+            return fibDictionary.OrderByDescending(x => x.Value).ThenByDescending(x => x.Key).ToDictionary(x => x.Key, x => x.Value);
         }
 
     }
