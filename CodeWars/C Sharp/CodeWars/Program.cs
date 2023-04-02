@@ -14,9 +14,9 @@ namespace CodeWars
     {
         public static void Main()
         {
-            List<Tuple<int, int>> list = CalculateFibReturnDigitPccurrencesCount.FibDigits(10000);
-            foreach(Tuple<int, int> t in list)
-                Console.WriteLine(t.Item1 + ", " + t.Item2);
+            int[] ar = YouGotChange.GiveChange(217);
+            for (int i = 0; i < ar.Length; i++)
+                Console.WriteLine(ar[i]);
             Console.ReadLine();
         }   
     }
