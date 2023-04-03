@@ -105,6 +105,7 @@
     <Compile Include="6kyu\WeIrDStRiNgCaSe.cs" />
     <Compile Include="6kyu\WhichAreIn.cs" />
     <Compile Include="7kyu\AreTheNumbersInOrder.cs" />
+    <Compile Include="7kyu\BetweenExtremes.cs" />
     <Compile Include="7kyu\CategorizeNewMember.cs" />
     <Compile Include="7kyu\DeltaBits.cs" />
     <Compile Include="7kyu\DrivingLicense.cs" />

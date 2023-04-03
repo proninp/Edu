@@ -14,9 +14,7 @@ namespace CodeWars
     {
         public static void Main()
         {
-            int[] ar = YouGotChange.GiveChange(217);
-            for (int i = 0; i < ar.Length; i++)
-                Console.WriteLine(ar[i]);
+            Console.WriteLine(BetweenExtremes.BetweenExtremesFunc(new int[] { -1, -41, -77, -100 }));
             Console.ReadLine();
         }   
     }
