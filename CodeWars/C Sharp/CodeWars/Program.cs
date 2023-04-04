@@ -14,7 +14,7 @@ namespace CodeWars
     {
         public static void Main()
         {
-            Console.WriteLine(BetweenExtremes.BetweenExtremesFunc(new int[] { -1, -41, -77, -100 }));
+            Console.WriteLine(GreatestDistanceMatchingArrayValues.Exec(new List<int> { 9, 7, 1, 2, 3, 7, 0, -1, -2 }));
             Console.ReadLine();
         }   
     }
