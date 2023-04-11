@@ -14,7 +14,7 @@ namespace CodeWars
     {
         public static void Main()
         {
-            Console.WriteLine(GreatestDistanceMatchingArrayValues.Exec(new List<int> { 9, 7, 1, 2, 3, 7, 0, -1, -2 }));
+            Console.WriteLine(Millipede_of_words.Millipede(new string[] { "east", "e", "e", "t", "t", "e", "time" }));
             Console.ReadLine();
         }   
     }

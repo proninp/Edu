@@ -87,12 +87,14 @@
     <Compile Include="6kyu\HiddenCubicNumbers.cs" />
     <Compile Include="6kyu\HighestScoringWord.cs" />
     <Compile Include="6kyu\MexicanWave.cs" />
+    <Compile Include="6kyu\Millipede of words.cs" />
     <Compile Include="6kyu\MultiplesOf3Or5.cs" />
     <Compile Include="6kyu\PatternWave.cs" />
     <Compile Include="6kyu\PersistentBugger.cs" />
     <Compile Include="6kyu\PositionsAverage.cs" />
     <Compile Include="6kyu\PossibilitiesOfThrowingACoinNTimes.cs" />
     <Compile Include="6kyu\RectangleIntoSquares.cs" />
+    <Compile Include="6kyu\SimpleFun_115_FacrotSum.cs" />
     <Compile Include="6kyu\SmallestPermutation.cs" />
     <Compile Include="6kyu\SplitStrings.cs" />
     <Compile Include="6kyu\Stop_gninnipS_My_sdroW.cs" />
@@ -117,6 +119,7 @@
     <Compile Include="7kyu\Mumbling.cs" />
     <Compile Include="7kyu\OddEvenStringSort.cs" />
     <Compile Include="7kyu\OddOrEvenTask.cs" />
+    <Compile Include="7kyu\PowerOfTwo.cs" />
     <Compile Include="7kyu\ProductOfArrayItems.cs" />
     <Compile Include="7kyu\Remover.cs" />
     <Compile Include="7kyu\SimpleFun2CircleOfNumbers.cs" />
