@@ -14,7 +14,7 @@ namespace CodeWars
     {
         public static void Main()
         {
-            Console.WriteLine(Millipede_of_words.Millipede(new string[] { "east", "e", "e", "t", "t", "e", "time" }));
+            Console.WriteLine(FindTheUniqueNumber.GetUnique(new[] { 1, 2, 2, 2 }));
             Console.ReadLine();
         }   
     }
