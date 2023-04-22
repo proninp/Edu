@@ -127,6 +127,7 @@
     <Compile Include="7kyu\SimpleFun37HouseNumbersSum.cs" />
     <Compile Include="7kyu\SquareEveryDigit.cs" />
     <Compile Include="7kyu\StringEndsWith.cs" />
+    <Compile Include="7kyu\SumListIgnoreAnyDuplicates.cs" />
     <Compile Include="7kyu\SumOfConsecutiveIntegers.cs" />
     <Compile Include="7kyu\SumOfOddNumbers.cs" />
     <Compile Include="7kyu\SumOfTheFirstNthTermOfSeries.cs" />

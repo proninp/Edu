@@ -14,7 +14,7 @@ namespace CodeWars
     {
         public static void Main()
         {
-            Console.WriteLine(FindTheUniqueNumber.GetUnique(new[] { 1, 2, 2, 2 }));
+            Console.WriteLine(SumListIgnoreAnyDuplicates.SumNoDuplicates(new int[] { 1, 1, 2, 3 }));;
             Console.ReadLine();
         }   
     }
