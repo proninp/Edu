@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LeetCode.Easy;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,32 +11,11 @@ namespace LeetCode
     {
         static void Main(string[] args)
         {
-            int discount = Convert.ToInt32(Console.ReadLine());
-
-            Dictionary<string, int> coffee = new Dictionary<string, int>();
-            coffee.Add("Americano", 50);
-            coffee.Add("Latte", 70);
-            coffee.Add("Flat White", 60);
-            coffee.Add("Espresso", 60);
-            coffee.Add("Cappuccino", 80);
-            coffee.Add("Mocha", 90);
-
-
-            foreach (var k in coffee.Keys.ToArray())
-            {
-                int i = coffee[k];
-                int a = i - (int)(((float)i / 100) * discount);
-                coffee[k] = a;
-                Console.WriteLine(k + ": " + coffee[k]);
-            }
-            Console.ReadLine();
-            return;
-
-            Console.WriteLine(Easy.Sqrt_x.MySqrt(4));
-            Console.WriteLine(Easy.Sqrt_x.MySqrt(8));
-            Console.WriteLine(Easy.Sqrt_x.MySqrt(9));
-            Console.WriteLine(Easy.Sqrt_x.MySqrt(4901));
-            Console.WriteLine(Easy.Sqrt_x.MySqrt(2147483647));
+            ListNode list = new ListNode(1);
+            list.next = new ListNode(1);
+            list.next.next = new ListNode(2);
+            list = RemoveDuplicatesFromSortedList.DeleteDuplicates(list);
+            PrintList(list);
 
             Console.ReadLine();
         }
@@ -51,6 +31,17 @@ namespace LeetCode
             }
             stringBuilder.Append("]");
             return stringBuilder.ToString();
+        }
+        static void PrintList(ListNode listNode)
+        {
+            if (listNode == null)
+                Console.WriteLine("[]");
+            ListNode current = listNode;
+            while(current != null)
+            {
+                Console.Write($"[{current.val}] ");
+                current = current.next;
+            }    
         }
     }
 }

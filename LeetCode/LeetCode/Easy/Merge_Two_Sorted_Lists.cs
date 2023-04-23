@@ -15,7 +15,7 @@ namespace LeetCode.Easy
      */
     public class Merge_Two_Sorted_Lists
     {
-        public ListNode MergeTwoLists(ListNode list1, ListNode list2)
+        internal ListNode21 MergeTwoLists(ListNode21 list1, ListNode21 list2)
         {
             List<int> list = new List<int>();
             while (list1 != null)
@@ -32,11 +32,11 @@ namespace LeetCode.Easy
                 return null;
             GFG g = new GFG();
             list.Sort(g);
-            ListNode result = new ListNode(list[0]);
-            ListNode resultList = result;
+            ListNode21 result = new ListNode21(list[0]);
+            ListNode21 resultList = result;
             for (int i = 1; i < list.Count; i++)
             {
-                result.next = new ListNode(list[i]);
+                result.next = new ListNode21(list[i]);
                 result = result.next;
             }
             return resultList;
@@ -46,11 +46,11 @@ namespace LeetCode.Easy
     {
         public int Compare(int x, int y) => x.CompareTo(y);
     }
-    public class ListNode
+    internal class ListNode21
     {
         public int val;
-        public ListNode next;
-        public ListNode(int val = 0, ListNode next = null)
+        public ListNode21 next;
+        public ListNode21(int val = 0, ListNode21 next = null)
         {
             this.val = val;
             this.next = next;
