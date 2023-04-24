@@ -1,4 +1,5 @@
 ﻿using LeetCode.Easy;
+using LeetCode.Medium;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,10 +12,28 @@ namespace LeetCode
     {
         static void Main(string[] args)
         {
-            ListNode list = new ListNode(1);
-            list.next = new ListNode(1);
-            list.next.next = new ListNode(2);
-            list = RemoveDuplicatesFromSortedList.DeleteDuplicates(list);
+            ListNode head = new ListNode(1);
+            var list = head;
+            list.next = new ListNode(2);
+            list = list.next;
+
+            list.next = new ListNode(3);
+            list = list.next;
+
+            list.next = new ListNode(3);
+            list = list.next;
+
+            list.next = new ListNode(4);
+            list = list.next;
+
+            list.next = new ListNode(4);
+            list = list.next;
+
+            list.next = new ListNode(5);
+            list = list.next;
+
+
+            list = RemoveDuplicatesFromSortedListII.DeleteDuplicates(head);
             PrintList(list);
 
             Console.ReadLine();

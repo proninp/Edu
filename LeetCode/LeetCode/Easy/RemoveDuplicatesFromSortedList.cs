@@ -13,7 +13,7 @@ namespace LeetCode.Easy
      */
     public class RemoveDuplicatesFromSortedList
     {
-        public static ListNode DeleteDuplicates(ListNode head)
+        public static ListNode83 DeleteDuplicates(ListNode83 head)
         {
             if (head == null || head.next == null)
                 return head;
@@ -26,11 +26,11 @@ namespace LeetCode.Easy
             return head;
         }
     }
-    public class ListNode
+    public class ListNode83
     {
         public int val;
-        public ListNode next;
-        public ListNode(int val = 0, ListNode next = null)
+        public ListNode83 next;
+        public ListNode83(int val = 0, ListNode83 next = null)
         {
             this.val = val;
             this.next = next;
