@@ -12,29 +12,14 @@ namespace LeetCode
     {
         static void Main(string[] args)
         {
-            ListNode head = new ListNode(1);
-            var list = head;
-            list.next = new ListNode(2);
-            list = list.next;
+            TreeNode treeNode = new TreeNode { val = 1 };
+            treeNode.left = null;
+            treeNode.right = new TreeNode { val = 2 };
+            treeNode.right.left = new TreeNode { val = 3 };
+            treeNode.right.right = null;
 
-            list.next = new ListNode(3);
-            list = list.next;
-
-            list.next = new ListNode(3);
-            list = list.next;
-
-            list.next = new ListNode(4);
-            list = list.next;
-
-            list.next = new ListNode(4);
-            list = list.next;
-
-            list.next = new ListNode(5);
-            list = list.next;
-
-
-            list = RemoveDuplicatesFromSortedListII.DeleteDuplicates(head);
-            PrintList(list);
+            var list = BinaryTreeInorderTraversal.InorderTraversal(treeNode);
+            PrintArray(list.ToArray());
 
             Console.ReadLine();
         }
@@ -49,6 +34,7 @@ namespace LeetCode
                 stringBuilder.Append(string.Format($"{e}", e.ToString()));
             }
             stringBuilder.Append("]");
+            Console.WriteLine(stringBuilder.ToString());
             return stringBuilder.ToString();
         }
         static void PrintList(ListNode listNode)
