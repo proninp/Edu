@@ -12,14 +12,12 @@ namespace LeetCode
     {
         static void Main(string[] args)
         {
-            TreeNode treeNode = new TreeNode { val = 1 };
-            treeNode.left = null;
-            treeNode.right = new TreeNode { val = 2 };
-            treeNode.right.left = new TreeNode { val = 3 };
-            treeNode.right.right = null;
-
-            var list = BinaryTreeInorderTraversal.InorderTraversal(treeNode);
-            PrintArray(list.ToArray());
+            int[] n1 = { 1 };
+            int[] n2 = {  };
+            int m = 1;
+            int n = 0;
+            MergeSortedArray.Merge(n1, m, n2, n);
+            PrintArray(n1);
 
             Console.ReadLine();
         }

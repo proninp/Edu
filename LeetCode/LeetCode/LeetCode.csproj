@@ -50,6 +50,7 @@
     <Compile Include="Easy\Length_of_Last_Word.cs" />
     <Compile Include="Easy\Longest_Common_Prefix.cs" />
     <Compile Include="Easy\Maximum_Subarray.cs" />
+    <Compile Include="Easy\MergeSortedArray.cs" />
     <Compile Include="Easy\Merge_Two_Sorted_Lists.cs" />
     <Compile Include="Easy\Palindrome_Number.cs" />
     <Compile Include="Easy\Plus One.cs" />
