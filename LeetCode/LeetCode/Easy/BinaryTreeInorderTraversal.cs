@@ -17,13 +17,13 @@ namespace LeetCode.Easy
      */
     public class BinaryTreeInorderTraversal
     {
-        public static IList<int> InorderTraversal(TreeNode root)
+        public static IList<int> InorderTraversal(TreeNode94 root)
         {
             List<int> list = new List<int>();
             Traversal(list, root);
             return list;
         }
-        public static void Traversal(List<int> list, TreeNode root)
+        public static void Traversal(List<int> list, TreeNode94 root)
         {
             if (root == null)
                 return;
@@ -33,12 +33,12 @@ namespace LeetCode.Easy
         }
     }
 
-    public class TreeNode
+    public class TreeNode94
     {
         public int val;
-        public TreeNode left;
-        public TreeNode right;
-        public TreeNode(int val = 0, TreeNode left = null, TreeNode right = null)
+        public TreeNode94 left;
+        public TreeNode94 right;
+        public TreeNode94(int val = 0, TreeNode94 left = null, TreeNode94 right = null)
         {
             this.val = val;
             this.left = left;

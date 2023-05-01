@@ -58,6 +58,7 @@
     <Compile Include="Easy\Remove_Duplicates_From_Sorted_Array.cs" />
     <Compile Include="Easy\Remove_Element.cs" />
     <Compile Include="Easy\Roman_to_integer.cs" />
+    <Compile Include="Easy\SameTree.cs" />
     <Compile Include="Easy\Search_Insert_Position.cs" />
     <Compile Include="Easy\Sqrt_x.cs" />
     <Compile Include="Easy\Two_Sum.cs" />
