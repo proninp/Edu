@@ -14,7 +14,7 @@ namespace LeetCode.Easy
      */
     public class SameTree
     {
-        public bool IsSameTree(TreeNode p, TreeNode q)
+        public bool IsSameTree(TreeNode100 p, TreeNode100 q)
         {
             if (p == null && q == null)
                 return true;
@@ -24,12 +24,12 @@ namespace LeetCode.Easy
         }
 
     }
-    public class TreeNode
+    public class TreeNode100
     {
         public int val;
-        public TreeNode left;
-        public TreeNode right;
-        public TreeNode(int val = 0, TreeNode left = null, TreeNode right = null)
+        public TreeNode100 left;
+        public TreeNode100 right;
+        public TreeNode100(int val = 0, TreeNode100 left = null, TreeNode100 right = null)
         {
             this.val = val;
             this.left = left;
