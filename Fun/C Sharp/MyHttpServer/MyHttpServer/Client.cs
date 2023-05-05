@@ -149,5 +149,10 @@ namespace MyHttpServer
             // Закроем соединение
             client.Close();
         }
+        static void Main(string[] args)
+        {
+
+            new Server(7408);
+        }
     }
 }

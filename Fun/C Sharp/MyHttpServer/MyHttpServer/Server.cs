@@ -19,7 +19,6 @@ namespace MyHttpServer
                 ThreadPool.QueueUserWorkItem(new WaitCallback(ClientThread), client);
             }
         }
-        ~Server() => Listener?.Stop();
 
         static void Main(string[] args)
         {
