@@ -29,7 +29,8 @@ namespace Lesson03
             for (int i = 0; i < times; i++)
             {
                 if (builder.Length > 0)
-                    builder.Append(with);
+                    builder.Append(", ");
+                builder.Append(with);
             }
             return builder.ToString();
         }
