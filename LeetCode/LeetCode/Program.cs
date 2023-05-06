@@ -12,19 +12,7 @@ namespace LeetCode
     {
         static void Main(string[] args)
         {
-            TreeNode root = new TreeNode(3);
-            root.left = new TreeNode(9);
-            root.right = new TreeNode(20);
-            root.right.left = new TreeNode(15);
-            root.right.right = new TreeNode(7);
-
-            TreeNode root2 = new TreeNode(2);
-            root2.right = new TreeNode(3);
-            root2.right.right = new TreeNode(4);
-            root2.right.right.right = new TreeNode(5);
-            root2.right.right.right.right = new TreeNode(6);
-            Console.WriteLine(MinimumDepthOfBinaryTree.MinDepth(root2));
-            
+                        
 
             Console.ReadLine();
         }

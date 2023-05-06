@@ -53,7 +53,6 @@
     <Compile Include="Easy\Maximum_Subarray.cs" />
     <Compile Include="Easy\MergeSortedArray.cs" />
     <Compile Include="Easy\Merge_Two_Sorted_Lists.cs" />
-    <Compile Include="Easy\MinimumDepthOfBinaryTree.cs" />
     <Compile Include="Easy\Palindrome_Number.cs" />
     <Compile Include="Easy\Plus One.cs" />
     <Compile Include="Easy\RemoveDuplicatesFromSortedList.cs" />
