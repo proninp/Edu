@@ -14,7 +14,7 @@ namespace LeetCode.Easy
      */
     internal class MinimumDepthOfBinaryTree
     {
-        public static int MinDepth(TreeNode root)
+        public static int MinDepthRecoursive(TreeNode root)
         {
             if (root == null)
                 return 0;
@@ -23,6 +23,29 @@ namespace LeetCode.Easy
             if (root.right == null)
                 return 1 + MinDepth(root.left);
             return 1 + Math.Min(MinDepth(root.left), MinDepth(root.right));
+        }
+        public static int MinDepth(TreeNode root)
+        {
+            if (root == null) return 0;
+            int depth = 0;
+            Queue<TreeNode> queue = new Queue<TreeNode>();
+            queue.Enqueue(root);
+            while (queue.Count > 0)
+            {
+                int size = queue.Count;
+                depth++;
+                while (size-- > 0)
+                {
+                    TreeNode node = queue.Dequeue();
+                    if (node.left == null && node.right == null)
+                        return depth;
+                    if (node.left != null)
+                        queue.Enqueue(node.left);
+                    if (node.right != null)
+                        queue.Enqueue(node.right);
+                }
+            }
+            return depth;
         }
     }
     public class TreeNode
