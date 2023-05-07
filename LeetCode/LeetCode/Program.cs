@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using LeetCode.Common;
 
 namespace LeetCode
 {
@@ -30,9 +30,17 @@ namespace LeetCode
             root3.left.left = new TreeNode(4);
             root3.right.left = new TreeNode(5);
 
-            Console.WriteLine(MinimumDepthOfBinaryTree.MinDepth(root));
-            Console.WriteLine(MinimumDepthOfBinaryTree.MinDepth(root2));
-            Console.WriteLine(MinimumDepthOfBinaryTree.MinDepth(root3));
+            TreeNode root4 = new TreeNode(5);
+            root4.left = new TreeNode(4);
+            root4.right = new TreeNode(8);
+            root4.left.left = new TreeNode(11);
+            root4.left.left.left = new TreeNode(7);
+            root4.left.left.right = new TreeNode(2);
+            root4.right.left = new TreeNode(13);
+            root4.right.right = new TreeNode(7);
+            root4.right.right.right = new TreeNode(1);
+
+          
             Console.ReadLine();
         }
         static string PrintArray(int[] a)

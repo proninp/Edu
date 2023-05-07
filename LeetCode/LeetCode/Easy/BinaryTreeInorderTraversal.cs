@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using LeetCode.Common;
 
 namespace LeetCode.Easy
 {
@@ -17,32 +18,19 @@ namespace LeetCode.Easy
      */
     public class BinaryTreeInorderTraversal
     {
-        public static IList<int> InorderTraversal(TreeNode94 root)
+        public static IList<int> InorderTraversal(TreeNode root)
         {
             List<int> list = new List<int>();
             Traversal(list, root);
             return list;
         }
-        public static void Traversal(List<int> list, TreeNode94 root)
+        public static void Traversal(List<int> list, TreeNode root)
         {
             if (root == null)
                 return;
             Traversal(list, root.left);
             list.Add(root.val);
             Traversal(list, root.right);
-        }
-    }
-
-    public class TreeNode94
-    {
-        public int val;
-        public TreeNode94 left;
-        public TreeNode94 right;
-        public TreeNode94(int val = 0, TreeNode94 left = null, TreeNode94 right = null)
-        {
-            this.val = val;
-            this.left = left;
-            this.right = right;
         }
     }
 }

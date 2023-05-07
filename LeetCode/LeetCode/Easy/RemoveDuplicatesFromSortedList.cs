@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using LeetCode.Common;
 
 namespace LeetCode.Easy
 {
@@ -13,7 +14,7 @@ namespace LeetCode.Easy
      */
     public class RemoveDuplicatesFromSortedList
     {
-        public static ListNode83 DeleteDuplicates(ListNode83 head)
+        public static ListNode DeleteDuplicates(ListNode head)
         {
             if (head == null || head.next == null)
                 return head;
@@ -24,16 +25,6 @@ namespace LeetCode.Easy
                 else
                     tail = tail.next;
             return head;
-        }
-    }
-    public class ListNode83
-    {
-        public int val;
-        public ListNode83 next;
-        public ListNode83(int val = 0, ListNode83 next = null)
-        {
-            this.val = val;
-            this.next = next;
         }
     }
 }

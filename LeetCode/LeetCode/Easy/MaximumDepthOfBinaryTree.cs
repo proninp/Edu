@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using LeetCode.Common;
 
 namespace LeetCode.Easy
 {
@@ -16,23 +17,11 @@ namespace LeetCode.Easy
      */
     internal class MaximumDepthOfBinaryTree
     {
-        public int MaxDepth(TreeNode104 root)
+        public int MaxDepth(TreeNode root)
         {
             if (root == null)
                 return 0;
             return (1 + (Math.Max(MaxDepth(root.left), MaxDepth(root.right))));
-        }
-    }
-    public class TreeNode104
-    {
-        public int val;
-        public TreeNode104 left;
-        public TreeNode104 right;
-        public TreeNode104(int val = 0, TreeNode104 left = null, TreeNode104 right = null)
-        {
-            this.val = val;
-            this.left = left;
-            this.right = right;
         }
     }
 }
