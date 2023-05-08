@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Common\ListNode.cs" />
     <Compile Include="Common\TreeNode.cs" />
+    <Compile Include="Easy\217ContainsDuplicate.cs" />
     <Compile Include="Easy\Add_Binary.cs" />
     <Compile Include="Easy\BinaryTreeInorderTraversal.cs" />
     <Compile Include="Easy\Climbing_Stairs.cs" />
@@ -65,6 +66,7 @@
     <Compile Include="Easy\SameTree.cs" />
     <Compile Include="Easy\Search_Insert_Position.cs" />
     <Compile Include="Easy\Sqrt_x.cs" />
+    <Compile Include="Easy\TreeNodePathSum.cs" />
     <Compile Include="Easy\Two_Sum.cs" />
     <Compile Include="Easy\Valid_Parentheses.cs" />
     <Compile Include="Medium\Longest_Substring_Without_Repeating_Characters.cs" />

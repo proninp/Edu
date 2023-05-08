@@ -40,7 +40,7 @@ namespace LeetCode
             root4.right.right = new TreeNode(7);
             root4.right.right.right = new TreeNode(1);
 
-          
+            Console.WriteLine(TreeNodePathSum.HasPathSum(root4, 27));
             Console.ReadLine();
         }
         static string PrintArray(int[] a)
