@@ -14,7 +14,7 @@ namespace CodeWars
     {
         public static void Main()
         {
-            Console.WriteLine(SumListIgnoreAnyDuplicates.SumNoDuplicates(new int[] { 1, 1, 2, 3 }));;
+            Console.WriteLine(SimpleFun42AreSimilar.AreSimilar(new int[] { 290, 341, 854 }, new int[] { 290, 341, 290 }));;
             Console.ReadLine();
         }   
     }
