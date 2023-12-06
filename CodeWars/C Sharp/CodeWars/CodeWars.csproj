@@ -127,6 +127,7 @@
     <Compile Include="7kyu\SimpleFun2CircleOfNumbers.cs" />
     <Compile Include="7kyu\SimpleFun37HouseNumbersSum.cs" />
     <Compile Include="7kyu\SimpleFun42AreSimilar.cs" />
+    <Compile Include="7kyu\SmallEnoughBeginner.cs" />
     <Compile Include="7kyu\SquareEveryDigit.cs" />
     <Compile Include="7kyu\StringEndsWith.cs" />
     <Compile Include="7kyu\SumListIgnoreAnyDuplicates.cs" />
