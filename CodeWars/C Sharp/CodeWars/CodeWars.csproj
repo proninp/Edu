@@ -135,6 +135,7 @@
     <Compile Include="7kyu\SumOfOddNumbers.cs" />
     <Compile Include="7kyu\SumOfTheFirstNthTermOfSeries.cs" />
     <Compile Include="7kyu\SumOfAllTheMultiplesOf3Or5.cs" />
+    <Compile Include="7kyu\TriangleArea.cs" />
     <Compile Include="7kyu\YouGotChange.cs" />
     <Compile Include="8kyu\CenturyFromYear.cs" />
     <Compile Include="8kyu\CorrectTheMistakesOfTheCharacterRecognitionSoftware.cs" />

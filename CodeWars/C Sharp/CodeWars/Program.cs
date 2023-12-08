@@ -14,7 +14,8 @@ namespace CodeWars
     {
         public static void Main()
         {
-            Console.WriteLine(SimpleFun42AreSimilar.AreSimilar(new int[] { 290, 341, 854 }, new int[] { 290, 341, 290 }));;
+            string input = "\n.\n. .\n. . .\n";
+            Console.WriteLine(TriangleArea.TArea(input));
             Console.ReadLine();
         }   
     }
