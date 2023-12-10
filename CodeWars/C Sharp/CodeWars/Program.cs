@@ -14,8 +14,9 @@ namespace CodeWars
     {
         public static void Main()
         {
-            string input = "\n.\n. .\n. . .\n";
-            Console.WriteLine(TriangleArea.TArea(input));
+            var r = SumOfDifferencesBetweenProductsAndLCMs.SumDifferencesBetweenProductsAndLCMs(
+                new int[][] { new int[] { 1, 1 }, new int[] { 0, 0 }, new int[] { 13, 91 } });
+            Console.WriteLine(r);
             Console.ReadLine();
         }   
     }

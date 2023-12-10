@@ -133,6 +133,7 @@
     <Compile Include="7kyu\StringEndsWith.cs" />
     <Compile Include="7kyu\SumListIgnoreAnyDuplicates.cs" />
     <Compile Include="7kyu\SumOfConsecutiveIntegers.cs" />
+    <Compile Include="7kyu\SumOfDifferencesBetweenProductsAndLCMs.cs" />
     <Compile Include="7kyu\SumOfOddNumbers.cs" />
     <Compile Include="7kyu\SumOfTheFirstNthTermOfSeries.cs" />
     <Compile Include="7kyu\SumOfAllTheMultiplesOf3Or5.cs" />
