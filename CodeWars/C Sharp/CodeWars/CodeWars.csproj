@@ -117,6 +117,7 @@
     <Compile Include="7kyu\DrivingLicense.cs" />
     <Compile Include="7kyu\ElapsedSecondsCW.cs" />
     <Compile Include="7kyu\ExecuteMeNTimes.cs" />
+    <Compile Include="7kyu\FilterTheNumber.cs" />
     <Compile Include="7kyu\Isograms.cs" />
     <Compile Include="7kyu\LetterboxPaint-Squad.cs" />
     <Compile Include="7kyu\Mumbling.cs" />
