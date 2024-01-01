@@ -82,6 +82,7 @@
     <Compile Include="6kyu\FindTheUniqueNumber.cs" />
     <Compile Include="6kyu\FunWithTreesMaxSum.cs" />
     <Compile Include="6kyu\GreatestDistanceMatchingArrayValues.cs" />
+    <Compile Include="6kyu\HappyNumbersToTheNPower.cs" />
     <Compile Include="6kyu\IsaNumberPrime.cs" />
     <Compile Include="6kyu\FindAnArea.cs" />
     <Compile Include="6kyu\FindTheParityOutlier.cs" />
