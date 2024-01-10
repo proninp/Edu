@@ -34,12 +34,5 @@ public class MiniMaxSumTask
         long max = myArr.Skip(1).Sum();
         Console.WriteLine($"{min} {max}");
     }
-
-    public static void Main(string[] args)
-    {
-        List<int> arr = Console.ReadLine().TrimEnd().Split(' ').ToList().Select(arrTemp => Convert.ToInt32(arrTemp)).ToList();
-        MiniMaxSum(arr);
-    }
-
 }
 

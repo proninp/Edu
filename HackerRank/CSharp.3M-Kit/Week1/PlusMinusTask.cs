@@ -46,14 +46,5 @@
             for (int i = 0; i < res.Length; i++)
                 Console.WriteLine(string.Format("{0:0.000000}", res[i] / arr.Count));
         }
-
-        public static void Main(string[] args)
-        {
-            int n = Convert.ToInt32(Console.ReadLine()?.Trim());
-
-            List<int> arr = Console.ReadLine().TrimEnd().Split(' ').ToList().Select(arrTemp => Convert.ToInt32(arrTemp)).ToList();
-
-            PlusMinus(arr);
-        }
     }
 }
