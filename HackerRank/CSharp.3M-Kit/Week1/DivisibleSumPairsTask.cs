@@ -32,15 +32,15 @@ internal class DivisibleSumPairsTask
 {
     public static int DivisibleSumPairs(int n, int k, List<int> ar)
     {
-        int pairs = 0;
-        for (int i = 0; i < n - 1; i++)
+        int count = 0;
+        var remainderCounts = new Dictionary<int, int>();
+        foreach (var num in ar)
         {
-            for (int j = i + 1; j < n; j++)
-            {
-                if ((ar[i] + ar[j]) % k == 0)
-                    pairs++;
-            }
+            int remainder = num % k;
+            int complement = (k - remainder) % k;
+            count += remainderCounts.GetValueOrDefault(complement, 0);
+            remainderCounts[remainder] = remainderCounts.GetValueOrDefault(remainder, 0) + 1;
         }
-        return pairs;
+        return count;
     }
 }
