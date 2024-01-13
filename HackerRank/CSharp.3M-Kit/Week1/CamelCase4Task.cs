@@ -29,54 +29,36 @@ public class CamelCase4Task
     public static void CamelCase4()
     {
         var inputLines = new List<string>();
-        while(true)
+        string phrase;
+        while ((phrase = Console.ReadLine()) != null)
         {
-            var phrase = Console.ReadLine();
-            if (phrase is null)
-                break;
             inputLines.Add(phrase);
         }
         var resSb = new StringBuilder();
         foreach (var line in inputLines)
         {
-            var sbLine = new StringBuilder();
-            var inLine = line.Split(';');
-            if (inLine[0] == "S")
-            {
-                if (inLine[1] == "M")
-                    inLine[2] = string.Concat(inLine[2].Substring(0, 1).ToUpper(), 
-                                              inLine[2].Substring(1, inLine[2].Length - 3));
-                foreach (var c in inLine[2])
-                {
-                    if (char.IsUpper(c) && sbLine.Length > 0)
-                        sbLine.Append(' ');
-                    sbLine.Append(char.ToLower(c));
-                }
-            }
-            else if (inLine[0] == "C")
-            {
-                var words = inLine[2].Split(' ');
-                if (inLine[1] == "C")
-                    sbLine.Append(string.Concat(words[0].Substring(0, 1).ToUpper(),
-                                            words[0].Substring(1)));
-                else
-                    sbLine.Append(words[0]);
-                sbLine.Append(string.Join("",
-                                      words.Skip(1)
-                                            .Select(e => string.Concat(e.Substring(0, 1).ToUpper(),
-                                                                       e.Substring(1)))
-                                            .ToArray()));
-                if (inLine[1] == "M")
-                    sbLine.Append("()");
-            }
-            else
-            {
-                throw new NotImplementedException();
-            }
-            resSb.Append(sbLine.ToString());
-            resSb.Append(Environment.NewLine);
+            resSb.AppendLine(ConvertToCamelCase(line));
         }
         Console.WriteLine(resSb.ToString());
+    }
+
+    private static string ConvertToCamelCase(string input)
+    {
+        var parts = input.Split(';');
+        string part;
+        switch (parts[0])
+        {
+            case "S":
+                part = parts[1] == "M" ? char.ToUpper(parts[2][0]).ToString() + parts[2].Substring(1, parts[2].Length - 3) : parts[2];
+                return string.Join("", part.Select((x, i) => (i > 0 && char.IsUpper(x) ? " " : "") + char.ToLower(x)));
+            case "C":
+                var words = parts[2].Split(' ');
+                part = parts[1] == "C" ? $"{char.ToUpper(words[0][0])}{words[0].Substring(1)}" : words[0];
+                var rest = string.Join("", words.Skip(1).Select(w => $"{char.ToUpper(w[0])}{w.Substring(1)}"));
+                return $"{part}{rest}{(parts[1] == "M" ? "()" : "")}";
+            default:
+                throw new NotImplementedException();
+        }
     }
 }
 
