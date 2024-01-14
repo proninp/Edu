@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Week1;
+﻿namespace Week1;
 
 /*
  * Sparse Arrays
@@ -28,13 +22,13 @@ public class SparseArraysTask
     public static List<int> MatchingStrings(List<string> strings, List<string> queries)
     {
         var frequencyMap = new Dictionary<string, int>();
-        foreach(string s in strings)
+        foreach (string s in strings)
             if (frequencyMap.ContainsKey(s))
                 frequencyMap[s]++;
             else
                 frequencyMap[s] = 1;
         var res = new List<int>();
-        foreach(var q in queries)
+        foreach (var q in queries)
         {
             if (frequencyMap.ContainsKey(q))
                 res.Add(frequencyMap[q]);
