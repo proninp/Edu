@@ -4,6 +4,6 @@ public class Start
 {
     public static void Main(string[] args)
     {
-        CamelCase4Task.CamelCase4();
+        var res = DivisibleSumPairsTask.DivisibleSumPairs(6, 3, new List<int> { 1, 3, 2, 6, 1, 2 });
     }
 }
