@@ -1,10 +1,9 @@
-﻿namespace Week2
+﻿namespace Week2;
+
+public class Start
 {
-    public class Start
+    static void Main(string[] args)
     {
-        static void Main(string[] args)
-        {
-            
-        }
+
     }
 }
