@@ -10,9 +10,11 @@ namespace HomeWork01
 
         public WeatherData(string date, int? temperatureC)
         {
-            Date = DateOnly.ParseExact(date, "dd.MM.yyyy");
+            Date = GetDateOnly(date);
             TemperatureC = temperatureC;
         }
+
+        public static DateOnly GetDateOnly(string date) => DateOnly.ParseExact(date, "dd.MM.yyyy");
 
         public override string ToString()
         {

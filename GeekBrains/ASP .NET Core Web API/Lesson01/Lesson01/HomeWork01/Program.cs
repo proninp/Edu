@@ -7,15 +7,13 @@ namespace HomeWork01
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
+            builder.Services.AddSingleton<ValuesHolder>();
+            builder.Services.AddSingleton<CustomWeatherForecast>();
 
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
-
-            builder.Services.AddSingleton<ValuesHolder>();
-            builder.Services.AddSingleton<MyWeatherForecast>();
 
             var app = builder.Build();
 

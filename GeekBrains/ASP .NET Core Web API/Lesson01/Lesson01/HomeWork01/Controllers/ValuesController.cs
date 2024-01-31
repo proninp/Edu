@@ -2,7 +2,7 @@
 
 namespace HomeWork01.Controllers
 {
-    [Route("api/crud")]
+    [Route("api/CrudExample")]
     [ApiController]
     public class ValuesController : ControllerBase
     {
