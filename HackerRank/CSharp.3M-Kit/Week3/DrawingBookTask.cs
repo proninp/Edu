@@ -26,5 +26,8 @@
 
 public class DrawingBookTask
 {
-
+    public static int PageCount(int n, int p)
+    {
+        
+    }
 }
