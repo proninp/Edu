@@ -1,4 +1,4 @@
-﻿namespace HomeWork02.Models;
+﻿namespace MetricsManager.Models;
 
 public class AgentPool
 {

@@ -1,10 +1,9 @@
 
-using HomeWork02.Models;
-using Microsoft.Extensions.Options;
+using MetricsManager.Models;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
 
-namespace HomeWork02
+namespace MetricsManager
 {
     public class Program
     {
