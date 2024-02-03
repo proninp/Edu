@@ -42,5 +42,6 @@ public class AgetControllerUnitTests
         OkObjectResult result = Assert.IsAssignableFrom<OkObjectResult>(actionResult);
         Assert.NotNull(result.Value as IEnumerable<AgentInfo>);
         Assert.NotEmpty((IEnumerable<AgentInfo>)result.Value);
+        Assert.Equal(3, ((IEnumerable<AgentInfo>)result.Value).Count());
     }
 }

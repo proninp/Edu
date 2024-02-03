@@ -9,7 +9,7 @@ namespace MetricsManagerTests;
 
 public class LazyAgentPool
 {
-    private static readonly Lazy<AgentPool> _instance = new Lazy<AgentPool>();
+    private static readonly Lazy<AgentPool> _instance = new Lazy<AgentPool>(() => new AgentPool());
 
     public LazyAgentPool() { }
 
