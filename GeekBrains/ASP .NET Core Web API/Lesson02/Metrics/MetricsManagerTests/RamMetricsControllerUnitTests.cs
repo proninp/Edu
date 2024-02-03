@@ -3,13 +3,13 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace MetricsManagerTests;
 
-public class DotNetMetricsControllerUnitTests
+public class NetworkMetricsControllerUnitTests
 {
-    private DotNetMetricsController _controller;
+    private NetworkMetricsController _controller;
 
-    public DotNetMetricsControllerUnitTests()
+    public NetworkMetricsControllerUnitTests()
     {
-        _controller = new DotNetMetricsController();
+        _controller = new NetworkMetricsController();
     }
 
     [Fact]

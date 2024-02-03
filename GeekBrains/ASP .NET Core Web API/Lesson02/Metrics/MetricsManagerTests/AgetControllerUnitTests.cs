@@ -26,7 +26,7 @@ public class AgetControllerUnitTests
     [InlineData(5)]
     [InlineData(10)]
     [InlineData(15)]
-    [Priority(1)]
+    [Priority(0)]
     public void RegisterAgentTest(int agentId)
     {
         AgentInfo agentInfo = new AgentInfo() { AgentId = agentId, Enable = true };
