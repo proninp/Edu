@@ -1,4 +1,4 @@
-package level.l009.lecture11;
+package syntax.level.l009.lecture11;
 
 import java.io.BufferedReader;
 import java.io.IOException;

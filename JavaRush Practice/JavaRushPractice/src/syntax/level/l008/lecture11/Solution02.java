@@ -1,4 +1,4 @@
-package level.l008.lecture11;
+package syntax.level.l008.lecture11;
 
 import java.util.HashSet;
 import java.util.Set;

@@ -1,4 +1,4 @@
-package level.l009.lecture02;
+package syntax.level.l009.lecture02;
 
 public class Solution04 {
     public static void main(String[] args) {
