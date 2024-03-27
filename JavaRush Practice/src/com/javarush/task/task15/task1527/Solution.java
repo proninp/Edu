@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /* 
-Парсер реквестов
+Requests parser
 */
 
 public class Solution {
