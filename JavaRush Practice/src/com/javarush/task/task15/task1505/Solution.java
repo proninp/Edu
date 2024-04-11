@@ -18,9 +18,10 @@ public class Solution {
         public int getWeight() {
             return 50;
         }
+
         @Override
         public int getHeight() {
-            return 150;
+            return 160;
         }
     }
 

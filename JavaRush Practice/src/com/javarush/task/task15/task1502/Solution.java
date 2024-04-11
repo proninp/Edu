@@ -29,6 +29,7 @@ public class Solution {
             return "Гусь маленький, " + super.getSize();
         }
     }
+
     public static class Dragon extends BigAnimal {
         @Override
         public String getSize() {

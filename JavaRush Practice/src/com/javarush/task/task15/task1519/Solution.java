@@ -10,43 +10,26 @@ import java.io.InputStreamReader;
 
 public class Solution {
     public static void main(String[] args) throws IOException {
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        String input;
-        while (!(input = reader.readLine()).equals("exit")) {
-            if (input.contains(".")) {
-                Double d = tryParseDouble(input);
-                if (d != null) {
-                    print(d);
-                    continue;
+        try(BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
+            String data;
+            while (!(data = reader.readLine()).equals("exit")) {
+                try {
+                    if (data.contains(".")) {
+                        Double d = Double.parseDouble(data);
+                        print(d);
+                    } else {
+                        int a = Integer.parseInt(data);
+                        if (a > 0 && a < 128) {
+                            print((short) a);
+                        } else {
+                            print(a);
+                        }
+                    }
+                } catch (NumberFormatException e) {
+                    print(data);
                 }
             }
-            Integer i = tryParseInteger(input);
-            if (i != null) {
-                if (i > 0 && i < 128) {
-                    print((short)(int)i);
-                } else {
-                   print(i);
-                }
-                continue;
-            }
-            print(input);
         }
-        reader.close();
-    }
-
-    public static Double tryParseDouble(String s) {
-        Double result = null;
-        try {
-            result = Double.parseDouble(s);
-        } catch (NumberFormatException ignored) { }
-        return result;
-    }
-    public static Integer tryParseInteger(String s) {
-        Integer result = null;
-        try {
-            result = Integer.parseInt(s);
-        } catch (NumberFormatException ignored) { }
-        return result;
     }
 
     public static void print(Double value) {

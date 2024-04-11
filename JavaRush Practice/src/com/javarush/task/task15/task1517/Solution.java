@@ -8,8 +8,7 @@ public class Solution {
     public static int A = 0;
 
     static {
-        int a = 0;
-        int b = 4 / a;
+        A = 5 / A;
     }
 
     public static int B = 5;
