@@ -9,12 +9,13 @@ import java.util.Map;
 
 public class Solution {
     public static Map<Double, String> labels = new HashMap<Double, String>();
+
     static {
-        labels.put(1.0, "One");
-        labels.put(2.0, "Two");
-        labels.put(3.0, "Three");
-        labels.put(4.0, "Four");
-        labels.put(5.0, "Five");
+        labels.put(1.0, "1");
+        labels.put(2.0, "1");
+        labels.put(3.0, "1");
+        labels.put(4.0, "1");
+        labels.put(5.0, "1");
     }
 
     public static void main(String[] args) {

@@ -26,7 +26,7 @@ public class Solution {
         }
 
         @Override
-        public Double getAmount() {
+        public Object getAmount() {
             return this.amount;
         }
     }

@@ -1,5 +1,6 @@
 package com.javarush.task.task15.task1504;
 
+import javax.sound.sampled.BooleanControl;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -15,28 +16,34 @@ public class Solution {
         System.out.println(books);
     }
 
-    public static class AgathaChristieBook extends Book {
-        private String title;
-        public AgathaChristieBook(String title) {
-            super("Agatha Christie");
-            this.title = title;
+    abstract static class Book {
+        private String author;
+
+        public Book(String author) {
+            this.author = author;
         }
 
-        @Override
-        public AgathaChristieBook getBook() {
-            return this;
-        }
+        public abstract Book getBook();
 
-        @Override
-        public String getTitle() {
-            return title;
-        }
+        public abstract String getTitle();
 
-        @Override
+        private String getOutputByBookType() {
+            String agathaChristieOutput = author + ": " + getBook().getTitle() + " is a detective";
+            String markTwainOutput = getBook().getTitle() + " was written by " + author;
+
+            String output = "output";
+            if (this instanceof MarkTwainBook)
+                output = markTwainOutput;
+            else if (this instanceof AgathaChristieBook) {
+                output = agathaChristieOutput;
+            }
+            return output;
+        }
         public String toString() {
-            return super.toString();
+            return getOutputByBookType();
         }
     }
+
     public static class MarkTwainBook extends Book {
         private String title;
         public MarkTwainBook(String title) {
@@ -60,32 +67,26 @@ public class Solution {
         }
     }
 
-    abstract static class Book {
-        private String author;
-
-        public Book(String author) {
-            this.author = author;
+    public static class AgathaChristieBook extends Book {
+        private String title;
+        public AgathaChristieBook(String title) {
+            super("Agatha Christie");
+            this.title = title;
         }
 
-        public abstract Book getBook();
-
-        public abstract String getTitle();
-
-        private String getOutputByBookType() {
-            String agathaChristieOutput = author + ": " + getBook().getTitle() + " is a detective";
-            String markTwainOutput = getBook().getTitle() + " was written by " + author;
-
-            String output = "output";
-            if (this instanceof MarkTwainBook)
-                output = markTwainOutput;
-            else if (this instanceof AgathaChristieBook)
-                output = agathaChristieOutput;
-
-            return output;
+        @Override
+        public AgathaChristieBook getBook() {
+            return this;
         }
 
+        @Override
+        public String getTitle() {
+            return title;
+        }
+
+        @Override
         public String toString() {
-            return getOutputByBookType();
+            return super.toString();
         }
     }
 }

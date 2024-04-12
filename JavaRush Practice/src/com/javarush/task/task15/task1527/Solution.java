@@ -7,36 +7,40 @@ import java.util.ArrayList;
 import java.util.List;
 
 /* 
-Requests parser
+Парсер реквестов
 */
 
 public class Solution {
     public static void main(String[] args) throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         String url = reader.readLine();
-        String uri = url.substring(url.indexOf("?") + 1);
-        String[] params = uri.split("&");
+        url = url.substring(url.indexOf("?") + 1);
+        String[] split = url.split("&");
+
         StringBuilder sb = new StringBuilder();
-        List<String> objList = new ArrayList<>();
-        String paramName;
-        for(String param : params) {
-            paramName = param;
-            if (param.contains("=")) {
-                paramName = param.substring(0, param.indexOf("="));
-                if (paramName.equals("obj"))
-                    objList.add(param.substring(param.indexOf("=") + 1));
+        List<String> alerts = new ArrayList<>();
+
+        String param;
+        for (String e : split) {
+            param = e;
+            if (e.contains("=")) {
+                String[] kvp = e.split("=");
+                param = kvp[0];
+                if (param.equals("obj")) {
+                    alerts.add(kvp[1]);
+                }
             }
             if (sb.length() > 0)
                 sb.append(" ");
-            sb.append(paramName);
+            sb.append(param);
         }
         System.out.println(sb);
-        for(String s : objList) {
-            Double d = null;
+
+        for (String al : alerts) {
             try {
-                alert(Double.parseDouble(s));
+                alert(Double.parseDouble(al));
             } catch (NumberFormatException ignored) {
-                alert(s);
+                alert(al);
             }
         }
     }
