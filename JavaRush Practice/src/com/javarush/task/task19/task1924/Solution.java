@@ -29,49 +29,42 @@ public class Solution {
     }
 
     public static void main(String[] args) {
-        StringBuilder result = new StringBuilder();
-        StringBuilder numberSb = new StringBuilder();
-        String s = "Это стоит 1 бакс, а вот это - 12.";
-        for (char symbol : s.toCharArray()) {
-            if (Character.isDigit(symbol)) {
-                numberSb.append(symbol);
-            } else {
-                if (numberSb.length() != 0) {
-                    appendNumber(result, numberSb);
+        StringBuilder lineSb = new StringBuilder();
+
+        try(BufferedReader console = new BufferedReader(new InputStreamReader(System.in));
+            BufferedReader reader = new BufferedReader(new FileReader(console.readLine()))) {
+
+            while (reader.ready()) {
+                String line = reader.readLine();
+                String[] words = line.split(" ");
+                for (String word: words) {
+                    char lastSymbol = word.charAt(word.length() - 1);
+                    if (!Character.isLetterOrDigit(lastSymbol)) {
+                        String chunk = word.substring(0, word.length() - 1);
+                        tryAppendNumber(lineSb, chunk);
+                        lineSb.append(lastSymbol);
+                    } else {
+                        tryAppendNumber(lineSb, word);
+                    }
+                    lineSb.append(" ");
                 }
-                result.append(symbol);
+                System.out.println(lineSb.toString().trim());
+                lineSb.setLength(0);
             }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
-        System.out.println(result);
-
-
-//        try(BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-//            BufferedReader fileReader = new BufferedReader(new FileReader(reader.readLine()))) {
-//
-//            while (fileReader.ready()) {
-//                char c = (char)fileReader.read();
-//                if (Character.isDigit(c) && map.containsKey(((int)c))) {
-//                    result.append(map.get((int)c));
-//                } else {
-//                    result.append(c);
-//                }
-//            }
-//            System.out.println(result);
-//        } catch (IOException e) {
-//            throw new RuntimeException(e);
-//        }
     }
-    public static void appendNumber(StringBuilder result, StringBuilder numberSb) {
+    public static void tryAppendNumber(StringBuilder resultSb, String chunk) {
         try {
-            int number = Integer.parseInt(numberSb.toString());
+            int number = Integer.parseInt(chunk);
             if (map.containsKey(number)) {
-                result.append(map.get(number));
+                resultSb.append(map.get(number));
             } else {
-                result.append(number);
+                resultSb.append(number);
             }
         } catch (NumberFormatException e) {
-            result.append(numberSb);
+            resultSb.append(chunk);
         }
-        numberSb.setLength(0);
     }
 }
