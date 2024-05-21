@@ -29,6 +29,7 @@ public class Solution {
 
             loadedObject.load(inputStream);
             //here check that the classWithStatic object is equal to the loadedObject object - проверьте тут, что classWithStatic и loadedObject равны
+            System.out.println(classWithStatic.equals(loadedObject));
 
             outputStream.close();
             inputStream.close();
@@ -48,11 +49,39 @@ public class Solution {
         public int j;
 
         public void save(OutputStream outputStream) throws Exception {
-            //implement this method - реализуйте этот метод
+            outputStream.write("{\n".getBytes());
+
+            outputStream.write("i:\n".getBytes());
+            outputStream.write((this.i + "\n").getBytes());
+
+            outputStream.write("j:\n".getBytes());
+            outputStream.write((this.j + "\n").getBytes());
+
+            if (staticString != null) {
+                outputStream.write("staticString:\n".getBytes());
+                outputStream.write((staticString + "\n").getBytes());
+            }
+            outputStream.write("}\n".getBytes());
         }
 
         public void load(InputStream inputStream) throws Exception {
-            //implement this method - реализуйте этот метод
+            BufferedReader bf = new BufferedReader(new InputStreamReader(inputStream));
+            while (bf.ready()) {
+                String line = bf.readLine();
+                if ("{".equals(line)) {
+                    this.i = 0;
+                    this.j = 0;
+                    ClassWithStatic.staticString = null;
+                } else if ("i:".equals(line)) {
+                    this.i = Integer.parseInt(bf.readLine());
+                } else if ("j:".equals(line)) {
+                    this.j = Integer.parseInt(bf.readLine());
+                } else if ("staticString:".equals(line)) {
+                    ClassWithStatic.staticString = bf.readLine();
+                }
+            }
+
+            bf.close();
         }
 
         @Override
