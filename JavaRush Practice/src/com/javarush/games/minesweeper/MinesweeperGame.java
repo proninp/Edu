@@ -26,11 +26,12 @@ public class MinesweeperGame extends Game {
         int chance = 10;
         for (int x = 0; x < SIDE; x++) {
             for (int y = 0; y < SIDE; y++) {
-                boolean isMine = getRandomNumber(chance) == chance - 1;
-                if (isMine)
-                    countMinesOnField++;
-                gameField[x][y] = new GameObject(y, x, isMine);
-                setCellValue(x, y, "");
+                //boolean isMine = getRandomNumber(chance) == chance - 1;
+                //if (isMine)
+                //    countMinesOnField++;
+                //gameField[x][y] = new GameObject(y, x, isMine);
+                gameField[x][y] = new GameObject(y, x);
+                //setCellValue(x, y, "");
                 setCellColor(x, y, CELL_COLOR);
             }
         }
