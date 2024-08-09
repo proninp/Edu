@@ -7,11 +7,11 @@ namespace RefactorMe
     class DrawingProgram
     {
         private static float _x, _y;
-        private static IGraphics? _graphics;
+        private static IGraphics _graphics;
 
-        public static void Initialize(IGraphics newGraphics)
+        public static void Initialization(IGraphics newGraphics)
         {
-            _graphics = newGraphics ?? throw new ArgumentNullException(nameof(newGraphics));
+            _graphics = newGraphics;
             _graphics.Clear(Colors.Black);
         }
 
@@ -23,7 +23,6 @@ namespace RefactorMe
 
         public static void MakeIt(Pen pen, double length, double angle)
         {
-            if (pen == null) throw new ArgumentNullException(nameof(pen));
             //Делает шаг длиной length в направлении angle и рисует пройденную траекторию
             var x = (float)(_x + length * Math.Cos(angle));
             var y = (float)(_y + length * Math.Sin(angle));
@@ -44,9 +43,9 @@ namespace RefactorMe
         private const float Ratio1 = 0.375f;
         private const float Ratio2 = 0.04f;
 
-        public static void Draw(int width, int height, IGraphics graphics)
+        public static void Draw(int width, int height, double rotationAngle, IGraphics graphics)
         {
-            DrawingProgram.Initialize(graphics);
+            DrawingProgram.Initialization(graphics);
 
             var size = Math.Min(width, height);
 
