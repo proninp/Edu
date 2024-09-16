@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Net.Http.Json;
 using System.Text;
 
 namespace Lesson01;
@@ -8,39 +8,32 @@ internal class Program
     private static readonly HttpClient client = new HttpClient();
     static async Task Main(string[] args)
     {
-        int startIndex = 4;
-        int endIndex = 13;
-        var tasks = new List<Task<Post>>();
-        for (int i = startIndex; i <= endIndex; i++)
-        {
-            var postTask = GetSinglePost(i);
-            if (postTask is not null)
-                tasks.Add(postTask!);
-        }
+        var startIndex = 4;
+        var endIndex = 13;
+        var tasks = Enumerable.Range(startIndex, endIndex - startIndex + 1)
+            .Select(i => GetSinglePost(i))
+            .Where(postTask => postTask is not null)
+            .ToList();
         var posts = await Task.WhenAll(tasks);
 
-        string fileName = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "../../..", "posts.txt"));
+        var fileName = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "..", "..", "..", "posts.txt"));
         await WritePostsToFile(posts, fileName);
     }
 
     static async Task<Post?> GetSinglePost(int postId)
     {
-        var response = await client.GetAsync(string.Format("https://jsonplaceholder.typicode.com/posts/{0}", postId));
+        var response = await client.GetAsync($"https://jsonplaceholder.typicode.com/posts/{postId}");
         if (response.IsSuccessStatusCode)
-        {
-            var content = await response.Content.ReadAsStringAsync();
-            return JsonConvert.DeserializeObject<Post>(content);
-        }
-        return default;
+            return await response.Content.ReadFromJsonAsync<Post>();
+        return null;
     }
 
     static async Task WritePostsToFile(Post[] posts, string fileName)
     {
-        if (posts is null || posts.Length == 0)
+        if (posts is null || posts.Length == 0 || string.IsNullOrEmpty(fileName))
             return;
-        using StreamWriter streamWriter = new StreamWriter(fileName, false, Encoding.UTF8);
-        for (int i = 0; i < posts.Length - 1; i++)
-            await streamWriter.WriteLineAsync(posts[i].ToString() + "\n");
-        await streamWriter.WriteAsync(posts[^1].ToString());
+
+        var lines = posts.Select(post => post.ToString());
+        await File.WriteAllLinesAsync(path: fileName, contents: lines, encoding: Encoding.UTF8);
     }
 }
