@@ -22,10 +22,7 @@ internal class Program
 
     static async Task<Post?> GetSinglePost(int postId)
     {
-        var response = await client.GetAsync($"https://jsonplaceholder.typicode.com/posts/{postId}");
-        if (response.IsSuccessStatusCode)
-            return await response.Content.ReadFromJsonAsync<Post>();
-        return null;
+        return await client.GetFromJsonAsync<Post>($"https://jsonplaceholder.typicode.com/posts/{postId}");
     }
 
     static async Task WritePostsToFile(Post[] posts, string fileName)
