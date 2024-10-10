@@ -50,4 +50,20 @@ public class PersonsController : ControllerBase
     {
         return Ok(_personManager.Create(person));
     }
+
+    [HttpPut("{id}")]
+    public IActionResult UpdatePerson(int id, [FromBody] PersonDto personDto)
+    {
+        if (!_personManager.Update(id, personDto))
+            return NotFound();
+        return NoContent();
+    }
+
+    [HttpDelete("{id}")]
+    public IActionResult DeletePerson(int id)
+    {
+        if (!_personManager.Delete(id))
+            return NotFound();
+        return NoContent();
+    }
 }

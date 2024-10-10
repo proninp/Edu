@@ -5,15 +5,15 @@ namespace HomeWork02.Domain.Interfaces;
 
 public interface IPersonManager
 {
-    Person? GetPerson(int id);
+    PersonDto? GetPerson(int id);
 
-    Person GetPerson(string searchTerm);
+    PersonDto? GetPerson(string searchTerm);
 
-    IEnumerable<Person> GetPersons(int skip, int take);
+    IEnumerable<PersonDto>? GetPersons(int skip, int take);
 
     int Create(PersonDto person);
 
-    void Update(PersonDto person);
+    bool Update(int id, PersonDto person);
 
-    void Delete(int id);
+    bool Delete(int id);
 }

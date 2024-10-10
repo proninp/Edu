@@ -16,9 +16,10 @@ public class PersonManager : IPersonManager
 
     public int Create(PersonDto personDto)
     {
+        var newId = _personRepo.GetLast() + 1;
         var person = new Person
         {
-            Id = _personRepo.GetLast() + 1,
+            Id = newId,
             FirstName = personDto.FirstName,
             LastName = personDto.LastName,
             Email = personDto.Email,
@@ -29,28 +30,45 @@ public class PersonManager : IPersonManager
         return person.Id;
     }
 
-    public void Delete(int id)
+    public bool Delete(int id)
     {
-        throw new NotImplementedException();
+        var person = _personRepo.GetItem(id);
+        if (person is null)
+            return false;
+        _personRepo.Delete(person);
+        return true;
     }
 
-    public Person? GetPerson(int id)
+    public PersonDto? GetPerson(int id)
     {
-        return _personRepo.GetItem(id);
+        var person = _personRepo.GetItem(id);
+        return person?.ToDto();
     }
 
-    public Person GetPerson(string searchTerm)
+    public PersonDto? GetPerson(string searchTerm)
     {
-        throw new NotImplementedException();
+        var person = _personRepo.GetItem(searchTerm);
+        return person?.ToDto();
     }
 
-    public IEnumerable<Person>? GetPersons(int skip, int take)
+    public IEnumerable<PersonDto>? GetPersons(int skip, int take)
     {
-        return _personRepo.GetItems(skip, take);
+        var persons = _personRepo.GetItems(skip, take);
+        return persons?.Select(p => p.ToDto());
     }
 
-    public void Update(PersonDto person)
+    public bool Update(int id, PersonDto personDto)
     {
-        throw new NotImplementedException();
+        var person = _personRepo.GetItem(id);
+        if (person is null)
+            return false;
+
+        person.FirstName = personDto.FirstName;
+        person.LastName = personDto.LastName;
+        person.Email = personDto.Email;
+        person.Company = personDto.Company;
+        person.Age = personDto.Age;
+
+        return true;
     }
 }

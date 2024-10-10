@@ -1,4 +1,6 @@
-﻿namespace HomeWork02.Data.Interfaces;
+﻿using HomeWork02.Models;
+
+namespace HomeWork02.Data.Interfaces;
 
 public interface IRepoBase<T>
 {
@@ -8,5 +10,5 @@ public interface IRepoBase<T>
 
     void Add(T item);
 
-    bool Update();
+    void Delete(T item);
 }

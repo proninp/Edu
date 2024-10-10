@@ -1,4 +1,6 @@
-﻿namespace HomeWork02.Models;
+﻿using HomeWork02.DataTransferObjects;
+
+namespace HomeWork02.Models;
 
 public class Person
 {
